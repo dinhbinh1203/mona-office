@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+
+import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import News from './pages/News/News';
+import InformationUser from './pages/InformationUser/InformationUser';
+import Cart from './pages/Cart/Cart';
+import Shop from './pages/Shop/Shop';
+import { checkUserSession } from './store/user/user.action';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PrivateRoute from './utils/PrivateRoute/PrivateRoute';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkUserSession());
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<DefaultLayout />}>
+        <Route index element={<Home />} />
+        <Route path="news/*" element={<News />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
+        <Route path="information-user" element={<InformationUser />} />
+        <Route path="cart-user" element={<Cart />} />
+        <Route path="shop" element={<Shop />} />
+      </Route>
+    </Routes>
   );
 }
 

@@ -1,0 +1,61 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+:root {
+  --primary: rgb(0, 179, 160);
+  --hover-primary: rgb(41, 120, 112);
+  --black: #000;
+  --white: #fff;
+  --text-color: rgba(102, 102, 102, 0.85);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Roboto', 'Noto Serif', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+body {
+  .tippy-box {
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    background-color: var(--primary);
+  }
+
+  .tippy-arrow {
+    color: var(--primary);
+  }
+
+  .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
+    top: -8px;
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-slider.slick-initialized {
+  overflow: hidden;
+}

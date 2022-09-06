@@ -1,0 +1,11 @@
+.shop-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  .not-product-title {
+    color: rgb(53, 53, 53);
+    margin-bottom: 10px;
+  }
+}

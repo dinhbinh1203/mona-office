@@ -1,0 +1,22 @@
+.label-input {
+  color: rgb(34, 34, 34);
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  padding-bottom: 4px;
+}
+
+.sign-in-input {
+  outline: none;
+  padding: 15px;
+  width: 100%;
+  margin-bottom: 16px;
+
+  border: 1px solid rgb(225, 225, 225);
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+    border: 1px solid var(--primary);
+  }
+}
