@@ -1,0 +1,25 @@
+.rate {
+  .title {
+    color: rgb(53, 53, 53);
+    .title-main {
+      font-family: 'Noto Serif';
+      font-style: normal;
+      font-weight: 400;
+
+      padding-bottom: 10px;
+    }
+  }
+
+  .review-form {
+    .review-form--inner {
+      .new-respond {
+        .new-respond--title {
+          font-family: 'Noto Serif';
+          font-style: normal;
+          font-weight: 400;
+          color: #1c1c1c;
+        }
+      }
+    }
+  }
+}

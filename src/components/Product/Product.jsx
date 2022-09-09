@@ -8,19 +8,24 @@ function Product({
   image,
   title,
   prevPrice,
-  nowPrice,
+  price,
   className,
   description,
-  rent,
-  news,
-  normal,
+  rent = false,
+  news = false,
+  normal = false,
 }) {
   const classesTitle = cx('product-title', {
     [className]: className,
-    rent,
-    news,
-    normal,
   });
+
+  const formatMoney = (n) => {
+    return (Math.round(n * 100) / 100).toLocaleString();
+  };
+
+  const percent = (a, b) => {
+    return 100 - Math.floor((a / b) * 100);
+  };
 
   return (
     <div className={cx('product')}>
@@ -31,10 +36,14 @@ function Product({
 
       <div className={cx('product-price')}>
         {prevPrice && (
-          <div className={cx('product-price--prev')}>{`${prevPrice}`},000đ</div>
+          <div className={cx('product-price--prev')}>
+            {`${formatMoney(prevPrice)}`}đ
+          </div>
         )}
-        {nowPrice && (
-          <div className={cx('product-price--now')}>{`${nowPrice}`},000đ</div>
+        {price && (
+          <div className={cx('product-price--now')}>
+            {`${formatMoney(price)}`}đ
+          </div>
         )}
       </div>
       {normal && (
@@ -53,7 +62,11 @@ function Product({
           {`${description[0]}`}...
         </div>
       )}
-      {prevPrice && <div className={cx('tag-discount-percent')}>14%</div>}
+      {prevPrice && (
+        <div className={cx('tag-discount-percent')}>
+          {`${percent(price, prevPrice)}`}%
+        </div>
+      )}
     </div>
   );
 }

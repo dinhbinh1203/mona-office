@@ -23,6 +23,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
+        <Route path="shop/*" element={<Shop />} />
         <Route index element={<Home />} />
         <Route path="news/*" element={<News />} />
         <Route element={<PrivateRoute />}>
@@ -31,7 +32,6 @@ function App() {
         </Route>
         <Route path="information-user" element={<InformationUser />} />
         <Route path="cart-user" element={<Cart />} />
-        <Route path="shop" element={<Shop />} />
       </Route>
     </Routes>
   );

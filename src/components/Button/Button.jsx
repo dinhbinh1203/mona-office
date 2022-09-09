@@ -11,12 +11,14 @@ function Button({
   white,
   black,
   onClick,
+  red,
 }) {
   const classes = cx('btn', {
     [className]: className,
     primary,
     white,
     black,
+    red,
   });
 
   return (

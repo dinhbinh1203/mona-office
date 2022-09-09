@@ -29,15 +29,14 @@
 
   .product-image {
     max-height: 250px;
+    overflow: hidden;
+    margin: 10px 20px;
+
     img {
       max-width: 100%;
       width: 100%;
       transform: translateZ(0);
       margin: 0 auto;
-      object-position: 50% 50%;
-      object-fit: cover;
-      font-family: 'object-fit: cover;';
-      height: 100%;
     }
   }
 
