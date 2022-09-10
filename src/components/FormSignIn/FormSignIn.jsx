@@ -45,9 +45,9 @@ function FormSignIn() {
   };
 
   return (
-    <div className={cx('form-sign-in-wrapper')}>
-      <div className={cx('sign-in-title')}>Chào mừng trở lại</div>
-      <div className={cx('sign-in-form')}>
+    <div className={cx('form__sign-in--wrapper')}>
+      <div className={cx('sign__in--title')}>Chào mừng trở lại</div>
+      <div className={cx('sign__in--form')}>
         <form onSubmit={handleSubmit}>
           <FormInput
             name="email"
@@ -56,7 +56,7 @@ function FormSignIn() {
             required
             onChange={handleChange}
             value={email}
-            className={cx('sign-in-input')}
+            className={cx('sign__in--input')}
             label="Email"
           />
           <FormInput
@@ -66,7 +66,7 @@ function FormSignIn() {
             required
             onChange={handleChange}
             value={password}
-            className={cx('sign-in-input')}
+            className={cx('sign__in--input')}
             label="Mật khẩu"
           />
 

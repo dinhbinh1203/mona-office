@@ -8,7 +8,7 @@
       }
     }
 
-    .item-title {
+    .item__title {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -17,20 +17,20 @@
       transition: all 0.2s;
       color: var(--text-color);
 
-      .item-title-content {
+      .item__title--content {
         font-weight: 700;
         font-size: 1.3rem;
         text-transform: uppercase;
         padding: 15px 0;
       }
 
-      .item-title-icon {
+      .item__title-icon {
         font-size: 1rem;
         margin-left: 4px;
       }
     }
 
-    .item-list {
+    .item__list {
       font-size: 1.6rem;
       color: var(--text-color);
 
@@ -44,7 +44,7 @@
       border: none;
       min-width: 100%;
 
-      .item-children {
+      .item__children {
         padding: 10px 12px;
         transition: all 0.2s;
         line-height: 1.3;

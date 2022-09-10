@@ -25,22 +25,10 @@ function Categories() {
   return (
     <div className="grid wide">
       {isLoadingProducts || isLoadingCategories ? (
-        <div className={cx('is-loading')}>
+        <div className={cx('is__loading')}>
           <Loading />
         </div>
       ) : (
-        // <div className={cx('categories-container')}>
-        //   <div className={cx('categories-menu')}>
-        //     {categories.data !== undefined &&
-        //       categories.data.map((item) => (
-        //         <Link to={`/shop/${item.id}`} data={item}>
-        //           <div key={item.id} className={cx('menu-item')}>
-        //             {item.title}
-        //           </div>
-        //         </Link>
-        //       ))}
-        //   </div>
-
         <div className={cx('products', 'row')}>
           {products.data !== undefined &&
             products.data.map((item) => (
@@ -48,7 +36,6 @@ function Categories() {
                 to={`/shop/product/${item.name}`}
                 className="col c-6 m-6 l-3"
               >
-                {/* <div key={item.id}>{item.name}</div> */}
                 <div key={item.id}>
                   {!item.new && (
                     <Product
@@ -64,7 +51,6 @@ function Categories() {
               </Link>
             ))}
         </div>
-        // </div>
       )}
     </div>
   );

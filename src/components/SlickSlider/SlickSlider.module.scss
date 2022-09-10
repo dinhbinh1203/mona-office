@@ -1,11 +1,12 @@
-.slider-slider {
+.slider__slider {
   height: 500px;
   position: relative;
 
-  .slider-slider--image {
+  .slider__slider--image {
     height: 100%;
     position: relative;
-    .image-header {
+
+    .image__header {
       height: 100%;
       display: block;
       margin-left: auto;
@@ -27,27 +28,29 @@
     width: 100%;
     height: 100%;
     top: 0;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    .title {
+    .content__title {
       font-size: 3.3rem;
       font-weight: 400;
       font-family: 'Noto Serif';
       color: rgb(28, 28, 28);
     }
-    .name {
+
+    .content__name {
       text-transform: uppercase;
       color: var(--primary);
       font-size: 6.4rem;
       font-weight: 700;
       font-family: 'Noto Serif';
-
       margin: 8px 0;
     }
-    .description {
+
+    .content__description {
       font-size: 1.6rem;
       line-height: 2.6rem;
       color: var(--black);
@@ -61,18 +64,18 @@
       text-align: center;
       color: var(--white);
 
-      .discount-content {
+      .discount__content {
         font-size: 3.8rem;
         font-family: 'Noto Serif';
 
-        .discount-number {
+        .discount__number {
           color: rgb(255, 255, 0);
           font-size: 5.8rem;
           font-weight: 700;
         }
       }
 
-      .discount-description {
+      .discount__description {
         font-size: 1.6rem;
         margin-bottom: 40px;
       }
@@ -81,17 +84,19 @@
 }
 
 @media (max-width: 520px) {
-  .slider-slider {
+  .slider__slider {
     height: 350px;
 
     .content {
-      .title {
+      .content__title {
         font-size: 2.4rem;
       }
-      .name {
+
+      .content__name {
         font-size: 3.9rem;
       }
-      .description {
+
+      .content__description {
         font-size: 1.2rem;
         width: 60%;
         color: var(--black);
@@ -100,16 +105,16 @@
       }
 
       .discount {
-        .discount-content {
+        .discount_-content {
           font-size: 2.4rem;
           margin-bottom: 20px;
 
-          .discount-number {
+          .discount__number {
             font-size: 3.4rem;
           }
         }
 
-        .discount-description {
+        .discount__description {
           font-size: 1.4rem;
         }
       }

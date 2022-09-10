@@ -35,7 +35,7 @@ function ProductDetail() {
           <Loading />
         </div>
       ) : (
-        <div className={cx('product-detail')}>
+        <div className={cx('product__detail')}>
           {products.data !== undefined &&
             products.data
               .filter((list) => list.name === name)
@@ -54,7 +54,7 @@ function ProductDetail() {
                         .filter((list) => list.id === item.categoryId)
                         .map((list) => (
                           <Link to={`/shop/${list.id}`} key={list.id}>
-                            <span className={cx('title-list')}>
+                            <span className={cx('title__list')}>
                               {'  '}
                               {list.title}
                             </span>
@@ -64,7 +64,7 @@ function ProductDetail() {
                   <div className={cx('container', 'row')}>
                     <div
                       className={cx(
-                        'product-image',
+                        'product__image',
                         'col',
                         'l-6',
                         'm-6',
@@ -75,60 +75,60 @@ function ProductDetail() {
                     </div>
                     <div
                       className={cx(
-                        'product-content',
+                        'product__content',
                         'col',
                         'l-6',
                         'm-6',
                         'c-6',
                       )}
                     >
-                      <div className={cx('content-title')}>{item.name}</div>
-                      <div className={cx('content-divider')}></div>
+                      <div className={cx('content__title')}>{item.name}</div>
+                      <div className={cx('content_-divider')}></div>
                       {item.price && (
-                        <div className={cx('content-price')}>
+                        <div className={cx('content__price')}>
                           {item.prevPrice && (
-                            <div className={cx('content-price--prev')}>
+                            <div className={cx('content__price--prev')}>
                               {`${formatMoney(item.prevPrice)}`}₫
                             </div>
                           )}
-                          <div className={cx('content-price--now')}>
+                          <div className={cx('content__price--now')}>
                             {`${formatMoney(item.price)}`}₫
                           </div>
                         </div>
                       )}
-                      <div className={cx('content-description')}>
+                      <div className={cx('content__description')}>
                         {item.description
                           .filter((_, idx) => idx < 3)
                           .map((detailDescription) => (
-                            <div className={cx('detail-description')}>
+                            <div className={cx('detail__description')}>
                               {detailDescription}
                             </div>
                           ))}
                       </div>
-                      <div className={cx('content-selector')}>
-                        <div className={cx('selector-quantity')}>
-                          <span className={cx('quantity-btn')}>-</span>
+                      <div className={cx('content__selector')}>
+                        <div className={cx('selector__quantity')}>
+                          <span className={cx('quantity__btn')}>-</span>
                           <input
                             type="button"
                             value="1"
                             min="1"
-                            className={cx('quantity-number')}
+                            className={cx('quantity__number')}
                           />
                           <span className={cx('quantity-btn')}>+</span>
                         </div>
-                        <Button primary className={cx('selector-add')}>
+                        <Button primary className={cx('selector__add')}>
                           THÊM VÀO GIỎ
                         </Button>
-                        <Button red className={cx('selector-add')}>
+                        <Button red className={cx('selector__add')}>
                           MUA NGAY
                         </Button>
                       </div>
-                      <div className={cx('content-promotion')}>
-                        <div className={cx('promotion-detail')}>
+                      <div className={cx('content__promotion')}>
+                        <div className={cx('promotion__detail')}>
                           <span
                             className={cx(
                               'material-symbols-outlined',
-                              'promotion-icon',
+                              'promotion__detail--icon',
                             )}
                           >
                             done
@@ -138,11 +138,11 @@ function ProductDetail() {
                             Nội, Biên Hòa và một số quận thuộc Bình Dương
                           </span>
                         </div>
-                        <div className={cx('promotion-detail')}>
+                        <div className={cx('promotion__detail')}>
                           <span
                             className={cx(
                               'material-symbols-outlined',
-                              'promotion-icon',
+                              'promotion__detail--icon',
                             )}
                           >
                             done
@@ -153,7 +153,9 @@ function ProductDetail() {
                     </div>
                   </div>
                   <div className={cx('table', 'row')}>
-                    <Rate />
+                    <div className="col c-12 l-12 r-12">
+                      <Rate />
+                    </div>
                   </div>
                 </div>
               ))}

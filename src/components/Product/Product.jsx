@@ -15,7 +15,7 @@ function Product({
   news = false,
   normal = false,
 }) {
-  const classesTitle = cx('product-title', {
+  const classesTitle = cx('product__title', {
     [className]: className,
   });
 
@@ -29,42 +29,42 @@ function Product({
 
   return (
     <div className={cx('product')}>
-      <div className={cx('product-image')}>
+      <div className={cx('product__image')}>
         <img alt="product" src={image}></img>
       </div>
       <div className={classesTitle}>{`${title}`}</div>
 
-      <div className={cx('product-price')}>
+      <div className={cx('product__price')}>
         {prevPrice && (
-          <div className={cx('product-price--prev')}>
+          <div className={cx('product__price--prev')}>
             {`${formatMoney(prevPrice)}`}đ
           </div>
         )}
         {price && (
-          <div className={cx('product-price--now')}>
+          <div className={cx('product__price--now')}>
             {`${formatMoney(price)}`}đ
           </div>
         )}
       </div>
       {normal && (
-        <div className={cx('button')}>
+        <div className={cx('product__button')}>
           <Button primary>Thêm vào giỏ</Button>
         </div>
       )}
       {rent && (
-        <div className={cx('button')}>
+        <div className={cx('product__button')}>
           <Button primary>Liên hệ</Button>
         </div>
       )}
 
       {description && (
-        <div className={cx('product-description')}>
+        <div className={cx('product__description')}>
           {`${description[0]}`}...
         </div>
       )}
       {prevPrice && (
-        <div className={cx('tag-discount-percent')}>
-          {`${percent(price, prevPrice)}`}%
+        <div className={cx('tag__discount--percent')}>
+          {`${percent(price, prevPrice)}`}
         </div>
       )}
     </div>

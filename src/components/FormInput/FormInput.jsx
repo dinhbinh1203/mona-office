@@ -3,11 +3,18 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const FormInput = ({ label, ...otherProps }) => {
+const FormInput = ({ label, comment = false, ...otherProps }) => {
   return (
     <>
-      {label && <div className={cx('label-input')}>{`${label}`}</div>}
-      <input {...otherProps} className={cx('sign-in-input')} />
+      {label && <div className={cx('label__input')}>{`${label}`}</div>}
+      {comment ? (
+        <textarea
+          {...otherProps}
+          className={cx('sign__in--input', 'comment')}
+        />
+      ) : (
+        <input {...otherProps} className={cx('sign__in--input')} />
+      )}
     </>
   );
 };

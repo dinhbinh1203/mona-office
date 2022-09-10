@@ -1,4 +1,4 @@
-.label-input {
+.label__input {
   color: rgb(34, 34, 34);
   font-size: 1.4rem;
   font-weight: 700;
@@ -6,7 +6,7 @@
   padding-bottom: 4px;
 }
 
-.sign-in-input {
+.sign__in--input {
   outline: none;
   padding: 15px;
   width: 100%;
@@ -19,4 +19,8 @@
     outline: none;
     border: 1px solid var(--primary);
   }
+}
+
+.comment {
+  min-height: 120px;
 }

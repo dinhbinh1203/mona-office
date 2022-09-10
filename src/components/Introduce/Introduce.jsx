@@ -6,12 +6,12 @@ const cx = classNames.bind(styles);
 function Introduce({ item }) {
   return (
     <div className={cx('introduce')}>
-      <div className={cx('introduce-icon')}>
+      <div className={cx('introduce__icon')}>
         <span className="material-symbols-outlined">{item.icon}</span>
       </div>
-      <div className={cx('introduce-content')}>
-        <div className={cx('introduce-content--title')}>{item.title}</div>
-        <div className={cx('introduce-content--description')}>
+      <div className={cx('introduce__content')}>
+        <div className={cx('introduce__content--title')}>{item.title}</div>
+        <div className={cx('introduce__content--description')}>
           {item.description}
         </div>
       </div>

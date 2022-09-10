@@ -1,0 +1,17 @@
+.rate {
+  padding: 0 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    .rate__icon {
+      color: var(--primary);
+      opacity: 1;
+    }
+  }
+
+  .rate__icon {
+    font-size: 1.2rem;
+    color: #dddddd;
+  }
+}

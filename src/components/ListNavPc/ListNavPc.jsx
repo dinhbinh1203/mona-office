@@ -10,17 +10,17 @@ function ListNavPc() {
     <ul className={cx('list')}>
       {LIST_ITEMS.map((list, index) => (
         <li className={cx('item')} key={index}>
-          <div className={cx('item-title')}>
-            <div className={cx('item-title-content')}>{`${list.title}`}</div>
+          <div className={cx('item__title')}>
+            <div className={cx('item__title--content')}>{`${list.title}`}</div>
             <FontAwesomeIcon
               icon={faChevronDown}
-              className={cx('item-title-icon')}
+              className={cx('item__title--icon')}
             />
           </div>
 
-          <ul className={cx('item-list')}>
+          <ul className={cx('item__list')}>
             {list.item.map((item) => (
-              <li className={cx('item-children')}>{`${item.name}`}</li>
+              <li className={cx('item__children')}>{`${item.name}`}</li>
             ))}
           </ul>
         </li>

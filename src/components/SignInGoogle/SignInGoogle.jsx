@@ -13,13 +13,13 @@ function SignInGoogle({ title }) {
     dispatch(googleSignInStart());
   };
   return (
-    <div className={cx('other-method')}>
+    <div className={cx('other__method')}>
       <div>{`${title}`}</div>
       <div onClick={signInWithGoogle}>
         <img
           src={images.logoGoogle}
           alt="google"
-          className={cx('logo-google')}
+          className={cx('logo__google')}
         ></img>
       </div>
     </div>

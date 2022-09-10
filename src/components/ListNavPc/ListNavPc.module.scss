@@ -5,12 +5,12 @@
   .item {
     position: relative;
     &:hover {
-      .item-list {
+      .item__list {
         display: block;
       }
     }
 
-    .item-title {
+    .item__title {
       display: flex;
       align-items: center;
       padding-bottom: 10px;
@@ -22,19 +22,19 @@
         color: var(--primary);
       }
 
-      .item-title-content {
+      .item__title--content {
         font-size: 1.3rem;
         font-weight: 700;
 
         padding-right: 6px;
       }
 
-      .item-title-icon {
+      .item__title--icon {
         font-size: 1rem;
       }
     }
 
-    .item-list {
+    .item__list {
       position: absolute;
       min-width: 260px;
 
@@ -52,7 +52,7 @@
       display: none;
       z-index: 1;
 
-      .item-children {
+      .item__children {
         padding: 10px 20px;
         cursor: pointer;
         &:hover {

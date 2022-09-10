@@ -1,7 +1,7 @@
 .socials {
   margin-top: 15px;
 
-  .item-social {
+  .item__social {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,10 +17,11 @@
       cursor: pointer;
     }
 
-    .social-icon {
+    .social__icon {
       margin-right: 3px;
     }
-    .social-title {
+
+    .social__title {
       font-size: 1.4rem;
     }
   }

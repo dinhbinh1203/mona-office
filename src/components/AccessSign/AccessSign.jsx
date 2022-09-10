@@ -7,11 +7,11 @@ const cx = classNames.bind(styles);
 
 function AccessSign({ btn, description, to, title }) {
   return (
-    <div className={cx('sign-btn')}>
+    <div className={cx('sign__btn')}>
       <Button primary type="submit">
         {`${btn}`}
       </Button>
-      <div className={cx('sign-redirect')}>
+      <div className={cx('sign__redirect')}>
         <div>{`${description}`} </div>
         <Link to={`${to}`}>{`${title}`}</Link>
       </div>

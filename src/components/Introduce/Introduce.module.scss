@@ -3,15 +3,16 @@
   align-items: center;
   padding: 30px 10px;
 
-  .introduce-icon {
+  .introduce__icon {
     color: var(--primary);
     padding-right: 16px;
     span {
       font-size: 4rem;
     }
   }
-  .introduce-content {
-    .introduce-content--title {
+
+  .introduce__content {
+    .introduce__content--title {
       color: var(--black);
       font-size: 1.8rem;
       font-weight: 600;
@@ -19,7 +20,8 @@
 
       margin-bottom: 10px;
     }
-    .introduce-content--description {
+
+    .introduce__content--description {
       color: #353535;
       font-size: 1.6rem;
       line-height: 2.3rem;
@@ -30,18 +32,22 @@
 @media (max-width: 820px) {
   .introduce {
     padding: 10px;
-    .introduce-icon {
+
+    .introduce__icon {
       padding-right: 10px;
+
       span {
         font-size: 3rem;
       }
     }
-    .introduce-content {
-      .introduce-content--title {
+
+    .introduce__content {
+      .introduce__content--title {
         font-size: 1.3rem;
         line-height: 1.4rem;
       }
-      .introduce-content--description {
+
+      .introduce__content--description {
         font-size: 1.1rem;
         line-height: 1.3rem;
       }
@@ -52,18 +58,21 @@
 @media (max-width: 520px) {
   .introduce {
     padding: 10px;
-    .introduce-icon {
+
+    .introduce__icon {
       padding-right: 16px;
       span {
         font-size: 2.4rem;
       }
     }
-    .introduce-content {
-      .introduce-content--title {
+
+    .introduce__content {
+      .introduce__content--title {
         font-size: 1.2rem;
         line-height: 1.4rem;
       }
-      .introduce-content--description {
+
+      .introduce__content--description {
         font-size: 1rem;
         line-height: 1.2rem;
       }

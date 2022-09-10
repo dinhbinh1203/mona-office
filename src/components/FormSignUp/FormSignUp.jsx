@@ -48,12 +48,12 @@ function FormSigUp() {
   };
 
   return (
-    <div className={cx('form-sign-up-wrapper')}>
-      <div className={cx('sign-up-title')}>Đăng ký tài khoản</div>
-      <div className={cx('sign-up-description')}>
+    <div className={cx('form__sign-up--wrapper')}>
+      <div className={cx('sign__up--title')}>Đăng ký tài khoản</div>
+      <div className={cx('sign__up--description')}>
         Tạo một tài khoản để nhận được những ưu đãi tốt nhất từ Mona Office
       </div>
-      <div className={cx('sign-up-form')}>
+      <div className={cx('sign__up--form')}>
         <form onSubmit={handleSubmit}>
           <FormInput
             name="email"

@@ -12,7 +12,11 @@
   position: relative;
   height: 100%;
 
-  .tag-discount-percent {
+  &:hover {
+    box-shadow: 0 3px 6px -4px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+  }
+
+  .tag__discount--percent {
     position: absolute;
     top: 0;
     left: 0;
@@ -23,11 +27,7 @@
     margin-left: -10px;
   }
 
-  &:hover {
-    box-shadow: 0 3px 6px -4px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
-  }
-
-  .product-image {
+  .product__image {
     max-height: 250px;
     overflow: hidden;
     margin: 10px 20px;
@@ -40,7 +40,7 @@
     }
   }
 
-  .product-title {
+  .product__title {
     color: rgb(51, 72, 98);
     font-size: 1.5rem;
   }
@@ -61,31 +61,32 @@
     padding-top: 20px;
   }
 
-  .product-price {
+  .product__price {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
 
-    .product-price--prev {
+    .product__price--prev {
       font-size: 1.4rem;
       color: var(--black);
       opacity: 0.6;
       text-decoration: line-through;
       padding-right: 8px;
     }
-    .product-price--now {
+    .product__price--now {
       font-size: 1.5rem;
       font-weight: 700;
     }
   }
-  .button {
+
+  .product__button {
     text-transform: uppercase;
     width: 80%;
     text-align: center;
   }
 
-  .product-description {
+  .product__description {
     padding-left: 16px;
     color: var(--text-color);
     margin-top: 10px;

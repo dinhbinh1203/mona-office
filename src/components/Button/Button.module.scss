@@ -20,7 +20,7 @@
 
 .white {
   padding: 10px 20px;
-  border: 2px solid white;
+  border: 2px solid var(--white);
   border-radius: 4px;
 
   font-size: 1.6rem;
@@ -56,19 +56,19 @@
 
 .red {
   padding: 8px 18px;
-  border: 2px solid #d15351;
+  border: 2px solid var(--red);
   border-radius: 4px;
 
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--white);
-  background-color: #d15351;
+  background-color: var(--red);
 
   transition: all 0.3s;
 
   &:hover {
     background-color: var(--white);
-    border: 2px solid #d15351;
-    color: #d15351;
+    border: 2px solid var(--red);
+    color: var(--red);
   }
 }

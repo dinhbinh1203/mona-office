@@ -12,45 +12,45 @@ function SlickSlider() {
   };
   return (
     <Slider {...settings}>
-      <div className={cx('slider-slider')}>
-        <div className={cx('slider-slider--image')}>
+      <div className={cx('slider__slider')}>
+        <div className={cx('slider__slider--image')}>
           <img
             src={images.backGroundHeaderFirst}
             alt="backGround"
-            className={cx('image-header')}
+            className={cx('image__header')}
           ></img>
           <div className={cx('overlay')}></div>
         </div>
         <div className={cx('content')}>
-          <div className={cx('title')}>Văn phòng phẩm</div>
-          <div className={cx('name')}>Mona Office</div>
-          <div className={cx('description')}>
+          <div className={cx('content__title')}>Văn phòng phẩm</div>
+          <div className={cx('content__name')}>Mona Office</div>
+          <div className={cx('content__description')}>
             Chuyên bán lẻ các dụng cụ, thiết bị văn phòng. Nhận cung cấp cho các
             công ty, trường học với số lượng lớn, đảm bảo hàng uy tín, chất
             lượng
           </div>
-          <div className={cx('btn')}>
+          <div className={cx('content__btn')}>
             <Button black>Xem sản phẩm</Button>
           </div>
         </div>
       </div>
-      <div className={cx('slider-slider')}>
-        <div className={cx('slider-slider--image')}>
+      <div className={cx('slider__slider')}>
+        <div className={cx('slider__slider--image')}>
           <img
             src={images.backGroundHeaderSecond}
             alt="backGround"
-            className={cx('image-header')}
+            className={cx('image__header')}
           ></img>
           <div className={cx('overlay')}></div>
         </div>
         <div className={cx('content')}>
           <div className={cx('discount')}>
-            <div className={cx('discount-content')}>
+            <div className={cx('discount__content')}>
               Ưu đãi giảm giá
-              <strong className={cx('discount-number')}> 10% </strong>
+              <strong className={cx('discount__number')}> 10% </strong>
               cho tất cả các sản phẩm
             </div>
-            <div className={cx('discount-description')}>
+            <div className={cx('discount__description')}>
               Thời gian từ 1/9/2022 đến hết 30/9/2022. Áp dụng cho học sinh,
               sinh viên
             </div>

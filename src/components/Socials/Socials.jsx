@@ -46,10 +46,10 @@ function Socials() {
         <div
           style={{ backgroundColor: social.color }}
           key={index}
-          className={cx('item-social', 'col', 'c-4', 'm-4', 'l-2')}
+          className={cx('item__social', 'col', 'c-4', 'm-4', 'l-2')}
         >
-          <div className={cx('social-icon')}>{social.icon}</div>
-          <div className={cx('social-title')}>{social.title}</div>
+          <div className={cx('social__icon')}>{social.icon}</div>
+          <div className={cx('social__title')}>{social.title}</div>
         </div>
       ))}
     </div>

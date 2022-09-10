@@ -1,0 +1,29 @@
+.form__rate {
+  border: 1px solid var(--primary);
+  padding: 15px 30px 30px;
+
+  .rate__star {
+    .title__item {
+      font-family: 'Noto Serif';
+      font-style: normal;
+      font-weight: 400;
+      color: #1c1c1c;
+    }
+
+    .star__title {
+      color: rgb(34, 34, 34);
+      font-size: 1.4rem;
+      font-weight: 700;
+      padding-bottom: 4px;
+    }
+
+    .star__container {
+      display: flex;
+      margin-bottom: 8px;
+
+      .star__item + .star__item {
+        border-left: 1px solid #ececec;
+      }
+    }
+  }
+}

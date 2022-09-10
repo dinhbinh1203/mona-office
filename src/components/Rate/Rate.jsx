@@ -8,15 +8,12 @@ function Rate() {
   return (
     <div className={cx('rate')}>
       <div className={cx('title')}>
-        <h3 className={cx('title-main')}>Đánh giá</h3>
-        <p className={cx('title-number')}>Chưa có đánh giá nào</p>
+        <h3 className={cx('title__main')}>Đánh giá</h3>
+        <p className={cx('title__number')}>Chưa có đánh giá nào</p>
       </div>
-      <div className={cx('review-form')}>
-        <div className={cx('review-form--inner')}>
-          <div className={cx('new-respond')}>
-            <h3 className={cx('new-respond--title')}>
-              Hãy là người đầu tiên nhận xét “Bìa còng King Jim 10f”{' '}
-            </h3>
+      <div className={cx('review__form')}>
+        <div className={cx('review__form--inner')}>
+          <div className={cx('new__respond')}>
             <FormRate />
           </div>
         </div>
