@@ -1,32 +1,58 @@
-import styles from './FormRate.module.scss';
-import classNames from 'classnames/bind';
+import { useState } from 'react';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { StarOne, StarTwo, StarThree, StarFour, StarFive } from '../Star/Star';
 
+import styles from './FormRate.module.scss';
+import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
-const STARS = [
-  <StarOne />,
-  <StarTwo />,
-  <StarThree />,
-  <StarFour />,
-  <StarFive />,
-];
+function FormRate({ name }) {
+  const [rate, changeRate] = useState({
+    objects: [
+      <StarOne />,
+      <StarTwo />,
+      <StarThree />,
+      <StarFour />,
+      <StarFive />,
+    ],
+    activeObjects: null,
+  });
 
-function FormRate() {
+  const toggleActive = (index) => {
+    changeRate({ ...rate, activeObjects: rate.objects[index] });
+  };
+
+  const toggleActiveStyles = (index) => {
+    if (rate.objects[index] === rate.activeObjects) {
+      return 'star__item--active';
+    } else {
+      return 'star__item--inactive';
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className={cx('form__rate')}>
       <div className={cx('rate__star')}>
         <h3 className={cx('title__item')}>
-          Hãy là người đầu tiên nhận xét “Bìa còng King Jim 10f”
+          {` Hãy là người đầu tiên nhận xét "${name}"`}
         </h3>
         <div className={cx('star__title')}>Đánh giá của bạn</div>
         <div className={cx('star__container')}>
-          {STARS.map((star) => (
-            <div className={cx('star__item')}>{star}</div>
+          {rate.objects.map((star, index) => (
+            <div
+              className={cx('star__item', toggleActiveStyles(index))}
+              key={index}
+              onClick={() => {
+                toggleActive(index);
+              }}
+            >
+              {star}
+            </div>
           ))}
         </div>
       </div>
@@ -34,7 +60,9 @@ function FormRate() {
         <FormInput name="text" type="text" required label="Tên *" comment />
         <FormInput name="text" type="text" required label="Tên *" />
         <FormInput name="text" type="text" required label="Email *" />
-        <Button primary>Gửi đi</Button>
+        <Button primary onClick={(e) => handleSubmit(e)}>
+          Gửi đi
+        </Button>
       </form>
     </div>
   );

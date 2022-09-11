@@ -16,9 +16,14 @@ function Shop() {
   }, []);
 
   return (
+    // <Routes>
+    //   <Route index element={<Categories />} />
+    //   <Route path=":id/*" element={<Category />} />
+    //   <Route path="product/:name" element={<ProductDetail />} />
+    // </Routes>
     <Routes>
       <Route index element={<Categories />} />
-      <Route path=":id/*" element={<Category />} />
+      <Route path=":name/*" element={<Category />} />
       <Route path="product/:name" element={<ProductDetail />} />
     </Routes>
   );

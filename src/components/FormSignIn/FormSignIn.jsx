@@ -26,10 +26,12 @@ function FormSignIn() {
   const resetFormFields = () => {
     setFormFields(initialValue);
   };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {

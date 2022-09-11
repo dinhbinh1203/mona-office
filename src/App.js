@@ -12,12 +12,14 @@ import { checkUserSession } from './store/user/user.action';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute/PrivateRoute';
+import { fetchCategoriesStart } from './store/categories/categories.action';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(checkUserSession());
+    dispatch(fetchCategoriesStart());
   }, []);
 
   return (

@@ -114,5 +114,54 @@
         }
       }
     }
+
+    .table {
+      .table__choose {
+        .choose__title {
+          display: flex;
+          cursor: pointer;
+          font-weight: 700;
+
+          .choose__title--item {
+            color: rgba(102, 102, 102, 0.85);
+            background-color: rgba(0, 0, 0, 0.04);
+
+            border-top: 2px solid #ddd;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            padding: 10px 15px;
+            margin-right: 4px;
+          }
+
+          .active {
+            color: rgba(17, 17, 17, 0.85);
+            background-color: var(--white);
+            border-top-color: #00b3a0;
+          }
+        }
+
+        .choose__container {
+          border: 1px solid #ddd;
+          background-color: #fff;
+          padding: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  .product__detail {
+    .detail {
+      .table {
+        .table__choose {
+          margin-top: 20px;
+
+          .choose__container {
+            padding: 20px;
+          }
+        }
+      }
+    }
   }
 }

@@ -1,0 +1,15 @@
+.description__product {
+  .product__name {
+    font-family: 'Noto Serif';
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .product__description--list {
+    display: flex;
+    flex-direction: column;
+
+    .product__description--item {
+    }
+  }
+}

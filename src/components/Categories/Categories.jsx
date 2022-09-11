@@ -22,6 +22,10 @@ function Categories() {
   const categories = useSelector(selectCategories);
   const isLoadingCategories = useSelector(selectCategoriesIsLoading);
 
+  const changeSpaceToDash = (str) => {
+    return str.replaceAll('-', ' ');
+  };
+
   return (
     <div className="grid wide">
       {isLoadingProducts || isLoadingCategories ? (
@@ -32,8 +36,8 @@ function Categories() {
         <div className={cx('products', 'row')}>
           {products.data !== undefined &&
             products.data.map((item) => (
-              <Link
-                to={`/shop/product/${item.name}`}
+              <a
+                href={`/shop/product/${changeSpaceToDash(item.name)}`}
                 className="col c-6 m-6 l-3"
               >
                 <div key={item.id}>
@@ -48,7 +52,7 @@ function Categories() {
                     />
                   )}
                 </div>
-              </Link>
+              </a>
             ))}
         </div>
       )}

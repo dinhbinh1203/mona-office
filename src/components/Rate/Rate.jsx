@@ -4,7 +4,7 @@ import FormRate from '../FormRate/FormRate';
 
 const cx = classNames.bind(styles);
 
-function Rate() {
+function Rate({ name }) {
   return (
     <div className={cx('rate')}>
       <div className={cx('title')}>
@@ -12,11 +12,7 @@ function Rate() {
         <p className={cx('title__number')}>Chưa có đánh giá nào</p>
       </div>
       <div className={cx('review__form')}>
-        <div className={cx('review__form--inner')}>
-          <div className={cx('new__respond')}>
-            <FormRate />
-          </div>
-        </div>
+        <FormRate name={name} />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Loading from '../Loading/Loading';
 import {
@@ -9,13 +10,20 @@ import {
   selectCategoriesIsLoading,
   selectCategories,
 } from '../../store/categories/categories.selector';
+import DescriptionProduct from '../DescriptionProduct/DescriptionProduct';
 
-import styles from './ProductDetail.module.scss';
-import classNames from 'classnames/bind';
 import Button from '../Button/Button';
 import Rate from '../Rate/Rate';
 
+import styles from './ProductDetail.module.scss';
+import classNames from 'classnames/bind';
+
 const cx = classNames.bind(styles);
+
+const PROMOTIONS = [
+  'Miễn phí giao hàng tất cả quận huyện thuộc TP.HCM, Hà Nội, Biên Hòa và một số quận thuộc Bình Dương',
+  'Miễn phí 1 đổi 1 nếu hàng bị lỗi',
+];
 
 function ProductDetail() {
   const { name } = useParams();
@@ -28,6 +36,22 @@ function ProductDetail() {
     return (Math.round(n * 100) / 100).toLocaleString();
   };
 
+  const changeSpaceToDash = (str) => {
+    return str.replaceAll(' ', '-');
+  };
+
+  const changeDashToSpace = (str) => {
+    return str.replaceAll('-', ' ');
+  };
+
+  const [activeTab, setActiveTab] = useState('tab1');
+  const handleTab1 = () => {
+    setActiveTab('tab1');
+  };
+  const handleTab2 = () => {
+    setActiveTab('tab2');
+  };
+
   return (
     <div>
       {isLoadingProducts || isLoadingCategories ? (
@@ -38,27 +62,27 @@ function ProductDetail() {
         <div className={cx('product__detail')}>
           {products.data !== undefined &&
             products.data
-              .filter((list) => list.name === name)
+              .filter((list) => list.name === changeDashToSpace(name))
               .map((item) => (
                 <div key={item.id} className={cx('detail', 'grid', 'wide')}>
                   <div className={cx('title', 'row')}>
-                    <Link to="/">
+                    <a href="/">
                       <span>Trang chủ</span>/
-                    </Link>
-                    <Link to="/shop">
+                    </a>
+                    <a href="/shop">
                       <span> Tất cả sản phẩm MONA</span>/
-                    </Link>
+                    </a>
 
                     {categories.data !== undefined &&
                       categories.data
                         .filter((list) => list.id === item.categoryId)
                         .map((list) => (
-                          <Link to={`/shop/${list.id}`} key={list.id}>
+                          <a href={`/shop/${list.title}`} key={list.id}>
                             <span className={cx('title__list')}>
                               {'  '}
                               {list.title}
                             </span>
-                          </Link>
+                          </a>
                         ))}
                   </div>
                   <div className={cx('container', 'row')}>
@@ -67,8 +91,8 @@ function ProductDetail() {
                         'product__image',
                         'col',
                         'l-6',
-                        'm-6',
-                        'c-6',
+                        'm-12',
+                        'c-12',
                       )}
                     >
                       <img src={item.imageUrl} alt="product"></img>
@@ -78,8 +102,8 @@ function ProductDetail() {
                         'product__content',
                         'col',
                         'l-6',
-                        'm-6',
-                        'c-6',
+                        'm-12',
+                        'c-12',
                       )}
                     >
                       <div className={cx('content__title')}>{item.name}</div>
@@ -99,8 +123,11 @@ function ProductDetail() {
                       <div className={cx('content__description')}>
                         {item.description
                           .filter((_, idx) => idx < 3)
-                          .map((detailDescription) => (
-                            <div className={cx('detail__description')}>
+                          .map((detailDescription, index) => (
+                            <div
+                              className={cx('detail__description')}
+                              key={index}
+                            >
                               {detailDescription}
                             </div>
                           ))}
@@ -114,47 +141,83 @@ function ProductDetail() {
                             min="1"
                             className={cx('quantity__number')}
                           />
-                          <span className={cx('quantity-btn')}>+</span>
+                          <span className={cx('quantity__btn')}>+</span>
                         </div>
-                        <Button primary className={cx('selector__add')}>
-                          THÊM VÀO GIỎ
-                        </Button>
-                        <Button red className={cx('selector__add')}>
-                          MUA NGAY
-                        </Button>
+                        {item.normal && (
+                          <>
+                            <Button primary className={cx('selector__add')}>
+                              THÊM VÀO GIỎ
+                            </Button>
+                            <Button red className={cx('selector__add')}>
+                              MUA NGAY
+                            </Button>
+                          </>
+                        )}
+                        {item.rent && (
+                          <>
+                            <Button primary className={cx('selector__add')}>
+                              LIÊN HỆ
+                            </Button>
+                          </>
+                        )}
                       </div>
                       <div className={cx('content__promotion')}>
-                        <div className={cx('promotion__detail')}>
-                          <span
-                            className={cx(
-                              'material-symbols-outlined',
-                              'promotion__detail--icon',
-                            )}
-                          >
-                            done
-                          </span>
-                          <span>
-                            Miễn phí giao hàn tất cả quận huyện thuộc TP.HCM, Hà
-                            Nội, Biên Hòa và một số quận thuộc Bình Dương
-                          </span>
-                        </div>
-                        <div className={cx('promotion__detail')}>
-                          <span
-                            className={cx(
-                              'material-symbols-outlined',
-                              'promotion__detail--icon',
-                            )}
-                          >
-                            done
-                          </span>
-                          <span>Miễn phí 1 đổi 1 nếu hàng bị lỗi</span>
-                        </div>
+                        {PROMOTIONS.map((promotion, index) => (
+                          <div className={cx('promotion__detail')} key={index}>
+                            <span
+                              className={cx(
+                                'material-symbols-outlined',
+                                'promotion__detail--icon',
+                              )}
+                            >
+                              done
+                            </span>
+                            <span>{promotion}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
                   <div className={cx('table', 'row')}>
-                    <div className="col c-12 l-12 r-12">
-                      <Rate />
+                    <div
+                      className={cx(
+                        'table__choose',
+                        'col',
+                        'c-12',
+                        'l-12',
+                        'm-12',
+                      )}
+                    >
+                      <div className={cx('choose__title')}>
+                        <div
+                          className={cx(
+                            'choose__title--item',
+                            activeTab === 'tab1' ? 'active' : '',
+                          )}
+                          onClick={handleTab1}
+                        >
+                          Mô tả
+                        </div>
+                        <div
+                          className={cx(
+                            'choose__title--item',
+                            activeTab === 'tab2' ? 'active' : '',
+                          )}
+                          onClick={handleTab2}
+                        >
+                          Đánh giá (0)
+                        </div>
+                      </div>
+                      <div className={cx('choose__container')}>
+                        {activeTab === 'tab1' ? (
+                          <DescriptionProduct
+                            name={item.name}
+                            list={item.description}
+                          />
+                        ) : (
+                          <Rate name={item.name} />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

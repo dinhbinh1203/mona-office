@@ -64,7 +64,7 @@ function Product({
       )}
       {prevPrice && (
         <div className={cx('tag__discount--percent')}>
-          {`${percent(price, prevPrice)}`}
+          {`${percent(price, prevPrice)}`}%
         </div>
       )}
     </div>

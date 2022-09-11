@@ -18,15 +18,29 @@ import 'tippy.js/dist/tippy.css';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 
+import {
+  selectCategoriesIsLoading,
+  selectCategories,
+} from '../../../store/categories/categories.selector';
+
 const cx = classNames.bind(styles);
 
+const NAVIGATION = [
+  { name: 'Tất cả sản phẩm', href: '/shop' },
+  { name: 'Bìa hồ sơ' },
+  { name: 'Bút viết' },
+  { name: 'Giấy' },
+  { name: 'Thước' },
+  { name: 'Cặp sách' },
+  { name: 'Sản phẩm khác' },
+  { name: 'Thiết bị cho thuê' },
+  { name: 'Tin mới nhất' },
+];
 function Header() {
+  const dispatch = useDispatch();
   const [click, setClick] = useState(false);
   const handleClickOpen = () => setClick(true);
   const handleClickClose = () => setClick(false);
-
-  const dispatch = useDispatch();
-
   const handleSignOut = () => {
     dispatch(signOutStart());
   };
@@ -41,9 +55,9 @@ function Header() {
             <FontAwesomeIcon icon={faBars} />
           </div>
           <div>
-            <Link to="/" className={cx('logo-header')}>
+            <a href="/" className={cx('logo-header')}>
               <img src={images.logo} alt="logo"></img>
-            </Link>
+            </a>
           </div>
           <div className={cx('search')}>
             <input
@@ -63,13 +77,13 @@ function Header() {
               </div>
             ) : (
               <div className={cx('header-access')}>
-                <Link to="/login" className={cx('access-content')}>
+                <a href="/login" className={cx('access-content')}>
                   Đăng nhập
-                </Link>
+                </a>
                 <span> / </span>
-                <Link to="/register" className={cx('access-content')}>
+                <a href="/register" className={cx('access-content')}>
                   Đăng ký
-                </Link>
+                </a>
               </div>
             )}
             <Tippy
@@ -77,7 +91,7 @@ function Header() {
               content="Xem giỏ hàng của bạn"
               placement="bottom"
             >
-              <NavLink to="/cart-user" className={cx('cart-wrapper')}>
+              <a href="/cart-user" className={cx('cart-wrapper')}>
                 <span className={cx('cart-name')}>Giỏ hàng</span>
                 <div className={cx('cart-icon')}>
                   <span className="material-symbols-outlined">
@@ -85,12 +99,12 @@ function Header() {
                   </span>
                   <div className={cx('cart-number')}>0</div>
                 </div>
-              </NavLink>
+              </a>
             </Tippy>
           </div>
         </div>
         <div className={cx('header-list-item-pc')}>
-          <ListNavPc />
+          <ListNavPc navigation={NAVIGATION} />
         </div>
 
         {click && (
