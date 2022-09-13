@@ -11,3 +11,13 @@ export const selectProductsIsLoading = createSelector(
   [selectProductsReducer],
   (productsSlice) => productsSlice.isLoading,
 );
+
+export const selectProductsFilter = createSelector(
+  [selectProductsReducer],
+  (productsSlice) => productsSlice.filter,
+);
+
+export const selectProductsPagination = createSelector(
+  [selectProductsReducer],
+  (productsSlice) => productsSlice.pagination,
+);

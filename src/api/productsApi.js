@@ -1,14 +1,11 @@
 import { getApi } from './request';
 
-const productsApi = {
-  getProductsAll() {
-    const url = '/products';
-    return getApi(url);
-  },
+import axiosClient from './axiosClient';
 
-  getProductById(id) {
-    const url = `/products/${id}`;
-    return getApi(url);
+const productsApi = {
+  getAllProducts(params) {
+    const url = '/products';
+    return axiosClient.get(url, { params });
   },
 };
 

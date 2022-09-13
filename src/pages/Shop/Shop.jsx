@@ -11,16 +11,10 @@ function Shop() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProductsStart());
     dispatch(fetchCategoriesStart());
   }, []);
 
   return (
-    // <Routes>
-    //   <Route index element={<Categories />} />
-    //   <Route path=":id/*" element={<Category />} />
-    //   <Route path="product/:name" element={<ProductDetail />} />
-    // </Routes>
     <Routes>
       <Route index element={<Categories />} />
       <Route path=":name/*" element={<Category />} />
