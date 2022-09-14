@@ -11,6 +11,10 @@ export const PRODUCTS_INITIAL_STATE = {
   pagination: {
     _page: 1,
     _limit: 12,
+    _totalRows: 47,
+  },
+  total: {
+    _totalRows: 47,
   },
 };
 
@@ -32,8 +36,21 @@ export const productsReducer = (
       };
     case PRODUCTS_ACTION_TYPES.FETCH_PRODUCTS_FAILED:
       return { ...state, error: payload, isLoading: false };
+
+    case PRODUCTS_ACTION_TYPES.SET_FILTER_START:
+      return { ...state };
     case PRODUCTS_ACTION_TYPES.SET_FILTER_SUCCESS:
       return { ...state, filter: payload.payload };
+    case PRODUCTS_ACTION_TYPES.SET_FILTER_FAILED:
+      return { ...state, error: payload };
+
+    case PRODUCTS_ACTION_TYPES.SET_TOTAL_START:
+      return { ...state };
+    case PRODUCTS_ACTION_TYPES.SET_TOTAL_SUCCESS:
+      return { ...state, total: payload };
+    case PRODUCTS_ACTION_TYPES.SET_TOTAL_FAILED:
+      return { ...state, error: payload };
+
     default:
       return state;
   }

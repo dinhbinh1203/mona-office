@@ -1,18 +1,20 @@
 import { useSelector } from 'react-redux';
-import Loading from '../Loading/Loading';
+import { useParams } from 'react-router-dom';
+
 import {
   selectProducts,
   selectProductsIsLoading,
-} from '../../store/products/products.selector';
+} from '../../../store/products/products.selector';
 import {
   selectCategoriesIsLoading,
   selectCategories,
-} from '../../store/categories/categories.selector';
+} from '../../../store/categories/categories.selector';
+
+import Loading from '../../../components/Loading/Loading';
+import Product from '../../../components/Product/Product';
 
 import styles from './Category.module.scss';
 import classNames from 'classnames/bind';
-import { useParams } from 'react-router-dom';
-import Product from '../Product/Product';
 
 const cx = classNames.bind(styles);
 
@@ -33,7 +35,7 @@ function Category() {
   };
 
   const isCategory = (categories) =>
-    categories.data.find(({ title }) => title === changeDashToSpace(name));
+    categories.find(({ title }) => title === changeDashToSpace(name));
 
   const category = (categories) => {
     return isCategory(categories).id;
@@ -49,9 +51,9 @@ function Category() {
         <div className="grid wide">
           <div>{changeDashToSpace(name)}</div>
           <div className={cx('products', 'row')}>
-            {products.data !== undefined &&
-              categories.data !== undefined &&
-              products.data
+            {products !== undefined &&
+              categories !== undefined &&
+              products
                 .filter((list) => list.categoryId === category(categories))
                 .map((item) => (
                   <a

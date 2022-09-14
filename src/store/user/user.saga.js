@@ -48,7 +48,6 @@ export function* isUserAuthenticated() {
 export function* signInWithGoogle() {
   try {
     const { user } = yield call(signInWithGooglePopup);
-    console.log(user);
     yield call(getSnapshotFromUserAuth, user);
     yield put(signInSuccess(user));
     // redirect page main

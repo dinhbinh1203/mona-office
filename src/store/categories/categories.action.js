@@ -5,10 +5,10 @@ const createAction = (type, payload) => ({ type, payload });
 export const fetchCategoriesStart = () =>
   createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START);
 
-export const fetchCategoriesSuccess = (CategoriesArray) =>
+export const fetchCategoriesSuccess = (categoriesArray) =>
   createAction(
     CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS,
-    CategoriesArray,
+    categoriesArray,
   );
 
 export const fetchCategoriesFailed = (error) =>

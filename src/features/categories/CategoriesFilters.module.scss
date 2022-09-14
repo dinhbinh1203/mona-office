@@ -1,0 +1,13 @@
+.categories__filters {
+  display: flex;
+  align-items: center;
+
+  .categories__filters--label {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .filters__item {
+    font-size: 1.4rem;
+  }
+}

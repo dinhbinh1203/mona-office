@@ -21,3 +21,8 @@ export const selectProductsPagination = createSelector(
   [selectProductsReducer],
   (productsSlice) => productsSlice.pagination,
 );
+
+export const selectProductsTotal = createSelector(
+  [selectProductsReducer],
+  (productsSlice) => productsSlice.total,
+);

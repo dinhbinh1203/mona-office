@@ -1,14 +1,14 @@
-import { getApi, get } from './request';
+import axiosClient from './axiosClient';
 
 const categoriesApi = {
   getCategoriesAll() {
     const url = '/categories';
-    return getApi(url);
-  },
-
-  getCategoryById(id) {
-    const url = `/categories/${id}/products`;
-    return getApi(url);
+    return axiosClient.get(url, {
+      params: {
+        _page: 1,
+        _limit: 12,
+      },
+    });
   },
 };
 

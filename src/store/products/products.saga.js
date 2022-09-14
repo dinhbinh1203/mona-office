@@ -5,6 +5,8 @@ import {
   fetchProductsFailed,
   setFilterSuccess,
   setFilterFailed,
+  setTotalSuccess,
+  setTotalFailed,
 } from './products.action';
 
 import productsApi from '../../api/productsApi';
@@ -17,7 +19,7 @@ export function* fetchProducts(Params) {
       productsApi.getAllProducts,
       Params.payload,
     );
-    console.log('ProductsArray', ProductsArray);
+
     yield put(fetchProductsSuccess({ ProductsArray, Params }));
   } catch (error) {
     yield put(fetchProductsFailed(error));
@@ -40,6 +42,26 @@ export function* onSetFilter() {
   yield takeLatest(PRODUCTS_ACTION_TYPES.SET_FILTER_START, setFilter);
 }
 
+export function* setTotal(Params) {
+  try {
+    const ProductsArray = yield call(
+      productsApi.getAllProducts,
+      Params.payload,
+    );
+
+    const total = ProductsArray.length;
+    console.log('total', total);
+    console.log('ProductsArray', ProductsArray);
+    yield put(setTotalSuccess(total));
+  } catch (error) {
+    yield put(setTotalFailed(error));
+  }
+}
+
+export function* onSetTotal() {
+  yield takeLatest(PRODUCTS_ACTION_TYPES.SET_TOTAL_START, setTotal);
+}
+
 export function* productsSaga() {
-  yield all([call(onFetchProducts), call(onSetFilter)]);
+  yield all([call(onFetchProducts), call(onSetFilter), onSetTotal()]);
 }

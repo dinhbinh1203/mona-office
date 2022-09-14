@@ -8,6 +8,7 @@ import { PRODUCT_SELLER } from '../../ProductSeller';
 import { NEWS } from '../../News';
 import { RENTS } from '../../Rents';
 import { Link } from 'react-router-dom';
+import Button from '../../components/Button/Button';
 
 import images from '../../assets/images';
 

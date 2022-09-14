@@ -1,19 +1,22 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Loading from '../Loading/Loading';
+import Loading from '../../../components/Loading/Loading';
+
 import {
   selectProducts,
   selectProductsIsLoading,
-} from '../../store/products/products.selector';
+} from '../../../store/products/products.selector';
+
 import {
   selectCategoriesIsLoading,
   selectCategories,
-} from '../../store/categories/categories.selector';
-import DescriptionProduct from '../DescriptionProduct/DescriptionProduct';
+} from '../../../store/categories/categories.selector';
 
-import Button from '../Button/Button';
-import Rate from '../Rate/Rate';
+import DescriptionProduct from '../../../components/DescriptionProduct/DescriptionProduct';
+
+import Rate from '../../../components/Rate/Rate';
+import Button from '../../../components/Button/Button';
 
 import styles from './ProductDetail.module.scss';
 import classNames from 'classnames/bind';
@@ -60,8 +63,8 @@ function ProductDetail() {
         </div>
       ) : (
         <div className={cx('product__detail')}>
-          {products.data !== undefined &&
-            products.data
+          {products !== undefined &&
+            products
               .filter((list) => list.name === changeDashToSpace(name))
               .map((item) => (
                 <div key={item.id} className={cx('detail', 'grid', 'wide')}>
@@ -73,8 +76,8 @@ function ProductDetail() {
                       <span> Tất cả sản phẩm MONA</span>/
                     </a>
 
-                    {categories.data !== undefined &&
-                      categories.data
+                    {categories !== undefined &&
+                      categories
                         .filter((list) => list.id === item.categoryId)
                         .map((list) => (
                           <a href={`/shop/${list.title}`} key={list.id}>

@@ -22,3 +22,12 @@ export const setFilterSuccess = (Params) =>
 
 export const setFilterFailed = (error) =>
   createAction(PRODUCTS_ACTION_TYPES.SET_FILTER_FAILED, error);
+
+export const setTotalStart = (Params) =>
+  createAction(PRODUCTS_ACTION_TYPES.SET_TOTAL_START, Params);
+
+export const setTotalSuccess = (Params) =>
+  createAction(PRODUCTS_ACTION_TYPES.SET_TOTAL_SUCCESS, Params);
+
+export const setTotalFailed = (error) =>
+  createAction(PRODUCTS_ACTION_TYPES.SET_TOTAL_FAILED, error);
