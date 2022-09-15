@@ -21,7 +21,6 @@ import {
 
 import Loading from '../../../components/Loading/Loading';
 import CategoriesFilters from '../../../features/categories/CategoriesFilters';
-import ListProducts from '../../../components/ListProducts/ListProducts';
 
 import styles from './AdminCategories.module.scss';
 import classNames from 'classnames/bind';
@@ -35,8 +34,11 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { default as ButtonDefault } from '../../../components/Button/Button';
 
 import ProductAdmin from '../../../components/ProductAdmin/ProductAdmin';
+
+import { Navigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -106,6 +108,13 @@ function AdminCategories() {
     handleRemoveProduct(selectedProduct);
     console.log('selectedProduct', selectedProduct);
   };
+
+  const handleEditProduct = async (product) => {
+    // push(`/admin/categories/edit/${product.id}`);
+    console.log(product);
+    <Navigate to={`/admin/categories/edit/${product.id}`} />;
+  };
+
   return (
     <>
       <div className={cx('categories', 'grid', 'wide')}>
@@ -148,7 +157,9 @@ function AdminCategories() {
                 />
               </div>
             </div>
-
+            <a href="/admin/categories/add">
+              <ButtonDefault primary>Thêm sản phẩm</ButtonDefault>
+            </a>
             <div className={cx('products', 'row')}>
               {products !== undefined && (
                 <div className="row">
@@ -156,7 +167,11 @@ function AdminCategories() {
                     <div className="col c-12 l-12 m-12" key={product.id}>
                       {!product.new && <ProductAdmin product={product} />}
                       <div>
-                        <button>Chỉnh sửa sản phẩm</button>
+                        <a href={`/admin/categories/edit/${product.id}`}>
+                          <button onClick={() => handleEditProduct(product)}>
+                            Chỉnh sửa sản phẩm
+                          </button>
+                        </a>
                         <button onClick={() => handleClickOpen(product)}>
                           Xoá sản phẩm
                         </button>

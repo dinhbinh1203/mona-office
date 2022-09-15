@@ -1,14 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
-import AdminAddProduct from './AdminAddProduct/AdminAddProduct';
+
 import AdminProductEdit from './AdminProductEdit/AdminProductEdit';
 import AdminCategories from './AdminCategories/AdminCategories';
+import AdminProductAdd from './AdminProductAdd/AdminProductAdd';
 
 function Admin() {
   return (
     <Routes>
       <Route index element={<AdminCategories />} />
-      <Route path="add" element={<AdminAddProduct />} />
-      <Route path="edit" element={<AdminProductEdit />} />
+      <Route path="add" element={<AdminProductAdd />} />
+      <Route path="edit/:id" element={<AdminProductEdit />} />
     </Routes>
   );
 }
