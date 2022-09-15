@@ -50,8 +50,6 @@ export function* setTotal(Params) {
     );
 
     const total = ProductsArray.length;
-    console.log('total', total);
-    console.log('ProductsArray', ProductsArray);
     yield put(setTotalSuccess(total));
   } catch (error) {
     yield put(setTotalFailed(error));

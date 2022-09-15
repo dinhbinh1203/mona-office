@@ -18,11 +18,6 @@ import 'tippy.js/dist/tippy.css';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 
-import {
-  selectCategoriesIsLoading,
-  selectCategories,
-} from '../../../store/categories/categories.selector';
-
 const cx = classNames.bind(styles);
 
 const NAVIGATION = [

@@ -27,7 +27,7 @@ export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
       userAuth,
       additionalDetails,
     );
-    yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
+    yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data }));
   } catch (error) {
     yield put(signInFailed(error));
   }
@@ -48,8 +48,8 @@ export function* isUserAuthenticated() {
 export function* signInWithGoogle() {
   try {
     const { user } = yield call(signInWithGooglePopup);
+    console.log(user);
     yield call(getSnapshotFromUserAuth, user);
-    yield put(signInSuccess(user));
     // redirect page main
     yield put(push('/'));
   } catch (error) {
@@ -69,8 +69,8 @@ export function* signInWithEmail({ payload: { email, password } }) {
       email,
       password,
     );
+
     yield call(getSnapshotFromUserAuth, user);
-    yield put(signInSuccess(user));
     yield put(push('/'));
   } catch (error) {
     yield put(signInFailed(error));

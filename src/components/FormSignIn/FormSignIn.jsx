@@ -21,6 +21,7 @@ const initialValue = {
 function FormSignIn() {
   const [formFields, setFormFields] = useState(initialValue);
   const { email, password } = formFields;
+
   const dispatch = useDispatch();
 
   const resetFormFields = () => {
@@ -36,6 +37,7 @@ function FormSignIn() {
     event.preventDefault();
     try {
       dispatch(emailSignInStart(email, password));
+
       resetFormFields();
     } catch (error) {
       if (error.code === 'auth/wrong-password') {

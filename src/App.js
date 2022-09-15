@@ -8,11 +8,13 @@ import News from './pages/News/News';
 import InformationUser from './pages/InformationUser/InformationUser';
 import Cart from './pages/Cart/Cart';
 import Shop from './pages/Shop/Shop';
+import Admin from './pages/Admin/Admin';
 import { checkUserSession } from './store/user/user.action';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute/PrivateRoute';
 import { fetchCategoriesStart } from './store/categories/categories.action';
+import AdminRoute from './utils/PrivateRoute copy/AdminRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +36,9 @@ function App() {
         </Route>
         <Route path="information-user" element={<InformationUser />} />
         <Route path="cart-user" element={<Cart />} />
+        <Route element={<AdminRoute />}>
+          <Route path="admin/categories/*" element={<Admin />} />
+        </Route>
       </Route>
     </Routes>
   );

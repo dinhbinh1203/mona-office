@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function CategoriesFilters({ filter, categories, onChange, total }) {
+function CategoriesFilters({ filter, categories, onChange, totalChange }) {
   const handleCategoriesChange = (e) => {
     if (!onChange) return;
 
@@ -19,16 +19,16 @@ function CategoriesFilters({ filter, categories, onChange, total }) {
     const newTotal = {
       categoryId: e.target.value || undefined,
     };
-    total(newTotal);
+    totalChange(newTotal);
   };
 
   const handleTotal = (e) => {
-    if (!total) return;
+    if (!totalChange) return;
 
     const newTotal = {
       categoryId: e.target.value || undefined,
     };
-    total(newTotal);
+    totalChange(newTotal);
   };
 
   const handleSortChange = (e) => {

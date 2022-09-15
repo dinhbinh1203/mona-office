@@ -10,5 +10,6 @@ export const rootReducer = combineReducers({
   user: userReducer,
   products: productsReducer,
   categories: categoriesReducer,
+
   router: connectRouter(history),
 });

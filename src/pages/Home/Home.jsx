@@ -3,7 +3,7 @@ import styles from './Home.module.scss';
 import SlickSlider from '../../components/SlickSlider/SlickSlider';
 import Introduce from '../../components/Introduce/Introduce';
 import ListProductHome from '../../components/ListProductHome/ListProductHome';
-import Product from '../../components/Product/Product';
+import ProductUser from '../../components/ProductUser/ProductUser';
 import { PRODUCT_SELLER } from '../../ProductSeller';
 import { NEWS } from '../../News';
 import { RENTS } from '../../Rents';
@@ -69,7 +69,7 @@ function Home() {
         <div className="row">
           {PRODUCT_SELLER.map((product) => (
             <div className="col c-6 m-6 l-2-4" key={product.id}>
-              <Product
+              <ProductUser
                 image={product.image}
                 title={product.title}
                 prevPrice={product.prevPrice}
@@ -90,7 +90,7 @@ function Home() {
         <div className="row">
           {PRODUCT_SELLER.map((product) => (
             <div className="col c-6 m-6 l-2-4" key={product.id}>
-              <Product
+              <ProductUser
                 image={product.image}
                 title={product.title}
                 prevPrice={product.prevPrice}
@@ -115,7 +115,7 @@ function Home() {
               key={product.id}
               to={`/news/${product.name}`}
             >
-              <Product
+              <ProductUser
                 image={product.image}
                 title={product.name}
                 description={product.description}
@@ -135,7 +135,7 @@ function Home() {
         <div className="row">
           {RENTS.map((product) => (
             <div className="col c-6 m-6 l-3" key={product.id}>
-              <Product image={product.image} title={product.title} rent />
+              <ProductUser image={product.image} title={product.title} rent />
             </div>
           ))}
         </div>

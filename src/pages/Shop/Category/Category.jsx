@@ -11,7 +11,7 @@ import {
 } from '../../../store/categories/categories.selector';
 
 import Loading from '../../../components/Loading/Loading';
-import Product from '../../../components/Product/Product';
+import ProductUser from '../../../components/ProductUser/ProductUser';
 
 import styles from './Category.module.scss';
 import classNames from 'classnames/bind';
@@ -61,7 +61,7 @@ function Category() {
                     className="col c-6 m-6 l-3"
                   >
                     <div key={item.id}>
-                      <Product
+                      <ProductUser
                         image={item.imageUrl}
                         title={item.name}
                         prevPrice={item.prevPrice}

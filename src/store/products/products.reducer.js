@@ -11,11 +11,8 @@ export const PRODUCTS_INITIAL_STATE = {
   pagination: {
     _page: 1,
     _limit: 12,
-    _totalRows: 47,
   },
-  total: {
-    _totalRows: 47,
-  },
+  total: 47,
 };
 
 export const productsReducer = (

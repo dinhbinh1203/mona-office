@@ -1,23 +1,13 @@
-import styles from './Product.module.scss';
+import styles from './ProductUser.module.scss';
 import classNames from 'classnames/bind';
 import Button from '../../components/Button/Button';
 
 const cx = classNames.bind(styles);
 
-function Product({
-  image,
-  title,
-  prevPrice,
-  price,
-  className,
-  description,
-  rent = false,
-  news = false,
-  normal = false,
-}) {
-  const classesTitle = cx('product__title', {
-    [className]: className,
-  });
+function ProductUser({ product }) {
+  // const classesTitle = cx('product__title', {
+  //   [className]: className,
+  // });
 
   const formatMoney = (n) => {
     return (Math.round(n * 100) / 100).toLocaleString();
@@ -30,45 +20,45 @@ function Product({
   return (
     <div className={cx('product')}>
       <div className={cx('product__image')}>
-        <img alt="product" src={image}></img>
+        <img alt="product" src={product.imageUrl}></img>
       </div>
-      <div className={classesTitle}>{`${title}`}</div>
+      <div className={cx('product__title')}>{`${product.name}`}</div>
 
       <div className={cx('product__price')}>
-        {prevPrice && (
+        {product.prevPrice && (
           <div className={cx('product__price--prev')}>
-            {`${formatMoney(prevPrice)}`}đ
+            {`${formatMoney(product.prevPrice)}`}đ
           </div>
         )}
-        {price && (
+        {product.price && (
           <div className={cx('product__price--now')}>
-            {`${formatMoney(price)}`}đ
+            {`${formatMoney(product.price)}`}đ
           </div>
         )}
       </div>
-      {normal && (
+      {product.normal && (
         <div className={cx('product__button')}>
           <Button primary>Thêm vào giỏ</Button>
         </div>
       )}
-      {rent && (
+      {product.rent && (
         <div className={cx('product__button')}>
           <Button primary>Liên hệ</Button>
         </div>
       )}
 
-      {description && (
+      {product.description && (
         <div className={cx('product__description')}>
-          {`${description[0]}`}...
+          {`${product.description[0]}`}...
         </div>
       )}
-      {prevPrice && (
+      {product.prevPrice && (
         <div className={cx('tag__discount--percent')}>
-          {`${percent(price, prevPrice)}`}%
+          {`${percent(product.price, product.prevPrice)}`}%
         </div>
       )}
     </div>
   );
 }
 
-export default Product;
+export default ProductUser;

@@ -39,6 +39,7 @@ function Categories() {
   const filter = useSelector(selectProductsFilter);
   const pagination = useSelector(selectProductsPagination);
   const total = useSelector(selectProductsTotal);
+  console.log(total);
 
   useEffect(() => {
     dispatch(fetchProductsStart(filter));
@@ -59,7 +60,6 @@ function Categories() {
 
   const handleTotal = (newFilter) => {
     dispatch(setTotalStart(newFilter));
-    console.log('total-change', newFilter);
   };
 
   return (
@@ -99,7 +99,9 @@ function Categories() {
           </div>
 
           <div className={cx('products', 'row')}>
-            {products !== undefined && <ListProducts products={products} />}
+            {products !== undefined && (
+              <ListProducts products={products} user />
+            )}
           </div>
           <Pagination
             count={Math.ceil(total / pagination._limit)}

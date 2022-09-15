@@ -11,8 +11,6 @@ import { CATEGORIES_ACTION_TYPES } from './categories.types';
 export function* fetchCategories() {
   try {
     const categoriesArray = yield call(categoriesApi.getCategoriesAll);
-    console.log(categoriesArray);
-
     yield put(fetchCategoriesSuccess(categoriesArray));
   } catch (error) {
     yield put(fetchCategoriesFailed(error));
