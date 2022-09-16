@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const FormInput = ({ label, comment = false, ...otherProps }) => {
+const FormInput = ({ label, comment = false, type, ...otherProps }) => {
   return (
     <>
       {label && <div className={cx('label__input')}>{`${label}`}</div>}
@@ -13,7 +13,7 @@ const FormInput = ({ label, comment = false, ...otherProps }) => {
           className={cx('sign__in--input', 'comment')}
         />
       ) : (
-        <input {...otherProps} className={cx('sign__in--input')} />
+        <input {...otherProps} className={cx('sign__in--input')} type={type} />
       )}
     </>
   );

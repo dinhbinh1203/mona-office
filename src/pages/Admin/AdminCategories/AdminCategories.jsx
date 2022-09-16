@@ -17,6 +17,7 @@ import {
 import {
   selectCategories,
   selectCategoriesIsLoading,
+  selectCategoriesOptions,
 } from '../../../store/categories/categories.selector';
 
 import Loading from '../../../components/Loading/Loading';

@@ -5,7 +5,7 @@ import {
   selectCategories,
   selectCategoriesIsLoading,
 } from '../../../store/categories/categories.selector';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Loading from '../../../components/Loading/Loading';
 import { default as ButtonDefault } from '../../../components/Button/Button';
 

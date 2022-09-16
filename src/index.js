@@ -8,6 +8,8 @@ import { store, persistor } from './store/store';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { history } from './utils/history/history';
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -19,6 +21,18 @@ root.render(
           <GlobalStyles>
             <App />
           </GlobalStyles>
+
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </HistoryRouter>
       </PersistGate>
     </Provider>

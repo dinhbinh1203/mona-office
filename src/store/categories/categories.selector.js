@@ -11,3 +11,12 @@ export const selectCategoriesIsLoading = createSelector(
   [selectCategoriesReducer],
   (categoriesSlice) => categoriesSlice.isLoading,
 );
+
+export const selectCategoriesOptions = createSelector(
+  selectCategoriesReducer,
+  (categoriesSlice) =>
+    categoriesSlice.categories.map((city) => ({
+      label: city.title,
+      value: city.id,
+    })),
+);
