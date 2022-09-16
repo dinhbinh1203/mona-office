@@ -41,11 +41,16 @@ const INTRODUCE = [
 ];
 
 function Home() {
+  const des = 'fweqfwqèqưe\nfwèwqèqưe';
+  const desArray = des.split('\n');
+  console.log('desArray', desArray);
+
   return (
     <div>
       <div className="grid ">
         <SlickSlider />
       </div>
+
       <div className={cx('grid', 'home-introduce')}>
         <div className={cx('grid', 'wide')}>
           <div className={cx('row')}>

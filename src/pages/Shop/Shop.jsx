@@ -16,8 +16,8 @@ function Shop() {
   return (
     <Routes>
       <Route index element={<Categories />} />
-      <Route path=":name/*" element={<Category />} />
-      <Route path="product/:name" element={<ProductDetail />} />
+      <Route path=":id/*" element={<Category />} />
+      <Route path="product/:id" element={<ProductDetail />} />
     </Routes>
   );
 }

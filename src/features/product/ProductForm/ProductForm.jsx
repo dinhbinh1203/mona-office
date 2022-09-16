@@ -6,8 +6,9 @@ import { selectCategoriesOptions } from '../../../store/categories/categories.se
 import { useSelector } from 'react-redux';
 import Loading from '../../../components/Loading/Loading';
 import { useState } from 'react';
+import { default as ButtonDefault } from '../../../components/Button/Button';
 
-function ProductForm({ initialValues, onSubmit }) {
+function ProductForm({ initialValues, onSubmit, nameSubmit }) {
   const categoriesOptions = useSelector(selectCategoriesOptions);
   const [error, setError] = useState('');
   const {
@@ -67,10 +68,10 @@ function ProductForm({ initialValues, onSubmit }) {
           options={categoriesOptions}
         />
 
-        <button type="submit" disabled={isSubmitting}>
+        <ButtonDefault type="submit" disabled={isSubmitting} primary>
           {isSubmitting && <Loading />}
-          Cập nhật
-        </button>
+          {nameSubmit}
+        </ButtonDefault>
       </form>
     </div>
   );

@@ -10,6 +10,11 @@ const categoriesApi = {
       },
     });
   },
+
+  getProductCategory(id) {
+    const url = `/categories/${id}/products`;
+    return axiosClient.get(url, id);
+  },
 };
 
 export default categoriesApi;

@@ -1,15 +1,12 @@
-import { Link, Navigate, useParams, useNavigate } from 'react-router-dom';
-
-import { fetchProductsStart } from '../../../store/products/products.action';
-import styles from './AdminProductEdit.module.scss';
-import classNames from 'classnames/bind';
-import { useState } from 'react';
-import productsApi from '../../../api/productsApi';
-import { useEffect } from 'react';
-import ProductForm from '../../../features/product/ProductForm/ProductForm';
-import { useDispatch } from 'react-redux';
-
+import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+
+import productsApi from '../../../api/productsApi';
+import ProductForm from '../../../features/product/ProductForm/ProductForm';
+import styles from './AdminProductEdit.module.scss';
+
+import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function AdminProductEdit() {
@@ -56,6 +53,7 @@ function AdminProductEdit() {
         <ProductForm
           initialValues={initialValues}
           onSubmit={handleProductFormSubmit}
+          nameSubmit="Cập nhật"
         />
       )}
     </div>

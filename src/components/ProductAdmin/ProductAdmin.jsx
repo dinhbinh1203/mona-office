@@ -9,6 +9,11 @@ function ProductAdmin({ product }) {
     return (Math.round(n * 100) / 100).toLocaleString();
   };
 
+  const stringToArray = (string) => {
+    const myArray = string.split('\n');
+    return myArray;
+  };
+
   return (
     <>
       <div className={cx('product__admin', 'row')}>
@@ -46,7 +51,7 @@ function ProductAdmin({ product }) {
           <div className={cx('product__content--item', 'item__column')}>
             <div className={cx('item__title')}>Mô tả sản phẩm</div>
             <div className={cx('item__text')}>
-              {product.description.map((item) => (
+              {stringToArray(product.description).map((item) => (
                 <div className={cx('item__text--item')}>{item}</div>
               ))}
             </div>

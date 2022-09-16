@@ -39,7 +39,6 @@ function Categories() {
   const filter = useSelector(selectProductsFilter);
   const pagination = useSelector(selectProductsPagination);
   const total = useSelector(selectProductsTotal);
-  console.log(total);
 
   useEffect(() => {
     dispatch(fetchProductsStart(filter));
