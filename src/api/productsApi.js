@@ -25,6 +25,18 @@ const productsApi = {
     const url = '/products';
     return axiosClient.post(url, data);
   },
+
+  search(params) {
+    const url = '/products';
+    return axiosClient.get(url, { params });
+  },
+
+  searchName(params) {
+    const url = '/products';
+    return axiosClient.get(url, { params });
+  },
 };
 
 export default productsApi;
+
+// search: https://mona-app-binh57kt.herokuapp.com/products?name_like=balo

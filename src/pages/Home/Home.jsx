@@ -41,10 +41,6 @@ const INTRODUCE = [
 ];
 
 function Home() {
-  const des = 'fweqfwqèqưe\nfwèwqèqưe';
-  const desArray = des.split('\n');
-  console.log('desArray', desArray);
-
   return (
     <div>
       <div className="grid ">

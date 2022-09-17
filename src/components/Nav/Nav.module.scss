@@ -1,0 +1,15 @@
+.categories__list {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  .category {
+    .category__title {
+      cursor: pointer;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}

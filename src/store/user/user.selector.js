@@ -11,3 +11,8 @@ export const selectCurrentUserId = createSelector(
   [selectUserReducer],
   (userSlice) => userSlice.id,
 );
+
+export const selectCurrentInformation = createSelector(
+  [selectUserReducer],
+  (userSlice) => userSlice,
+);

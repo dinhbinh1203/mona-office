@@ -1,36 +1,64 @@
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { signOutStart } from '../../../store/user/user.action';
 import { selectCurrentUser } from '../../../store/user/user.selector';
 import images from '../../../assets/images';
-import ListNavMobile from '../../../components/ListNavMobile/ListNavMobile';
-import ListNavPc from '../../../components/ListNavPc/ListNavPc';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import Search from '../Search/Search';
 
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 
+import Nav from '../../../components/Nav/Nav';
+
+import { selectCurrentInformation } from '../../../store/user/user.selector';
+
 const cx = classNames.bind(styles);
 
-const NAVIGATION = [
-  { name: 'Tất cả sản phẩm', href: '/shop' },
-  { name: 'Bìa hồ sơ' },
-  { name: 'Bút viết' },
-  { name: 'Giấy' },
-  { name: 'Thước' },
-  { name: 'Cặp sách' },
-  { name: 'Sản phẩm khác' },
-  { name: 'Thiết bị cho thuê' },
-  { name: 'Tin mới nhất' },
+const categories = [
+  {
+    id: 0,
+    title: 'Tất cả sản phẩm',
+    href: '/shop',
+  },
+  {
+    id: 1,
+    title: 'Bìa hồ sơ',
+    href: '/shop/1',
+  },
+  {
+    title: 'Bút viết',
+    id: 2,
+    href: '/shop/1',
+  },
+  {
+    title: 'Giấy',
+    id: 3,
+    href: '/shop/1',
+  },
+  {
+    title: 'Thước',
+    id: 4,
+    href: '/shop/1',
+  },
+  {
+    title: 'Cặp sách',
+    id: 5,
+    href: '/shop/1',
+  },
+  {
+    title: 'Sản phẩm khác',
+    id: 6,
+    href: '/shop/1',
+  },
 ];
+
 function Header() {
   const dispatch = useDispatch();
   const [click, setClick] = useState(false);
@@ -41,82 +69,58 @@ function Header() {
   };
 
   const currentUser = useSelector(selectCurrentUser);
+  const currentUserInformation = useSelector(selectCurrentInformation);
 
   return (
-    <div className="grid wide">
-      <div className={cx('header')}>
-        <div className={cx('header-inner')}>
-          <div className={cx('bar-phone')} onClick={handleClickOpen}>
-            <FontAwesomeIcon icon={faBars} />
-          </div>
-          <div>
-            <a href="/" className={cx('logo-header')}>
-              <img src={images.logo} alt="logo"></img>
-            </a>
-          </div>
-          <div className={cx('search')}>
-            <input
-              type="text"
-              className={cx('search-input')}
-              placeholder="Tìm kiếm "
-            ></input>
-            <FontAwesomeIcon
-              className={cx('search-icon')}
-              icon={faMagnifyingGlass}
-            />
-          </div>
-          <div className={cx('information')}>
-            {currentUser ? (
+    <div className={cx('header')}>
+      <div className={cx('header-inner', 'grid', 'wide')}>
+        <div className={cx('bar-phone')} onClick={handleClickOpen}>
+          <FontAwesomeIcon icon={faBars} />
+        </div>
+        <div>
+          <a href="/" className={cx('logo-header')}>
+            <img src={images.logo} alt="logo"></img>
+          </a>
+        </div>
+
+        <Search />
+
+        <div className={cx('information')}>
+          {currentUser ? (
+            <>
               <div className={cx('header-access')}>
                 <button onClick={handleSignOut}>Log out</button>
               </div>
-            ) : (
-              <div className={cx('header-access')}>
-                <a href="/login" className={cx('access-content')}>
-                  Đăng nhập
-                </a>
-                <span> / </span>
-                <a href="/register" className={cx('access-content')}>
-                  Đăng ký
-                </a>
-              </div>
-            )}
-            <Tippy
-              delay={[0, 200]}
-              content="Xem giỏ hàng của bạn"
-              placement="bottom"
-            >
-              <a href="/cart-user" className={cx('cart-wrapper')}>
-                <span className={cx('cart-name')}>Giỏ hàng</span>
-                <div className={cx('cart-icon')}>
-                  <span className="material-symbols-outlined">
-                    shopping_bag
-                  </span>
-                  <div className={cx('cart-number')}>0</div>
-                </div>
+              <div className={cx('header-access')}>Hồ sơ</div>
+            </>
+          ) : (
+            <div className={cx('header-access')}>
+              <a href="/login" className={cx('access-content')}>
+                Đăng nhập
               </a>
-            </Tippy>
-          </div>
-        </div>
-        <div className={cx('header-list-item-pc')}>
-          <ListNavPc navigation={NAVIGATION} />
-        </div>
-
-        {click && (
-          <div className={cx('header-list')}>
-            <div className={cx('icon-close')}>
-              <FontAwesomeIcon icon={faXmark} onClick={handleClickClose} />
+              <span> / </span>
+              <a href="/register" className={cx('access-content')}>
+                Đăng ký
+              </a>
             </div>
-            <div className={cx('search-mobile')}>
-              <input
-                type="text"
-                className={cx('search-input-mobile')}
-                placeholder="Tìm kiếm "
-              ></input>
-            </div>
-            <ListNavMobile />
-          </div>
-        )}
+          )}
+          <Tippy
+            delay={[0, 200]}
+            content="Xem giỏ hàng của bạn"
+            placement="bottom"
+          >
+            <a href="/cart-user" className={cx('cart-wrapper')}>
+              <span className={cx('cart-name')}>Giỏ hàng</span>
+              <div className={cx('cart-icon')}>
+                <span className="material-symbols-outlined">shopping_bag</span>
+                <div className={cx('cart-number')}>0</div>
+              </div>
+            </a>
+          </Tippy>
+        </div>
+      </div>
+      <div className="grid wide">
+        <Nav categories={categories} />
       </div>
     </div>
   );
