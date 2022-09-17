@@ -1,14 +1,16 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects';
+
 import { USER_ACTION_TYPES } from './user.types';
-import { push } from 'connected-react-router';
+
 import {
   signInSuccess,
   signInFailed,
+  signUpSuccess,
+  signUpFailed,
   signOutSuccess,
   signOutFailed,
-  signUpFailed,
-  signUpSuccess,
 } from './user.action';
+
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -18,7 +20,7 @@ import {
   createAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase';
 
-// Lấy thông tin người dùng
+import userApi from '../../api/userApi';
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
   try {
@@ -27,19 +29,34 @@ export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
       userAuth,
       additionalDetails,
     );
-    console.log('userSnapshot', userSnapshot);
-    yield put(
-      signInSuccess({
-        id: userSnapshot.id,
-        ...userSnapshot.data,
-      }),
-    );
+    yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
     yield put(signInFailed(error));
   }
 }
 
-// Xác định người dùng có tồn tại ko
+export function* signInWithGoogle() {
+  try {
+    const { user } = yield call(signInWithGooglePopup);
+    yield call(getSnapshotFromUserAuth, user);
+  } catch (error) {
+    yield put(signInFailed(error));
+  }
+}
+
+export function* signInWithEmail({ payload: { email, password } }) {
+  try {
+    const { user } = yield call(
+      signInAuthUserWithEmailAndPassword,
+      email,
+      password,
+    );
+    yield call(getSnapshotFromUserAuth, user);
+  } catch (error) {
+    yield put(signInFailed(error));
+  }
+}
+
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield call(getCurrentUser);
@@ -50,96 +67,69 @@ export function* isUserAuthenticated() {
   }
 }
 
-// Đăng nhập với google
-export function* signInWithGoogle() {
-  try {
-    const { user } = yield call(signInWithGooglePopup);
-    console.log(user);
-    yield call(getSnapshotFromUserAuth, user);
-    // redirect page main
-    yield put(push('/'));
-  } catch (error) {
-    put(signInFailed(error));
-  }
-}
-
-export function* onSignInWithGoogleStart() {
-  yield takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle);
-}
-
-// Đăng nhập với email và password
-export function* signInWithEmail({ payload: { email, password } }) {
+export function* signUp({ payload: { email, password } }) {
   try {
     const { user } = yield call(
-      signInAuthUserWithEmailAndPassword,
+      createAuthUserWithEmailAndPassword,
       email,
       password,
     );
-
-    yield call(getSnapshotFromUserAuth, user);
-    yield put(push('/'));
+    console.log('user email', user.email);
+    console.log('user id', user.uid);
+    yield put(signUpSuccess(user));
+    yield call(userApi.add, {
+      id: user.uid,
+      name: '',
+      email: user.email,
+      phone: '',
+      address: '',
+    });
   } catch (error) {
-    yield put(signInFailed(error));
+    yield put(signUpFailed(error));
   }
+}
+
+export function* signOut() {
+  try {
+    yield call(signOutUser);
+    yield put(signOutSuccess());
+  } catch (error) {
+    yield put(signOutFailed(error));
+  }
+}
+
+export function* signInAfterSignUp({ payload: { user, additionalDetails } }) {
+  yield call(getSnapshotFromUserAuth, user, additionalDetails);
+}
+
+export function* onGoogleSignInStart() {
+  yield takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle);
+}
+
+export function* onCheckUserSession() {
+  yield takeLatest(USER_ACTION_TYPES.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
 export function* onEmailSignInStart() {
   yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, signInWithEmail);
 }
 
-// Đăng ký
-export function* signUp({ payload: { email, password, displayName } }) {
-  try {
-    const { user } = yield call(
-      createAuthUserWithEmailAndPassword,
-      email,
-      password,
-      displayName,
-    );
-    yield put(signUpSuccess(user, { displayName }));
-    yield put(push('/'));
-  } catch (error) {
-    yield put(signUpFailed(error));
-  }
-}
-
 export function* onSignUpStart() {
   yield takeLatest(USER_ACTION_TYPES.SIGN_UP_START, signUp);
-}
-
-export function* signInAfterSignUp({ payload: { user, additionalDetails } }) {
-  yield call(getSnapshotFromUserAuth, user, additionalDetails);
-  yield put(signInSuccess(user));
 }
 
 export function* onSignUpSuccess() {
   yield takeLatest(USER_ACTION_TYPES.SIGN_UP_SUCCESS, signInAfterSignUp);
 }
 
-// Đăng xuất
-export function* signOut() {
-  try {
-    yield call(signOutUser);
-    yield put(signOutSuccess());
-    yield put(push('/'));
-  } catch (error) {
-    yield put(signOutFailed());
-  }
-}
-
 export function* onSignOutStart() {
   yield takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signOut);
-}
-
-// Kiểm tra người dùng có đăng nhập không
-export function* onCheckUserSession() {
-  yield takeLatest(USER_ACTION_TYPES.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
 export function* userSagas() {
   yield all([
     call(onCheckUserSession),
-    call(onSignInWithGoogleStart),
+    call(onGoogleSignInStart),
     call(onEmailSignInStart),
     call(onSignUpStart),
     call(onSignUpSuccess),

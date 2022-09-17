@@ -17,8 +17,6 @@ import classNames from 'classnames/bind';
 
 import Nav from '../../../components/Nav/Nav';
 
-import { selectCurrentInformation } from '../../../store/user/user.selector';
-
 const cx = classNames.bind(styles);
 
 const categories = [
@@ -69,7 +67,6 @@ function Header() {
   };
 
   const currentUser = useSelector(selectCurrentUser);
-  const currentUserInformation = useSelector(selectCurrentInformation);
 
   return (
     <div className={cx('header')}>
@@ -91,7 +88,9 @@ function Header() {
               <div className={cx('header-access')}>
                 <button onClick={handleSignOut}>Log out</button>
               </div>
-              <div className={cx('header-access')}>Hồ sơ</div>
+              <a href="/information-user" className={cx('header-access')}>
+                Hồ sơ
+              </a>
             </>
           ) : (
             <div className={cx('header-access')}>

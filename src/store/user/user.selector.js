@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 
-export const selectUserReducer = (state) => state.user;
+export const selectUserReducer = (state) => state.user.currentUser;
 
 export const selectCurrentUser = createSelector(
   [selectUserReducer],
-  (userSlice) => userSlice.currentUser,
+  (userSlice) => userSlice,
 );
 
 export const selectCurrentUserId = createSelector(
@@ -12,7 +12,7 @@ export const selectCurrentUserId = createSelector(
   (userSlice) => userSlice.id,
 );
 
-export const selectCurrentInformation = createSelector(
+export const selectCurrentUserEmail = createSelector(
   [selectUserReducer],
-  (userSlice) => userSlice,
+  (userSlice) => userSlice.email,
 );

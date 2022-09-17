@@ -19,7 +19,7 @@ const initialValue = {
 
 function FormSigUp() {
   const [formFields, setFormFields] = useState(initialValue);
-  const { displayName, email, password, confirmPassword } = formFields;
+  const { email, password, confirmPassword } = formFields;
   const dispatch = useDispatch();
 
   const resetFormFields = () => {
@@ -35,7 +35,7 @@ function FormSigUp() {
     }
 
     try {
-      dispatch(signUpStart(email, password, displayName));
+      dispatch(signUpStart(email, password));
       resetFormFields();
     } catch (error) {
       alert(error);

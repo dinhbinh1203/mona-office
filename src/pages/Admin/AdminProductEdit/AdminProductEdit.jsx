@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import productsApi from '../../../api/productsApi';
-import ProductForm from '../../../features/product/ProductForm/ProductForm';
+
 import styles from './AdminProductEdit.module.scss';
+import ProductForm from '../../../features/ProductForm/ProductForm';
 
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
