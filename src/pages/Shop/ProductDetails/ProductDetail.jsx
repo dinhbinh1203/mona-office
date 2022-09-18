@@ -26,7 +26,6 @@ function ProductDetail() {
 
   useEffect(() => {
     if (!id) return;
-
     (async () => {
       try {
         const data = await productsApi.getProductById(id);
@@ -99,23 +98,18 @@ function ProductDetail() {
                   />
                   <span className={cx('quantity__btn')}>+</span>
                 </div>
-                {product.normal && (
-                  <>
-                    <Button primary className={cx('selector__add')}>
-                      THÊM VÀO GIỎ
-                    </Button>
-                    <Button red className={cx('selector__add')}>
-                      MUA NGAY
-                    </Button>
-                  </>
-                )}
-                {product.rent && (
-                  <>
-                    <Button primary className={cx('selector__add')}>
-                      LIÊN HỆ
-                    </Button>
-                  </>
-                )}
+                <div></div>
+                {/* 
+                <Button
+                  primary
+                  className={cx('selector__add')}
+                  onClick={addProductToCart}
+                >
+                  THÊM VÀO GIỎ
+                </Button> */}
+                <Button red className={cx('selector__add')}>
+                  MUA NGAY
+                </Button>
               </div>
               <div className={cx('content__promotion')}>
                 {PROMOTIONS.map((promotion, index) => (

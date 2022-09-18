@@ -20,7 +20,9 @@ import {
   createAuthUserWithEmailAndPassword,
 } from '../../utils/firebase/firebase';
 
-import userApi from '../../api/userApi';
+import usersApi from '../../api/usersApi';
+import ordersApi from '../../api/ordersApi';
+import purchasesApi from '../../api/purchasesApi';
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
   try {
@@ -74,15 +76,21 @@ export function* signUp({ payload: { email, password } }) {
       email,
       password,
     );
-    console.log('user email', user.email);
-    console.log('user id', user.uid);
     yield put(signUpSuccess(user));
-    yield call(userApi.add, {
+    yield call(usersApi.add, {
       id: user.uid,
       name: '',
       email: user.email,
       phone: '',
       address: '',
+    });
+    yield call(ordersApi.add, {
+      id: user.uid,
+      cartItems: [],
+    });
+    yield call(purchasesApi.add, {
+      id: user.uid,
+      cartItems: [],
     });
   } catch (error) {
     yield put(signUpFailed(error));

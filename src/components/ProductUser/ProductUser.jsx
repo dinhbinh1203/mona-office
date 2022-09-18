@@ -2,9 +2,15 @@ import styles from './ProductUser.module.scss';
 import classNames from 'classnames/bind';
 import Button from '../../components/Button/Button';
 
+import { handleAddCartItem } from '../../store/cart/cart.action';
+import { selectCurrentUserId } from '../../store/user/user.selector';
+import { useSelector } from 'react-redux';
+
 const cx = classNames.bind(styles);
 
 function ProductUser({ product, id }) {
+  const idUser = useSelector(selectCurrentUserId);
+
   const formatMoney = (n) => {
     return (Math.round(n * 100) / 100).toLocaleString();
   };
@@ -13,13 +19,12 @@ function ProductUser({ product, id }) {
     return 100 - Math.floor((a / b) * 100);
   };
 
-  const stringToArray = (string) => {
-    const myArray = string.split('\n');
-    return myArray;
+  const handleAdd = async () => {
+    handleAddCartItem(idUser, product);
   };
 
   return (
-    <a href={`shop/product/${id}`}>
+    <div>
       <div className={cx('product')}>
         <div className={cx('product__image')}>
           <img alt="product" src={product.imageUrl}></img>
@@ -38,24 +43,22 @@ function ProductUser({ product, id }) {
             </div>
           )}
         </div>
-        {product.normal && (
-          <div className={cx('product__button')}>
-            <Button primary>Thêm vào giỏ</Button>
-          </div>
-        )}
-        {product.rent && (
-          <div className={cx('product__button')}>
-            <Button primary>Liên hệ</Button>
-          </div>
-        )}
+
+        <div className={cx('product__button')}>
+          <Button primary onClick={handleAdd}>
+            Thêm vào giỏ
+          </Button>
+        </div>
 
         {product.prevPrice && (
           <div className={cx('tag__discount--percent')}>
             {`${percent(product.price, product.prevPrice)}`}%
           </div>
         )}
+
+        <a href={`shop/product/${id}`}>Xem chi tiết</a>
       </div>
-    </a>
+    </div>
   );
 }
 

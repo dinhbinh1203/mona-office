@@ -1,32 +1,32 @@
 import axiosClient from './axiosClient';
 
-const userApi = {
-  getAllUser(params) {
-    const url = '/user';
+const purchasesApi = {
+  getAll(params) {
+    const url = '/purchases';
     return axiosClient.get(url, { params });
   },
 
-  getUserById(id) {
-    const url = `/user/${id}`;
+  getOrderById(id) {
+    const url = `/purchases/${id}`;
     return axiosClient.get(url);
   },
 
   add(data) {
-    const url = '/user';
+    const url = '/purchases';
     return axiosClient.post(url, data);
   },
 
-  remove(id) {
-    const url = `/user/${id}`;
-    return axiosClient.delete(url);
+  update(data) {
+    const url = `/purchases/${data.id}`;
+    return axiosClient.patch(url, data);
   },
 
-  update(data) {
-    const url = `/user/${data.id}`;
-    return axiosClient.patch(url, data);
+  remove(id) {
+    const url = `/purchases/${id}`;
+    return axiosClient.delete(url);
   },
 };
 
-export default userApi;
+export default purchasesApi;
 
 // search: https://mona-app-binh57kt.herokuapp.com/products?name_like=balo

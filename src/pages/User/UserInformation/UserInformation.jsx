@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCurrentUserId } from '../../../store/user/user.selector';
-import userApi from '../../../api/userApi';
+import usersApi from '../../../api/usersApi';
 
 import Button from '../../../components/Button/Button';
 import styles from './UserInformation.module.scss';
@@ -17,7 +17,7 @@ function UserInformation() {
     if (!idUser) return;
     (async () => {
       try {
-        const data = await userApi.getUserById(idUser);
+        const data = await usersApi.getUserById(idUser);
         setUser(data);
       } catch (error) {
         console.log(error);

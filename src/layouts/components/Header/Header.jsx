@@ -16,6 +16,7 @@ import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 
 import Nav from '../../../components/Nav/Nav';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import UserForm from '../../../features/UserForm/UserForm';
 
-import userApi from '../../../api/userApi';
+import usersApi from '../../../api/usersApi';
 import { selectCurrentUserId } from '../../../store/user/user.selector';
 import Button from '../../../components/Button/Button';
 
@@ -16,7 +16,7 @@ function UserInformationEdit() {
 
     (async () => {
       try {
-        const data = await userApi.getUserById(idUser);
+        const data = await usersApi.getUserById(idUser);
         setUser(data);
       } catch (error) {
         console.log(error);
@@ -25,7 +25,7 @@ function UserInformationEdit() {
   }, [idUser]);
 
   const handleProductFormSubmit = async (formValues) => {
-    await userApi.update(formValues);
+    await usersApi.update(formValues);
 
     toast.success('Cập nhật thành công');
   };

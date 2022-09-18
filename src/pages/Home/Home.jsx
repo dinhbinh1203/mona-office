@@ -2,15 +2,9 @@ import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 import SlickSlider from '../../components/SlickSlider/SlickSlider';
 import Introduce from '../../components/Introduce/Introduce';
-import ListProductHome from '../../components/ListProductHome/ListProductHome';
-import ProductUser from '../../components/ProductUser/ProductUser';
-import { PRODUCT_SELLER } from '../../ProductSeller';
-import { NEWS } from '../../News';
-import { RENTS } from '../../Rents';
-import { Link } from 'react-router-dom';
-import Button from '../../components/Button/Button';
-
-import images from '../../assets/images';
+import usersApi from '../../api/usersApi';
+import ordersApi from '../../api/ordersApi';
+import purchasesApi from '../../api/purchasesApi';
 
 const cx = classNames.bind(styles);
 const INTRODUCE = [
@@ -41,6 +35,8 @@ const INTRODUCE = [
 ];
 
 function Home() {
+  const data = purchasesApi.remove('ZuWTh0BvRATbItevvJhuiDlGdcS2');
+
   return (
     <div>
       <div className="grid ">
