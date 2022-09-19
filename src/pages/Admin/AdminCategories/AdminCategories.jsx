@@ -111,7 +111,6 @@ function AdminCategories() {
   };
 
   const handleEditProduct = async (product) => {
-    // push(`/admin/categories/edit/${product.id}`);
     console.log(product);
     <Navigate to={`/admin/categories/edit/${product.id}`} />;
   };

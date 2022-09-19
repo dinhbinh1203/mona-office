@@ -5,4 +5,23 @@
     justify-content: center;
     height: 40vh;
   }
+
+  .page__pagination {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .filter {
+    margin: 50px 0;
+    display: flex;
+    align-items: center;
+
+    .filter__title {
+      display: flex;
+      font-weight: 600;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+    }
+  }
 }

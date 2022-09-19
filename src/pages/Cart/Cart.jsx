@@ -1,29 +1,39 @@
-import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './Cart.module.scss';
-import Loading from '../../components/Loading/Loading';
 import { toast } from 'react-toastify';
 import ProductCart from '../../components/ProductCart/ProductCart';
 import { selectCurrentUserId } from '../../store/user/user.selector';
 import ordersApi from '../../api/ordersApi';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import purchasesApi from '../../api/purchasesApi';
+import Title from '../../components/Title/Title';
+import { setCartItemStart } from '../../store/cart/cart.action';
+import {
+  selectCartTotal,
+  selectCartItems,
+} from '../../store/cart/cart.selector';
 
 const cx = classNames.bind(styles);
 
 function Cart() {
   const idUser = useSelector(selectCurrentUserId);
-  const [listCartItem, setListCartItem] = useState([]);
+  const dispatch = useDispatch();
+  const amount = useSelector(selectCartTotal);
+  const cartItems = useSelector(selectCartItems);
+
+  const formatMoney = (n) => {
+    return (Math.round(n * 100) / 100).toLocaleString();
+  };
 
   useEffect(() => {
     (async () => {
       try {
         const data = await ordersApi.getOrderById(idUser);
         const listItem = data.cartItems;
-        setListCartItem(listItem);
+        dispatch(setCartItemStart(listItem));
       } catch (error) {
         console.log(error);
       }
@@ -31,40 +41,59 @@ function Cart() {
   }, []);
 
   const handleBuy = async () => {
-    console.log('buy');
-    await purchasesApi.update({
-      id: idUser,
-      cartItems: listCartItem,
-    });
-    await ordersApi.update({
-      id: idUser,
-      cartItems: [],
-    });
-    toast.success('Bạn đã mua hàng thành công');
-    setListCartItem([]);
+    // console.log('buy');
+    // await purchasesApi.update({
+    //   id: idUser,
+    //   cartItems: listCartItem,
+    // });
+    // await ordersApi.update({
+    //   id: idUser,
+    //   cartItems: [],
+    // });
+    // toast.success('Bạn đã mua hàng thành công');
+    // setListCartItem([]);
   };
 
   return (
     <div className="grid wide">
-      <div>
-        {listCartItem.length ? (
-          listCartItem.map((item) => (
-            <ProductCart key={item.id} cartItem={item} />
-          ))
+      <Title className="row">Giỏ hàng của bạn</Title>
+      <div className={cx('row', 'cart__container')}>
+        {cartItems.length ? (
+          <>
+            <div className={cx('col', 'c-8', 'm-8', 'l-8')}>
+              {cartItems.map((item) => (
+                <ProductCart key={item.id} cartItem={item} />
+              ))}
+            </div>
+            <div className={cx('col', 'c-4', 'm-4', 'l-4')}>
+              <div className={cx('wrapper__order')}>
+                <div className={cx('order__title')}>Thông tin đơn hàng</div>
+                <div className={cx('order__total')}>
+                  <p className={cx('order__total--title')}>Tổng tiền:</p>
+                  <p className={cx('order__total--price')}>
+                    {' '}
+                    {`${formatMoney(amount)}`}đ
+                  </p>
+                </div>
+                <div className={cx('order__pay')}>
+                  <Button primary onClick={handleBuy}>
+                    Mua hàng
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </>
         ) : (
           <div className={cx('shop-wrapper')}>
             <p className={cx('not-product-title')}>
               Chưa có sản phẩm nào trong giỏ hàng.
             </p>
-            <Link to="/shop">
+            <a href="/shop">
               <Button primary>Quay trở lại cửa hàng</Button>
-            </Link>
+            </a>
           </div>
         )}
       </div>
-      <Button primary onClick={handleBuy}>
-        Mua hàng
-      </Button>
     </div>
   );
 }

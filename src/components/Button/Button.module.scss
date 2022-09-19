@@ -72,3 +72,9 @@
     color: var(--red);
   }
 }
+
+@media (max-width: 520px) {
+  .primary {
+    font-size: 1.1rem;
+  }
+}

@@ -10,10 +10,10 @@ function Admin() {
   return (
     <Routes>
       <Route index element={<AdminCategories />} />
-      <Route path="add" element={<AdminProductAdd />} />
-      <Route path="edit/:id" element={<AdminProductEdit />} />
-      <Route path="users" element={<AdminUsers />} />
-      <Route path="purchases" element={<AdminPurchases />} />
+      <Route path="categories/add" element={<AdminProductAdd />} />
+      <Route path="categories/edit/:id" element={<AdminProductEdit />} />
+      <Route path="manage/users" element={<AdminUsers />} />
+      <Route path="manage/purchases" element={<AdminPurchases />} />
     </Routes>
   );
 }

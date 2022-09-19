@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Pagination } from '@mui/material';
-
 import {
   fetchProductsStart,
   setFilterStart,
@@ -77,17 +76,12 @@ function Categories() {
               <a href="/shop">Tất cả sản phẩm của MONA</a>
             </div>
           </div>
-          <div className={cx('row')}>
-            <div
-              className={cx(
-                'categories__filter',
-                'col',
-                'c-12',
-                'l-12',
-                'm-12',
-              )}
-            >
-              <div className={cx('categories__filter--title')}>Bộ lọc</div>
+          <div className={cx('row', 'filter')}>
+            <div className={cx('filter__title', 'col', 'c-2', 'l-2', 'm-2')}>
+              <span class="material-symbols-outlined">filter_alt</span>
+              <p>Bộ lọc</p>
+            </div>
+            <div className={cx('col', 'c-10', 'l-10', 'm-10')}>
               <CategoriesFilters
                 filter={filter}
                 categories={categories}
@@ -106,6 +100,7 @@ function Categories() {
             count={Math.ceil(total / pagination._limit)}
             page={pagination._page}
             onChange={handlePageChange}
+            className={cx('page__pagination')}
           />
         </>
       )}

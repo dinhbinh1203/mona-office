@@ -5,7 +5,7 @@ function ListProducts({ products }) {
     <>
       <div className="row">
         {products.map((product) => (
-          <div className="col c-3 l-3 m-3" key={product.id}>
+          <div className="col l-3 m-4 c-6" key={product.id}>
             {!product.new && <ProductUser product={product} id={product.id} />}
           </div>
         ))}

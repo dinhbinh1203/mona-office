@@ -5,6 +5,7 @@ import Introduce from '../../components/Introduce/Introduce';
 import usersApi from '../../api/usersApi';
 import ordersApi from '../../api/ordersApi';
 import purchasesApi from '../../api/purchasesApi';
+import Select from '../../components/Select/Select';
 
 const cx = classNames.bind(styles);
 const INTRODUCE = [
@@ -35,14 +36,14 @@ const INTRODUCE = [
 ];
 
 function Home() {
-  const data = purchasesApi.remove('ZuWTh0BvRATbItevvJhuiDlGdcS2');
+  // const data = purchasesApi.remove('ZuWTh0BvRATbItevvJhuiDlGdcS2');
 
   return (
     <div>
       <div className="grid ">
         <SlickSlider />
       </div>
-
+      <div className="grid wide">{/* <Select /> */}</div>
       <div className={cx('grid', 'home-introduce')}>
         <div className={cx('grid', 'wide')}>
           <div className={cx('row')}>

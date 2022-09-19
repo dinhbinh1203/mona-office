@@ -26,7 +26,7 @@ function UserForm({ initialValues, onSubmit, nameSubmit }) {
   };
 
   return (
-    <div className="grid wide">
+    <div>
       <form onSubmit={handleSubmit(handleFormSubmit)}>
         <InputField name="name" control={control} label="Tên" type="text" />
         <InputField

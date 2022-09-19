@@ -24,6 +24,12 @@ import usersApi from '../../api/usersApi';
 import ordersApi from '../../api/ordersApi';
 import purchasesApi from '../../api/purchasesApi';
 
+const checkUser = (userId, list) => {
+  if (list.map((user) => user.id === userId)) return true;
+
+  return false;
+};
+
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
   try {
     const userSnapshot = yield call(
@@ -41,6 +47,28 @@ export function* signInWithGoogle() {
   try {
     const { user } = yield call(signInWithGooglePopup);
     yield call(getSnapshotFromUserAuth, user);
+    const userApi = yield call(usersApi.getAllUser);
+    console.log('userApi', userApi);
+    const check = yield call(checkUser, user.uid, userApi);
+    console.log('user.uid', user.uid);
+    console.log('check', check);
+    if (check) {
+      yield call(usersApi.add, {
+        id: user.uid,
+        name: '',
+        email: user.email,
+        phone: '',
+        address: '',
+      });
+      yield call(ordersApi.add, {
+        id: user.uid,
+        cartItems: [],
+      });
+      yield call(purchasesApi.add, {
+        id: user.uid,
+        cartItems: [],
+      });
+    }
   } catch (error) {
     yield put(signInFailed(error));
   }
@@ -53,6 +81,26 @@ export function* signInWithEmail({ payload: { email, password } }) {
       email,
       password,
     );
+    const userApi = yield call(usersApi.getAllUser);
+    const check = yield call(checkUser, user.uid, userApi);
+    if (check) {
+      yield call(usersApi.add, {
+        id: user.uid,
+        name: '',
+        email: user.email,
+        phone: '',
+        address: '',
+      });
+      yield call(ordersApi.add, {
+        id: user.uid,
+        cartItems: [],
+      });
+      yield call(purchasesApi.add, {
+        id: user.uid,
+        cartItems: [],
+      });
+    }
+
     yield call(getSnapshotFromUserAuth, user);
   } catch (error) {
     yield put(signInFailed(error));
@@ -76,22 +124,27 @@ export function* signUp({ payload: { email, password } }) {
       email,
       password,
     );
+
     yield put(signUpSuccess(user));
-    yield call(usersApi.add, {
-      id: user.uid,
-      name: '',
-      email: user.email,
-      phone: '',
-      address: '',
-    });
-    yield call(ordersApi.add, {
-      id: user.uid,
-      cartItems: [],
-    });
-    yield call(purchasesApi.add, {
-      id: user.uid,
-      cartItems: [],
-    });
+    const userApi = yield call(usersApi.getAllUser);
+    const check = yield call(checkUser, user.uid, userApi);
+    if (check) {
+      yield call(usersApi.add, {
+        id: user.uid,
+        name: '',
+        email: user.email,
+        phone: '',
+        address: '',
+      });
+      yield call(ordersApi.add, {
+        id: user.uid,
+        cartItems: [],
+      });
+      yield call(purchasesApi.add, {
+        id: user.uid,
+        cartItems: [],
+      });
+    }
   } catch (error) {
     yield put(signUpFailed(error));
   }
