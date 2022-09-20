@@ -6,35 +6,37 @@ import { selectCurrentUser } from '../../store/user/user.selector';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addItemToCart } from '../../store/cart/cart.action';
+import ordersApi from '../../api/ordersApi';
 
-import { selectCartItems } from '../../store/cart/cart.selector';
 const cx = classNames.bind(styles);
 
 function ProductUser({ product, id }) {
-  const currentUser = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cartItems = useSelector(selectCartItems);
+  const currentUser = useSelector(selectCurrentUser);
+
   const formatMoney = (n) => {
     return (Math.round(n * 100) / 100).toLocaleString();
+  };
+
+  const addItemHandler = async () => {
+    if (!currentUser) {
+      navigate('/login');
+    } else {
+      const orderUser = await ordersApi.getOrderById(currentUser.id);
+      const listCartItem = await orderUser.cartItems;
+      await dispatch(addItemToCart(currentUser.id, listCartItem, product));
+    }
   };
 
   const percent = (a, b) => {
     return 100 - Math.floor((a / b) * 100);
   };
-  const dispatch = useDispatch();
-
-  const addItemHandler = () => {
-    if (!currentUser) {
-      navigate('/login');
-    } else {
-      dispatch(addItemToCart(currentUser.id, cartItems, product));
-    }
-  };
 
   return (
     <div>
       <div className={cx('product')}>
-        <a className={cx('product__description')} href={`shop/product/${id}`}>
+        <a className={cx('product__description')} href={`/shop/product/${id}`}>
           <div className={cx('product__image')}>
             <img alt="product" src={product.imageUrl}></img>
           </div>
@@ -71,6 +73,3 @@ function ProductUser({ product, id }) {
 }
 
 export default ProductUser;
-{
-  /* <a href={`shop/product/${id}`}>Xem chi tiết</a> */
-}

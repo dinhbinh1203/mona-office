@@ -34,27 +34,27 @@ const categories = [
   {
     title: 'Bút viết',
     id: 2,
-    href: '/shop/1',
+    href: '/shop/2',
   },
   {
     title: 'Giấy',
     id: 3,
-    href: '/shop/1',
+    href: '/shop/3',
   },
   {
     title: 'Thước',
     id: 4,
-    href: '/shop/1',
+    href: '/shop/4',
   },
   {
     title: 'Cặp sách',
     id: 5,
-    href: '/shop/1',
+    href: '/shop/5',
   },
   {
     title: 'Sản phẩm khác',
     id: 6,
-    href: '/shop/1',
+    href: '/shop/6',
   },
 ];
 

@@ -11,6 +11,12 @@ import styles from './ProductDetail.module.scss';
 import classNames from 'classnames/bind';
 
 import productsApi from '../../../api/productsApi';
+import { addItemToCart } from '../../../store/cart/cart.action';
+
+import { selectCurrentUser } from '../../../store/user/user.selector';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import ordersApi from '../../../api/ordersApi';
 
 const cx = classNames.bind(styles);
 
@@ -23,12 +29,18 @@ function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState();
   const isLoading = Boolean(id);
+  const currentUser = useSelector(selectCurrentUser);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     if (!id) return;
     (async () => {
       try {
         const data = await productsApi.getProductById(id);
+        const listItem = await ordersApi.getOrderById(currentUser.id);
+        setCartItems(listItem);
         setProduct(data);
       } catch (error) {
         console.log(error);
@@ -51,6 +63,27 @@ function ProductDetail() {
   const stringToArray = (string) => {
     const myArray = string.split('\n');
     return myArray;
+  };
+
+  const addItemHandler = async () => {
+    if (!currentUser) {
+      navigate('/login');
+    } else {
+      const orderUser = await ordersApi.getOrderById(currentUser.id);
+      const listCartItem = await orderUser.cartItems;
+      await dispatch(addItemToCart(currentUser.id, listCartItem, product));
+    }
+  };
+
+  const addBuyNow = async () => {
+    if (!currentUser) {
+      navigate('/login');
+    } else {
+      const orderUser = await ordersApi.getOrderById(currentUser.id);
+      const listCartItem = await orderUser.cartItems;
+      await dispatch(addItemToCart(currentUser.id, listCartItem, product));
+      await navigate('/cart-user');
+    }
   };
 
   return (
@@ -99,15 +132,15 @@ function ProductDetail() {
                   <span className={cx('quantity__btn')}>+</span>
                 </div>
                 <div></div>
-                {/* 
+
                 <Button
                   primary
                   className={cx('selector__add')}
-                  onClick={addProductToCart}
+                  onClick={addItemHandler}
                 >
                   THÊM VÀO GIỎ
-                </Button> */}
-                <Button red className={cx('selector__add')}>
+                </Button>
+                <Button red className={cx('selector__add')} onClick={addBuyNow}>
                   MUA NGAY
                 </Button>
               </div>

@@ -1,23 +1,10 @@
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
-import {
-  selectProducts,
-  selectProductsIsLoading,
-} from '../../../store/products/products.selector';
-import {
-  selectCategoriesIsLoading,
-  selectCategories,
-} from '../../../store/categories/categories.selector';
-
+import categoriesApi from '../../../api/categoriesApi';
+import ListProducts from '../../../components/ListProducts/ListProducts';
 import Loading from '../../../components/Loading/Loading';
-import ProductUser from '../../../components/ProductUser/ProductUser';
-
 import styles from './Category.module.scss';
 import classNames from 'classnames/bind';
-
-import categoriesApi from '../../../api/categoriesApi';
 
 const cx = classNames.bind(styles);
 
@@ -29,7 +16,6 @@ function Category() {
 
   useEffect(() => {
     if (!id) return;
-
     (async () => {
       try {
         const data = await categoriesApi.getProductCategory(id);
@@ -42,17 +28,17 @@ function Category() {
 
   return (
     <div>
-      {(!isLoading || Boolean(category)) && (
+      {!isLoading || Boolean(category) ? (
         <div className="grid wide">
           <div className={cx('products', 'row')}>
-            {category.map((product) => (
-              <a className="col c-6 m-6 l-3" href={`shop/product/${product.id}`}>
-                <div key={product.id}>
-                  <ProductUser product={product} />
-                </div>
-              </a>
-            ))}
+            {category !== undefined && (
+              <ListProducts products={category} user />
+            )}
           </div>
+        </div>
+      ) : (
+        <div>
+          <Loading />
         </div>
       )}
     </div>

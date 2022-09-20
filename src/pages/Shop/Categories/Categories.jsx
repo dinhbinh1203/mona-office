@@ -92,9 +92,7 @@ function Categories() {
           </div>
 
           <div className={cx('products', 'row')}>
-            {products !== undefined && (
-              <ListProducts products={products} user />
-            )}
+            {products !== undefined && <ListProducts products={products} />}
           </div>
           <Pagination
             count={Math.ceil(total / pagination._limit)}
