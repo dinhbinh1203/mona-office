@@ -5,12 +5,12 @@ import usersApi from '../../../api/usersApi';
 
 import Title from '../../../components/Title/Title';
 import Button from '../../../components/Button/Button';
-import styles from './UserInformation.module.scss';
+import styles from './Information.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function UserInformation() {
+function Information() {
   const idUser = useSelector(selectCurrentUserId);
   const [user, setUser] = useState();
 
@@ -67,4 +67,4 @@ function UserInformation() {
   );
 }
 
-export default UserInformation;
+export default Information;

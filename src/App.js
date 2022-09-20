@@ -6,12 +6,17 @@ import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-import Cart from './pages/Cart/Cart';
+
 import Shop from './pages/Shop/Shop';
 import Admin from './pages/Admin/Admin';
 import News from './pages/News/News';
-import UserInformation from './pages/User/UserInformation/UserInformation';
-import UserInformationEdit from './pages/User/UserInformationEdit/UserInformationEdit';
+
+import Edit from './pages/User/Edit/Edit';
+import Cart from './pages/User/Cart/Cart';
+import Information from './pages/User/Information/Information';
+
+import Checkout from './pages/User/Checkout/Checkout';
+import Buy from './pages/User/Buy/Buy';
 
 import PrivateRoute from './utils/PrivateRoute/PrivateRoute';
 import AdminRoute from './utils/AdminRoute/AdminRoute';
@@ -37,12 +42,11 @@ function App() {
           <Route path="register" element={<Register />} />
         </Route>
         <Route element={<UserRoute />}>
-          <Route path="information-user" element={<UserInformation />} />
-          <Route
-            path="information-user-edit"
-            element={<UserInformationEdit />}
-          />
-          <Route path="cart-user" element={<Cart />} />
+          <Route path="account" element={<Information />} />
+          <Route path="account-edit" element={<Edit />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="buy" element={<Buy />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
         <Route element={<AdminRoute />}>
           <Route path="admin/*" element={<Admin />} />

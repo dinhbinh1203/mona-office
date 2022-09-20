@@ -1,0 +1,13 @@
+.content__promotion {
+  margin-top: 20px;
+  .promotion__detail {
+    display: flex;
+    color: rgb(67, 67, 67);
+
+    .promotion__detail--icon {
+      color: var(--black);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+  }
+}

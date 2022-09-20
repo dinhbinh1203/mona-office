@@ -1,29 +1,24 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import Loading from '../../../components/Loading/Loading';
 import DescriptionProduct from '../../../components/DescriptionProduct/DescriptionProduct';
-
 import Rate from '../../../components/Rate/Rate';
 import Button from '../../../components/Button/Button';
+import Rules from '../../../components/Rules/Rules';
+
+import { addItemToCart } from '../../../store/cart/cart.action';
+import { selectCurrentUser } from '../../../store/user/user.selector';
+
+import productsApi from '../../../api/productsApi';
+import ordersApi from '../../../api/ordersApi';
 
 import styles from './ProductDetail.module.scss';
 import classNames from 'classnames/bind';
 
-import productsApi from '../../../api/productsApi';
-import { addItemToCart } from '../../../store/cart/cart.action';
-
-import { selectCurrentUser } from '../../../store/user/user.selector';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import ordersApi from '../../../api/ordersApi';
-
 const cx = classNames.bind(styles);
-
-const PROMOTIONS = [
-  'Miễn phí giao hàng tất cả quận huyện thuộc TP.HCM, Hà Nội, Biên Hòa và một số quận thuộc Bình Dương',
-  'Miễn phí 1 đổi 1 nếu hàng bị lỗi',
-];
 
 function ProductDetail() {
   const { id } = useParams();
@@ -144,21 +139,7 @@ function ProductDetail() {
                   MUA NGAY
                 </Button>
               </div>
-              <div className={cx('content__promotion')}>
-                {PROMOTIONS.map((promotion, index) => (
-                  <div className={cx('promotion__detail')} key={index}>
-                    <span
-                      className={cx(
-                        'material-symbols-outlined',
-                        'promotion__detail--icon',
-                      )}
-                    >
-                      done
-                    </span>
-                    <span>{promotion}</span>
-                  </div>
-                ))}
-              </div>
+              <Rules />
             </div>
           </div>
           <div className={cx('table', 'row')}>

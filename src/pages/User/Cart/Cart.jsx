@@ -1,21 +1,24 @@
-import Button from '../../components/Button/Button';
 import React from 'react';
-import classNames from 'classnames/bind';
-import styles from './Cart.module.scss';
 import { toast } from 'react-toastify';
-import ProductCart from '../../components/ProductCart/ProductCart';
-import { selectCurrentUserId } from '../../store/user/user.selector';
-import ordersApi from '../../api/ordersApi';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import purchasesApi from '../../api/purchasesApi';
-import Title from '../../components/Title/Title';
-import { setCartItemStart } from '../../store/cart/cart.action';
+
+import ordersApi from '../../../api/ordersApi';
+import purchasesApi from '../../../api/purchasesApi';
+import Button from '../../../components/Button/Button';
+import ProductCart from '../../../components/ProductCart/ProductCart';
+import Rules from '../../../components/Rules/Rules';
+import Title from '../../../components/Title/Title';
+
+import { selectCurrentUserId } from '../../../store/user/user.selector';
+import { setCartItemStart } from '../../../store/cart/cart.action';
 import {
   selectCartTotal,
   selectCartItems,
-} from '../../store/cart/cart.selector';
+} from '../../../store/cart/cart.selector';
 
+import classNames from 'classnames/bind';
+import styles from './Cart.module.scss';
 const cx = classNames.bind(styles);
 
 function Cart() {
@@ -40,19 +43,19 @@ function Cart() {
     })();
   }, []);
 
-  const handleBuy = async () => {
-    // console.log('buy');
-    // await purchasesApi.update({
-    //   id: idUser,
-    //   cartItems: listCartItem,
-    // });
-    // await ordersApi.update({
-    //   id: idUser,
-    //   cartItems: [],
-    // });
-    // toast.success('Bạn đã mua hàng thành công');
-    // setListCartItem([]);
-  };
+  // const handleBuy = async () => {
+  //   console.log('buy');
+  //   await purchasesApi.update({
+  //     id: idUser,
+  //     cartItems: listCartItem,
+  //   });
+  //   await ordersApi.update({
+  //     id: idUser,
+  //     cartItems: [],
+  //   });
+  //   toast.success('Bạn đã mua hàng thành công');
+  //   setListCartItem([]);
+  // };
 
   return (
     <div className="grid wide">
@@ -71,15 +74,17 @@ function Cart() {
                 <div className={cx('order__total')}>
                   <p className={cx('order__total--title')}>Tổng tiền:</p>
                   <p className={cx('order__total--price')}>
-                    {' '}
                     {`${formatMoney(amount)}`}đ
                   </p>
                 </div>
                 <div className={cx('order__pay')}>
-                  <Button primary onClick={handleBuy}>
-                    Mua hàng
-                  </Button>
+                  <a href="/checkout">
+                    <Button primary>Mua hàng</Button>
+                  </a>
                 </div>
+              </div>
+              <div className={cx('wrapper__rules')}>
+                <Rules />
               </div>
             </div>
           </>

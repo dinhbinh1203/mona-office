@@ -1,18 +1,23 @@
 import { createSelector } from 'reselect';
 
-export const selectUserReducer = (state) => state.user.currentUser;
+export const selectUserReducer = (state) => state.user;
 
 export const selectCurrentUser = createSelector(
   [selectUserReducer],
-  (userSlice) => userSlice,
+  (userSlice) => userSlice.currentUser,
+);
+
+export const selectUserIsLoading = createSelector(
+  [selectUserReducer],
+  (userSlice) => userSlice.isLoading,
 );
 
 export const selectCurrentUserId = createSelector(
   [selectUserReducer],
-  (userSlice) => userSlice.id,
+  (userSlice) => userSlice.currentUser.id,
 );
 
 export const selectCurrentUserEmail = createSelector(
   [selectUserReducer],
-  (userSlice) => userSlice.email,
+  (userSlice) => userSlice.currentUser.email,
 );

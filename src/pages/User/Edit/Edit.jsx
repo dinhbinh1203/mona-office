@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
-import UserForm from '../../../features/UserForm/UserForm';
 
+import UserForm from '../../../features/UserForm/UserForm';
 import usersApi from '../../../api/usersApi';
 import { selectCurrentUserId } from '../../../store/user/user.selector';
-import Button from '../../../components/Button/Button';
+
 import Title from '../../../components/Title/Title';
-import styles from './UserInformationEdit.module.scss';
+
+import styles from './Edit.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function UserInformationEdit() {
+function Edit() {
   const idUser = useSelector(selectCurrentUserId);
   const [user, setUser] = useState();
 
@@ -64,4 +65,4 @@ function UserInformationEdit() {
   );
 }
 
-export default UserInformationEdit;
+export default Edit;

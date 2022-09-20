@@ -25,7 +25,9 @@ import ordersApi from '../../api/ordersApi';
 import purchasesApi from '../../api/purchasesApi';
 
 const checkUser = (userId, list) => {
-  if (list.map((user) => user.id === userId)) return true;
+  const existingUser = list.find((user) => user.id === userId);
+
+  if (existingUser) return true;
 
   return false;
 };
@@ -52,7 +54,7 @@ export function* signInWithGoogle() {
     const check = yield call(checkUser, user.uid, userApi);
     console.log('user.uid', user.uid);
     console.log('check', check);
-    if (check) {
+    if (!check) {
       yield call(usersApi.add, {
         id: user.uid,
         name: '',
@@ -83,7 +85,8 @@ export function* signInWithEmail({ payload: { email, password } }) {
     );
     const userApi = yield call(usersApi.getAllUser);
     const check = yield call(checkUser, user.uid, userApi);
-    if (check) {
+
+    if (!check) {
       yield call(usersApi.add, {
         id: user.uid,
         name: '',
@@ -128,7 +131,7 @@ export function* signUp({ payload: { email, password } }) {
     yield put(signUpSuccess(user));
     const userApi = yield call(usersApi.getAllUser);
     const check = yield call(checkUser, user.uid, userApi);
-    if (check) {
+    if (!check) {
       yield call(usersApi.add, {
         id: user.uid,
         name: '',
