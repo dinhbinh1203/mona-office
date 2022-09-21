@@ -1,7 +1,5 @@
-import React from 'react';
-
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import ordersApi from '../../../api/ordersApi';
 
@@ -11,15 +9,15 @@ import Rules from '../../../components/Rules/Rules';
 import Title from '../../../components/Title/Title';
 
 import { selectCurrentUserId } from '../../../store/user/user.selector';
-
-import { selectCartTotal } from '../../../store/cart/cart.selector';
+import {
+  selectCartItems,
+  selectCartTotal,
+} from '../../../store/cart/cart.selector';
+import { setCartItemStart } from '../../../store/cart/cart.action';
 
 import classNames from 'classnames/bind';
 import styles from './Cart.module.scss';
-import { useState } from 'react';
-import { selectCartItems } from '../../../store/cart/cart.selector';
-import { setCartItemStart } from '../../../store/cart/cart.action';
-import { useDispatch } from 'react-redux';
+
 const cx = classNames.bind(styles);
 
 function Cart() {

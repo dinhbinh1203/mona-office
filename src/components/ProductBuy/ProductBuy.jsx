@@ -1,40 +1,12 @@
-import { selectCurrentUser } from '../../store/user/user.selector';
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
-import {
-  addItemToCart,
-  clearItemFromCart,
-  removeItemFromCart,
-  setCartItemStart,
-} from '../../store/cart/cart.action';
-
-import { selectCartItems } from '../../store/cart/cart.selector';
-import ordersApi from '../../api/ordersApi';
-import styles from './ProductCheckout.module.scss';
+import styles from './ProductBuy.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-function ProductCheckout({ cartItem }) {
-  const dispatch = useDispatch();
-  const user = useSelector(selectCurrentUser);
-
+function ProductBuy({ cartItem }) {
   const formatMoney = (n) => {
     return (Math.round(n * 100) / 100).toLocaleString();
   };
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await ordersApi.getOrderById(user.id);
-        const cartItems = data.cartItems;
-        dispatch(setCartItemStart(cartItems));
-        console.log('cartItems', cartItems);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
 
   return (
     <div className={cx('product__card', 'row')}>
@@ -69,4 +41,4 @@ function ProductCheckout({ cartItem }) {
   );
 }
 
-export default ProductCheckout;
+export default ProductBuy;

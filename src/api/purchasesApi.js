@@ -6,7 +6,7 @@ const purchasesApi = {
     return axiosClient.get(url, { params });
   },
 
-  getOrderById(id) {
+  getPurchasesById(id) {
     const url = `/purchases/${id}`;
     return axiosClient.get(url);
   },

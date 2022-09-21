@@ -1,12 +1,11 @@
-import classNames from 'classnames/bind';
-import styles from './Checkout.module.scss';
-
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import usersApi from '../../../api/usersApi';
 import ordersApi from '../../../api/ordersApi';
+import purchasesApi from '../../../api/purchasesApi';
 
 import { selectCurrentUserId } from '../../../store/user/user.selector';
 import { setCartItemStart } from '../../../store/cart/cart.action';
@@ -17,12 +16,10 @@ import {
 
 import Button from '../../../components/Button/Button';
 import ProductCheckout from '../../../components/ProductCheckout/ProductCheckout';
-import Loading from '../../../components/Loading/Loading';
-
 import UserForm from '../../../features/UserForm/UserForm';
-import { selectUserIsLoading } from '../../../store/user/user.selector';
-import purchasesApi from '../../../api/purchasesApi';
-import { useNavigate } from 'react-router-dom';
+
+import classNames from 'classnames/bind';
+import styles from './Checkout.module.scss';
 
 const cx = classNames.bind(styles);
 
@@ -72,6 +69,7 @@ function Checkout() {
 
   const handleBuy = async () => {
     console.log('buy');
+
     await purchasesApi.update({
       id: idUser,
       cartItems: cartItems,
