@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { signOutStart } from '../../store/user/user.action';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../store/user/user.selector';
 
 const cx = classNames.bind(styles);
 
@@ -17,6 +18,14 @@ function Account() {
     setContainer(!container);
   };
 
+  const currentUser = useSelector(selectCurrentUser);
+  let admin = false;
+  if (currentUser) {
+    if (currentUser.id === 'rPLnyncwgCco86gvRlOCaPM4Vqc2') {
+      admin = true;
+    }
+  }
+
   return (
     <div className={cx('account')}>
       <div className={cx('account__title')} onClick={handleOpen}>
@@ -27,20 +36,38 @@ function Account() {
       </div>
       {container && (
         <div className={cx('account__container')}>
-          <ul className={cx('container__list')}>
-            <a href="/account">
-              <li className={cx('item')}>Tài khoản của bạn</li>
-            </a>
-            <a href="/account-edit">
-              <li className={cx('item')}>Cập nhật thông tin</li>
-            </a>
-            <a href="/buy">
-              <li className={cx('item')}>Đơn mua</li>
-            </a>
-            <li className={cx('item')} onClick={handleSignOut}>
-              Đăng xuất
-            </li>
-          </ul>
+          {admin ? (
+            <ul className={cx('container__list')}>
+              <a href="/admin">
+                <li className={cx('item')}>Danh sách sản phẩm</li>
+              </a>
+              <a href="/admin/manage/users">
+                <li className={cx('item')}>Danh sách người dùng</li>
+              </a>
+              <a href="/admin/manage/purchases">
+                <li className={cx('item')}>Danh sách đơn mua hàng</li>
+              </a>
+              <li className={cx('item')} onClick={handleSignOut}>
+                Đăng xuất
+              </li>
+            </ul>
+          ) : (
+            <ul className={cx('container__list')}>
+              <a href="/account">
+                <li className={cx('item')}>Tài khoản của bạn</li>
+              </a>
+              <a href="/account-edit">
+                <li className={cx('item')}>Cập nhật thông tin</li>
+              </a>
+              <a href="/buy">
+                <li className={cx('item')}>Đơn mua</li>
+              </a>
+
+              <li className={cx('item')} onClick={handleSignOut}>
+                Đăng xuất
+              </li>
+            </ul>
+          )}
         </div>
       )}
     </div>

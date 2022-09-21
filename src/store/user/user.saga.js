@@ -50,10 +50,8 @@ export function* signInWithGoogle() {
     const { user } = yield call(signInWithGooglePopup);
     yield call(getSnapshotFromUserAuth, user);
     const userApi = yield call(usersApi.getAllUser);
-    console.log('userApi', userApi);
     const check = yield call(checkUser, user.uid, userApi);
-    console.log('user.uid', user.uid);
-    console.log('check', check);
+
     if (!check) {
       yield call(usersApi.add, {
         id: user.uid,

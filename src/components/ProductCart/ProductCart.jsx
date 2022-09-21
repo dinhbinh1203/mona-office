@@ -33,21 +33,20 @@ function ProductCart({ cartItem }) {
         const data = await ordersApi.getOrderById(user.id);
         const cartItems = data.cartItems;
         dispatch(setCartItemStart(cartItems));
-        console.log('cartItems', cartItems);
       } catch (error) {
         console.log(error);
       }
     })();
   }, []);
 
-  const addItemHandler = () => {
-    dispatch(addItemToCart(user.id, cartItems, cartItem));
+  const addItemHandler = async () => {
+    await dispatch(addItemToCart(user.id, cartItems, cartItem));
     setQuantity(quantity + 1);
     setTotal(total + cartItem.price);
   };
 
-  const removeItemHandler = () => {
-    dispatch(removeItemFromCart(user.id, cartItems, cartItem));
+  const removeItemHandler = async () => {
+    await dispatch(removeItemFromCart(user.id, cartItems, cartItem));
     if (quantity === 1) {
       setProduct(false);
     }
@@ -55,8 +54,8 @@ function ProductCart({ cartItem }) {
     setTotal(total - cartItem.price);
   };
 
-  const clearItemHandler = () => {
-    dispatch(clearItemFromCart(user.id, cartItems, cartItem));
+  const clearItemHandler = async () => {
+    await dispatch(clearItemFromCart(user.id, cartItems, cartItem));
     setProduct(false);
   };
 

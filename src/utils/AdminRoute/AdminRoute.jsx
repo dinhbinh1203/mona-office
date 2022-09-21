@@ -8,7 +8,7 @@ const AdminRoute = ({ children }) => {
 
   let admin = false;
   if (currentUser) {
-    if (currentUser.id === 'HEk77GAAviV6I4HFtxLswsrhFiF3') {
+    if (currentUser.id === 'rPLnyncwgCco86gvRlOCaPM4Vqc2') {
       admin = true;
     }
   }

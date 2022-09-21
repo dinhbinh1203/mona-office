@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addItemToCart } from '../../store/cart/cart.action';
 import ordersApi from '../../api/ordersApi';
+import { toast } from 'react-toastify';
 
 const cx = classNames.bind(styles);
 
@@ -26,6 +27,7 @@ function ProductUser({ product, id }) {
       const orderUser = await ordersApi.getOrderById(currentUser.id);
       const listCartItem = await orderUser.cartItems;
       await dispatch(addItemToCart(currentUser.id, listCartItem, product));
+      toast.success('Thêm sản phẩm thành công');
     }
   };
 

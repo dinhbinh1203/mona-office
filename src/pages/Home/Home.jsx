@@ -36,7 +36,11 @@ const INTRODUCE = [
 ];
 
 function Home() {
-  // const data = purchasesApi.remove('ZuWTh0BvRATbItevvJhuiDlGdcS2');
+  // const data = ordersApi.remove('1zVoXJb8iLeb0MqxRmjRTMgNRc83');
+
+  // usersApi
+  // purchasesApi
+  // ordersApi
 
   return (
     <div>
