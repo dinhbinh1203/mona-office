@@ -1,0 +1,22 @@
+.information__purchases {
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ededed;
+
+  .content {
+    text-align: center;
+  }
+
+  .purchases {
+    .wrapper__product {
+      padding-bottom: 4px;
+      .text {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.mobile {
+  display: none;
+}

@@ -1,0 +1,18 @@
+.container {
+  .title {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ededed;
+    .title__content {
+      color: var(--primary);
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}

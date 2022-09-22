@@ -1,21 +1,29 @@
-.categories {
+.categories__list {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  .category {
+    .category__title {
+      cursor: pointer;
+      font-size: 1.6rem;
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s;
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
   .categories__list {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+    flex-direction: column;
 
     .category {
-      .category__title {
-        cursor: pointer;
-        font-size: 1.6rem;
-        color: #333;
-        font-weight: 500;
-        transition: all 0.3s;
-
-        &:hover {
-          color: var(--primary);
-        }
-      }
+      padding: 10px 0;
     }
   }
 }

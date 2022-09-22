@@ -51,3 +51,13 @@
     }
   }
 }
+
+@media (max-width: 520px) {
+  .account {
+    .account__title {
+      .title__content {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { signOutStart } from '../../../store/user/user.action';
 import { selectCurrentUser } from '../../../store/user/user.selector';
 import images from '../../../assets/images';
 
@@ -16,7 +15,6 @@ import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 
 import Nav from '../../../components/Nav/Nav';
-import { Link } from 'react-router-dom';
 import Account from '../../../components/Account/Account';
 
 const cx = classNames.bind(styles);
@@ -64,8 +62,11 @@ function Header() {
   const [click, setClick] = useState(false);
   const handleClickOpen = () => setClick(true);
   const handleClickClose = () => setClick(false);
-  const handleSignOut = () => {
-    dispatch(signOutStart());
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    setShow(!show);
   };
 
   const currentUser = useSelector(selectCurrentUser);
@@ -73,18 +74,24 @@ function Header() {
   return (
     <div className={cx('header')}>
       <div className={cx('header-inner', 'grid', 'wide')}>
-        <div className="row">
-          <div className="col c-3 l-3 m-3 ">
+        <div className={cx('row', 'choose')}>
+          <div
+            className={cx('col', 'c-2', 'm-0', 'l-0', 'icon__bar')}
+            onClick={handleShow}
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </div>
+          <div className="col c-6 l-3 m-3 ">
             <a href="/" className={cx('logo-header')}>
               <img src={images.logo} alt="logo"></img>
             </a>
           </div>
-          <div className="col c-6 l-6 m-6 ">
+          <div className="col c-0 l-6 m-6 ">
             <div className={cx('wrapper__search')}>
               <Search />
             </div>
           </div>
-          <div className="col c-3 l-3 m-3 ">
+          <div className="col c-4 l-3 m-3 ">
             <div className={cx('information')}>
               {currentUser ? (
                 <Account />
@@ -110,14 +117,20 @@ function Header() {
                     <span className="material-symbols-outlined">
                       shopping_bag
                     </span>
-                    <div className={cx('cart-number')}>0</div>
                   </div>
                 </a>
               </Tippy>
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className={cx('row', 'pc')}>
+          <div className={cx('wrapper__nav')}>
+            <Nav categories={categories} />
+          </div>
+        </div>
+        <div
+          className={cx('row', 'mobile', show ? 'show-mobile' : 'close-mobile')}
+        >
           <div className={cx('wrapper__nav')}>
             <Nav categories={categories} />
           </div>

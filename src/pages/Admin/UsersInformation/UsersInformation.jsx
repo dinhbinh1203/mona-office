@@ -21,7 +21,6 @@ function UsersInformation() {
       }
     })();
   }, []);
-  console.log(listUser);
 
   return (
     <div className="grid wide">

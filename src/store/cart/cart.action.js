@@ -48,6 +48,7 @@ export const setCartItemStart = (cartItems) => {
 export const addItemToCart = (idUser, cartItems, productToAdd) => {
   const newCartItems = addCartItem(cartItems, productToAdd);
   ordersApi.update({ id: idUser, cartItems: newCartItems });
+
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
 };
 
