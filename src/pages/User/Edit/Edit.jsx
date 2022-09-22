@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 
 import UserForm from '../../../features/UserForm/UserForm';
 import usersApi from '../../../api/usersApi';
-import { selectCurrentUserId } from '../../../store/user/user.selector';
-
 import Title from '../../../components/Title/Title';
+
+import { selectCurrentUserId } from '../../../store/user/user.selector';
 
 import styles from './Edit.module.scss';
 import classNames from 'classnames/bind';
@@ -48,9 +48,9 @@ function Edit() {
       <div className="row">
         <Title>Chỉnh sửa thông tin</Title>
       </div>
-      <div className="row">
-        <div className="col c-3 m-3 l-3"></div>
-        <div className="col c-6 m-6 l-6">
+      <div className={cx('row', 'edit')}>
+        <div className="col c-1 m-3 l-3"></div>
+        <div className="col c-10 m-6 l-6">
           {(!idUser || Boolean(user)) && (
             <UserForm
               initialValues={initialValues}
@@ -59,7 +59,7 @@ function Edit() {
             />
           )}
         </div>
-        <div className="col c-3 m-3 l-3"></div>
+        <div className="col c-1 m-3 l-3"></div>
       </div>
     </div>
   );

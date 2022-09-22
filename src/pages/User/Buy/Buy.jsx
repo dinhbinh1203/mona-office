@@ -11,7 +11,7 @@ import { setCartItemStart } from '../../../store/cart/cart.action';
 
 import classNames from 'classnames/bind';
 import styles from './Buy.module.scss';
-import ProductBuy from '../../../components/ProductBuy/ProductBuy';
+import ProductBuy from '../../../components/Product/ProductBuy/ProductBuy';
 
 const cx = classNames.bind(styles);
 
@@ -42,8 +42,8 @@ function Buy() {
       <div className={cx('row', 'cart__container')}>
         {cartItems.length ? (
           <>
-            <div className={cx('col', 'c-2', 'm-2', 'l-2')}></div>
-            <div className={cx('col', 'c-8', 'm-8', 'l-8')}>
+            <div className={cx('col', 'c-0', 'm-2', 'l-2')}></div>
+            <div className={cx('col', 'c-12', 'm-8', 'l-8')}>
               {cartItems.map((item) => (
                 <ProductBuy key={item.id} cartItem={item} />
               ))}
@@ -54,11 +54,13 @@ function Buy() {
                 </p>
               </div>
             </div>
-            <div className={cx('col', 'c-2', 'm-2', 'l-2')}></div>
+            <div className={cx('col', 'c-0', 'm-2', 'l-2')}></div>
           </>
         ) : (
-          <div className={cx('shop-wrapper')}>
-            <p className={cx('not-product-title')}>Bạn chưa có đơn hàng nào</p>
+          <div className={cx('not__product')}>
+            <p className={cx('not__product--title')}>
+              Bạn chưa có đơn hàng nào
+            </p>
             <a href="/shop">
               <Button primary>Quay trở lại cửa hàng</Button>
             </a>

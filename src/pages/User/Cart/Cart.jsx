@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ordersApi from '../../../api/ordersApi';
 
 import Button from '../../../components/Button/Button';
-import ProductCart from '../../../components/ProductCart/ProductCart';
+import ProductCart from '../../../components/Product/ProductCart/ProductCart';
 import Rules from '../../../components/Rules/Rules';
 import Title from '../../../components/Title/Title';
 
@@ -49,12 +49,12 @@ function Cart() {
       <div className={cx('row', 'cart__container')}>
         {cartItemRedux.length ? (
           <>
-            <div className={cx('col', 'c-8', 'm-8', 'l-8')}>
+            <div className={cx('col', 'c-12', 'm-8', 'l-8')}>
               {cartItems.map((item) => (
                 <ProductCart key={item.id} cartItem={item} />
               ))}
             </div>
-            <div className={cx('col', 'c-4', 'm-4', 'l-4')}>
+            <div className={cx('col', 'c-12', 'm-4', 'l-4')}>
               <div className={cx('wrapper__order')}>
                 <div className={cx('order__title')}>Thông tin đơn hàng</div>
                 <div className={cx('order__total')}>
@@ -64,7 +64,7 @@ function Cart() {
                   </p>
                 </div>
                 <div className={cx('order__pay')}>
-                  <a href="/checkout">
+                  <a href="/account/checkout">
                     <Button primary>Mua hàng</Button>
                   </a>
                 </div>
@@ -75,8 +75,8 @@ function Cart() {
             </div>
           </>
         ) : (
-          <div className={cx('shop-wrapper')}>
-            <p className={cx('not-product-title')}>
+          <div className={cx('shop__wrapper')}>
+            <p className={cx('not__product--title')}>
               Chưa có sản phẩm nào trong giỏ hàng.
             </p>
             <a href="/shop">

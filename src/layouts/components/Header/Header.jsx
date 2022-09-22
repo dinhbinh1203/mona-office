@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { selectCurrentUser } from '../../../store/user/user.selector';
+import {
+  selectCurrentUser,
+  selectCurrentUserId,
+} from '../../../store/user/user.selector';
 import images from '../../../assets/images';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -55,14 +58,14 @@ const categories = [
     id: 6,
     href: '/shop/6',
   },
+  {
+    title: 'Tin mới nhất',
+    id: 7,
+    href: '/shop/6',
+  },
 ];
 
 function Header() {
-  const dispatch = useDispatch();
-  const [click, setClick] = useState(false);
-  const handleClickOpen = () => setClick(true);
-  const handleClickClose = () => setClick(false);
-
   const [show, setShow] = useState(false);
 
   const handleShow = () => {
@@ -73,7 +76,7 @@ function Header() {
 
   return (
     <div className={cx('header')}>
-      <div className={cx('header-inner', 'grid', 'wide')}>
+      <div className={cx('header__inner', 'grid', 'wide')}>
         <div className={cx('row', 'choose')}>
           <div
             className={cx('col', 'c-2', 'm-0', 'l-0', 'icon__bar')}
@@ -82,7 +85,7 @@ function Header() {
             <FontAwesomeIcon icon={faBars} />
           </div>
           <div className="col c-6 l-3 m-3 ">
-            <a href="/" className={cx('logo-header')}>
+            <a href="/" className={cx('logo__header')}>
               <img src={images.logo} alt="logo"></img>
             </a>
           </div>
@@ -96,12 +99,12 @@ function Header() {
               {currentUser ? (
                 <Account />
               ) : (
-                <div className={cx('header-access')}>
-                  <a href="/login" className={cx('access-content')}>
+                <div className={cx('header__access')}>
+                  <a href="/login" className={cx('access__content')}>
                     Đăng nhập
                   </a>
                   <span> / </span>
-                  <a href="/register" className={cx('access-content')}>
+                  <a href="/register" className={cx('access__content')}>
                     Đăng ký
                   </a>
                 </div>
@@ -111,9 +114,9 @@ function Header() {
                 content="Xem giỏ hàng của bạn"
                 placement="bottom"
               >
-                <a href="/cart" className={cx('cart-wrapper')}>
-                  <span className={cx('cart-name')}>Giỏ hàng</span>
-                  <div className={cx('cart-icon')}>
+                <a href="/account/cart" className={cx('cart__wrapper')}>
+                  <span className={cx('cart__name')}>Giỏ hàng</span>
+                  <div className={cx('cart__icon')}>
                     <span className="material-symbols-outlined">
                       shopping_bag
                     </span>
@@ -129,7 +132,11 @@ function Header() {
           </div>
         </div>
         <div
-          className={cx('row', 'mobile', show ? 'show-mobile' : 'close-mobile')}
+          className={cx(
+            'row',
+            'mobile',
+            show ? 'show__mobile' : 'close__mobile',
+          )}
         >
           <div className={cx('wrapper__nav')}>
             <Nav categories={categories} />

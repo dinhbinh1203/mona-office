@@ -1,4 +1,4 @@
-import { selectCurrentUser } from '../../store/user/user.selector';
+import { selectCurrentUser } from '../../../store/user/user.selector';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import {
@@ -6,10 +6,10 @@ import {
   clearItemFromCart,
   removeItemFromCart,
   setCartItemStart,
-} from '../../store/cart/cart.action';
+} from '../../../store/cart/cart.action';
 
-import { selectCartItems } from '../../store/cart/cart.selector';
-import ordersApi from '../../api/ordersApi';
+import { selectCartItems } from '../../../store/cart/cart.selector';
+import ordersApi from '../../../api/ordersApi';
 import styles from './ProductCart.module.scss';
 import classNames from 'classnames/bind';
 

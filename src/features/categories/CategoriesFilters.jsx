@@ -45,8 +45,12 @@ function CategoriesFilters({ filter, categories, onChange, totalChange }) {
   };
 
   return (
-    <div className={cx('categories__filters')}>
-      <FormControl fullWidth>
+    <div className={cx('categories__filters', 'row')}>
+      <FormControl
+        fullWidth
+        size="large"
+        className={cx('col', 'c-6', 'm-6', 'l-6', 'item')}
+      >
         <InputLabel id="demo-simple-select-label">DANH MỤC</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -55,9 +59,7 @@ function CategoriesFilters({ filter, categories, onChange, totalChange }) {
           onChange={handleCategoriesChange}
           total={handleTotal}
         >
-          <MenuItem value="">
-            <em>Tất cả sản phẩm</em>
-          </MenuItem>
+          <MenuItem value="">Tất cả sản phẩm</MenuItem>
           {categories.map((category) => (
             <MenuItem value={category.id} key={category.id}>
               {category.title}
@@ -65,8 +67,12 @@ function CategoriesFilters({ filter, categories, onChange, totalChange }) {
           ))}
         </Select>
       </FormControl>
-
-      <FormControl variant="outlined" fullWidth>
+      <FormControl
+        variant="outlined"
+        fullWidth
+        size="large"
+        className={cx('col', 'c-6', 'm-6', 'l-6')}
+      >
         <InputLabel id="sortBy">SẮP XẾP</InputLabel>
         <Select
           labelId="sortBy"

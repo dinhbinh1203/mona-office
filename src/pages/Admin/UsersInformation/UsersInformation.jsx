@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react';
+
+import usersApi from '../../../api/usersApi';
+import Loading from '../../../components/Loading/Loading';
+
 import styles from './UsersInformation.module.scss';
 import classNames from 'classnames/bind';
-import usersApi from '../../../api/usersApi';
-import { useEffect, useState } from 'react';
-import Loading from '../../../components/Loading/Loading';
 
 const cx = classNames.bind(styles);
 

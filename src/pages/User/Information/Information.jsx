@@ -26,6 +26,25 @@ function Information() {
     })();
   }, [idUser]);
 
+  const data = [
+    {
+      title: 'Tên',
+      content: `${user?.name}`,
+    },
+    {
+      title: 'Email',
+      content: `${user?.email}`,
+    },
+    {
+      title: 'SĐT',
+      content: `${user?.phone}`,
+    },
+    {
+      title: 'Địa chỉ',
+      content: `${user?.address}`,
+    },
+  ];
+
   return (
     <>
       {(!idUser || Boolean(user)) && (
@@ -34,32 +53,28 @@ function Information() {
             <Title>Tài khoản của bạn</Title>
           </div>
           <div className={cx('user__detail', 'row')}>
-            <div className="col c-3 m-3 l-3"></div>
-            <div className="col c-6 m-6 l-6">
+            <div className="col c-1 m-3 l-3"></div>
+            <div className="col c-10 m-6 l-6">
               <p className={cx('title__detail')}>Thông tin tài khoản</p>
               <div className={cx('container')}>
-                <div className={cx('item')}>
-                  <p className={cx('item__title')}>Tên</p>
-                  <p className={cx('item__text')}>{user.name}</p>
-                </div>
-                <div className={cx('item')}>
-                  <p className={cx('item__title')}>Email</p>
-                  <p className={cx('item__text')}>{user.email}</p>
-                </div>
-                <div className={cx('item')}>
-                  <p className={cx('item__title')}>Số điện thoại</p>
-                  <p className={cx('item__text')}>{user.phone}</p>
-                </div>
-                <div className={cx('item')}>
-                  <p className={cx('item__title')}>Địa chỉ</p>
-                  <p className={cx('item__text')}>{user.address}</p>
-                </div>
+                {data.map((item) => (
+                  <div className={cx('item', 'row')}>
+                    <p
+                      className={cx('item__title', 'col', 'c-3', 'm-3', 'l-3')}
+                    >
+                      {item.title}
+                    </p>
+                    <p className={cx('item__text', 'col', 'c-9', 'm-9', 'l-9')}>
+                      {item.content}
+                    </p>
+                  </div>
+                ))}
               </div>
               <a href="/information-user-edit" className={cx('btn__update')}>
                 <Button primary>Cập nhật thông tin</Button>
               </a>
             </div>
-            <div className="col c-3 m-3 l-3"></div>
+            <div className="col c-1 m-3 l-3"></div>
           </div>
         </div>
       )}

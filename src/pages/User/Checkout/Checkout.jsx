@@ -15,9 +15,10 @@ import {
 } from '../../../store/cart/cart.selector';
 
 import Button from '../../../components/Button/Button';
-import ProductCheckout from '../../../components/ProductCheckout/ProductCheckout';
+
 import UserForm from '../../../features/UserForm/UserForm';
 
+import ProductCheckout from '../../../components/Product/ProductCheckout/ProductCheckout';
 import classNames from 'classnames/bind';
 import styles from './Checkout.module.scss';
 
@@ -98,25 +99,7 @@ function Checkout() {
           <>
             {cartItems.length !== 0 ? (
               <>
-                <div className="col c-6 l-6 m-6">
-                  <div className={cx('wrapper')}>
-                    <p className={cx('title')}>Thông tin giao hàng</p>
-                    <div className={cx('user__email')}>
-                      <div className={cx('user__icon')}>
-                        <span className="material-symbols-outlined">
-                          person
-                        </span>
-                      </div>
-                      <div className={cx('email')}>{user?.email}</div>
-                    </div>
-                    <UserForm
-                      initialValues={initialValues}
-                      onSubmit={handleProductFormSubmit}
-                      nameSubmit="Hoàn tất đơn hàng"
-                    />
-                  </div>
-                </div>
-                <div className="col c-6 l-6 m-6">
+                <div className="col c-12 l-6 m-6">
                   <div className={cx('wrapper')}>
                     <p className={cx('title')}>Thông tin sản phẩm</p>
                     {listCart.map((item) => (
@@ -138,6 +121,24 @@ function Checkout() {
                         {`${formatMoney(amount)}`}đ
                       </p>
                     </div>
+                  </div>
+                </div>
+                <div className="col c-12 l-6 m-6">
+                  <div className={cx('wrapper')}>
+                    <p className={cx('title')}>Thông tin giao hàng</p>
+                    <div className={cx('user__email')}>
+                      <div className={cx('user__icon')}>
+                        <span className="material-symbols-outlined">
+                          person
+                        </span>
+                      </div>
+                      <div className={cx('email')}>{user?.email}</div>
+                    </div>
+                    <UserForm
+                      initialValues={initialValues}
+                      onSubmit={handleProductFormSubmit}
+                      nameSubmit="Hoàn tất đơn hàng"
+                    />
                   </div>
                 </div>
               </>

@@ -77,7 +77,7 @@ function ProductDetail() {
       const orderUser = await ordersApi.getOrderById(currentUser.id);
       const listCartItem = await orderUser.cartItems;
       await dispatch(addItemToCart(currentUser.id, listCartItem, product));
-      await navigate('/cart-user');
+      await navigate('/account/cart');
     }
   };
 

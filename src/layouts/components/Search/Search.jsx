@@ -1,3 +1,5 @@
+import { useState, useRef, useEffect } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSpinner,
@@ -5,21 +7,16 @@ import {
   faMagnifyingGlass,
 } from '@fortawesome/free-solid-svg-icons';
 
-import styles from './Search.module.scss';
-import classNames from 'classnames/bind';
-
-import { useState, useRef, useEffect } from 'react';
 import productsApi from '../../../api/productsApi';
 import useOutsideClick from '../../../utils/hooks/useOutsideClick';
 import removeVietnameseTones from '../../../utils/hooks/removeVietnameseTones';
+import Price from '../../../components/Price/Price';
 
+import styles from './Search.module.scss';
+import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function Search() {
-  const formatMoney = (n) => {
-    return (Math.round(n * 100) / 100).toLocaleString();
-  };
-
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [showResult, setShowResult] = useState(false);
@@ -110,14 +107,7 @@ function Search() {
                 <img alt="result" src={product.imageUrl} />
                 <div className={cx('result__item--name')}>{product.name}</div>
               </div>
-              <div className={cx('result__item--price')}>
-                <div className={cx('item__prevPrice')}>
-                  {`${formatMoney(product.prevPrice)}`}đ
-                </div>
-                <div className={cx('item__Price')}>
-                  {`${formatMoney(product.price)}`}đ
-                </div>
-              </div>
+              <Price prevPrice={product.prevPrice} price={product.price} />
             </a>
           ))}
         </div>

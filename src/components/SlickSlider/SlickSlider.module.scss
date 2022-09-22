@@ -83,7 +83,17 @@
   }
 }
 
-@media (max-width: 520px) {
+/* Mobile and tablet */
+@media (max-width: 1480px) {
+}
+/* IPAD PRO */
+@media (min-width: 1048px) and (max-width: 1480px) {
+}
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1047px) {
+}
+/* Mobile */
+@media (max-width: 739px) {
   .slider__slider {
     height: 350px;
 
@@ -105,7 +115,7 @@
       }
 
       .discount {
-        .discount_-content {
+        .discount__content {
           font-size: 2.4rem;
           margin-bottom: 20px;
 
@@ -115,7 +125,9 @@
         }
 
         .discount__description {
-          font-size: 1.4rem;
+          font-size: 1.2rem;
+          text-align: center;
+          padding: 0 20px;
         }
       }
     }

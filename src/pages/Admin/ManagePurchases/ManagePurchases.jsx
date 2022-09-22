@@ -1,6 +1,5 @@
 import purchasesApi from '../../../api/purchasesApi';
 import { useEffect, useState } from 'react';
-import Loading from '../../../components/Loading/Loading';
 import styles from './ManagePurchases.module.scss';
 import classNames from 'classnames/bind';
 import UserPurchases from '../../../components/UserPurchases/UserPurchases';

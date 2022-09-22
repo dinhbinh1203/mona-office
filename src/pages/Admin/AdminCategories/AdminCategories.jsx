@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Pagination } from '@mui/material';
+import * as React from 'react';
+import { Navigate } from 'react-router-dom';
 
 import {
   fetchProductsStart,
@@ -17,16 +19,10 @@ import {
 import {
   selectCategories,
   selectCategoriesIsLoading,
-  selectCategoriesOptions,
 } from '../../../store/categories/categories.selector';
 
-import Loading from '../../../components/Loading/Loading';
-import CategoriesFilters from '../../../features/categories/CategoriesFilters';
-
-import styles from './AdminCategories.module.scss';
-import classNames from 'classnames/bind';
 import productsApi from '../../../api/productsApi';
-import * as React from 'react';
+
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -35,12 +31,15 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+
 import { default as ButtonDefault } from '../../../components/Button/Button';
+import ProductAdmin from '../../../components/Product/ProductAdmin/ProductAdmin';
 
-import ProductAdmin from '../../../components/ProductAdmin/ProductAdmin';
+import Loading from '../../../components/Loading/Loading';
+import CategoriesFilters from '../../../features/categories/CategoriesFilters';
 
-import { Navigate } from 'react-router-dom';
-
+import styles from './AdminCategories.module.scss';
+import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 function AdminCategories() {
@@ -124,73 +123,83 @@ function AdminCategories() {
           </div>
         ) : (
           <>
-            <div className={cx('row')}>
-              <div
-                className={cx(
-                  'categories__title',
-                  'col',
-                  'c-12',
-                  'l-12',
-                  'm-12',
-                )}
-              >
-                <a href="/">Trang chủ</a>/
-                <a href="/shop">Tất cả sản phẩm của MONA</a>
+            <div className={cx('row', 'title')}>
+              <div className={cx('col', 'c-12', 'l-12', 'm-12')}>
+                <a href="/" className={cx('title__main')}>
+                  Trang chủ
+                </a>
+                <span className={cx('title__divider')}>/</span>
+                <a href="/admin" className={cx('title__extra')}>
+                  Tất cả sản phẩm của MONA
+                </a>
               </div>
             </div>
-            <div className={cx('row')}>
-              <div
-                className={cx(
-                  'categories__filter',
-                  'col',
-                  'c-12',
-                  'l-12',
-                  'm-12',
-                )}
-              >
-                <div className={cx('categories__filter--title')}>Bộ lọc</div>
+            <div className={cx('row', 'filter')}>
+              <div className={cx('filter__title', 'col', 'c-12', 'l-2', 'm-2')}>
+                <span className="material-symbols-outlined">filter_alt</span>
+                <p>Bộ lọc</p>
+              </div>
+              <div className={cx('col', 'c-12', 'l-10', 'm-10')}>
                 <CategoriesFilters
                   filter={filter}
                   categories={categories}
                   onChange={handleFilterChange}
-                  totalChange={handleTotal}
+                  total={handleTotal}
                 />
               </div>
             </div>
-            <a href="/admin/categories/add">
-              <ButtonDefault primary>Thêm sản phẩm</ButtonDefault>
-            </a>
+
+            <div className="row">
+              <div className={cx('col', 'c-12', 'l-12', 'm-12', 'add')}>
+                <a href="/admin/categories/add">
+                  <ButtonDefault primary>Thêm sản phẩm</ButtonDefault>
+                </a>
+              </div>
+            </div>
             <div className={cx('products', 'row')}>
               {products !== undefined && (
                 <div className="row">
                   {products.map((product) => (
-                    <div className="col c-12 l-12 m-12" key={product.id}>
+                    <div
+                      className={cx('col', 'c-12', 'l-12', 'm-12', 'product')}
+                      key={product.id}
+                    >
                       {!product.new && <ProductAdmin product={product} />}
-                      <div>
-                        <a href={`/admin/categories/edit/${product.id}`}>
-                          <button onClick={() => handleEditProduct(product)}>
+                      <div className={cx('product__btn')}>
+                        <a
+                          href={`/admin/categories/edit/${product.id}`}
+                          className={cx('btn__edit')}
+                        >
+                          <ButtonDefault
+                            primary
+                            onClick={() => handleEditProduct(product)}
+                          >
                             Chỉnh sửa sản phẩm
-                          </button>
+                          </ButtonDefault>
                         </a>
-                        <button onClick={() => handleClickOpen(product)}>
+                        <ButtonDefault
+                          red
+                          onClick={() => handleClickOpen(product)}
+                        >
                           Xoá sản phẩm
-                        </button>
+                        </ButtonDefault>
                       </div>
                     </div>
                   ))}
                 </div>
               )}
             </div>
-            <Pagination
-              count={Math.ceil(total / pagination._limit)}
-              page={pagination._page}
-              onChange={handlePageChange}
-            />
+            <div className={cx('pagination', 'row')}>
+              <Pagination
+                count={Math.ceil(total / pagination._limit)}
+                page={pagination._page}
+                onChange={handlePageChange}
+              />
+            </div>
           </>
         )}
       </div>
       <div>
-        <Button variant="outlined">Open responsive dialog</Button>
         <Dialog
           fullScreen={fullScreen}
           open={open}

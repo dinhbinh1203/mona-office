@@ -1,14 +1,17 @@
 .user__information {
   .user__detail {
+    padding: 20px 0;
+
     .title__detail {
       text-transform: uppercase;
+      letter-spacing: 1px;
       font-size: 15px;
       font-weight: 700;
-      letter-spacing: 1px;
+      color: #434343;
+
       position: relative;
       border-bottom: 2px solid #ededed;
       padding-bottom: 8px;
-      color: #434343;
       margin-bottom: 30px;
     }
 
@@ -23,20 +26,22 @@
           text-align: left;
           font-size: 14px;
           font-weight: initial;
+
           width: 120px;
           float: left;
           line-height: 38px;
         }
 
         .item__text {
-          height: 45px;
-          border: 1px solid transparent;
           background: #ededed;
           padding: 0 20px;
-          -webkit-appearance: none;
-          align-items: center;
+          border: 1px solid transparent;
+
           display: flex;
           width: 100%;
+          min-height: 45px;
+          -webkit-appearance: none;
+          align-items: center;
         }
       }
     }

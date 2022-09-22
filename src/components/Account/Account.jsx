@@ -56,10 +56,10 @@ function Account() {
               <a href="/account">
                 <li className={cx('item')}>Tài khoản của bạn</li>
               </a>
-              <a href="/account-edit">
+              <a href="/account/edit">
                 <li className={cx('item')}>Cập nhật thông tin</li>
               </a>
-              <a href="/buy">
+              <a href="/account/buy">
                 <li className={cx('item')}>Đơn mua</li>
               </a>
 

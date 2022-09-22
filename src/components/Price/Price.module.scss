@@ -1,0 +1,18 @@
+.product__price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+
+  .product__price--prev {
+    font-size: 1.4rem;
+    color: var(--black);
+    opacity: 0.6;
+    text-decoration: line-through;
+    padding-right: 8px;
+  }
+  .product__price--now {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}

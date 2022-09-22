@@ -2,11 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import productsApi from '../../../api/productsApi';
-import styles from './AdminProductAdd.module.scss';
 import ProductForm from '../../../features/ProductForm/ProductForm';
-
-import classNames from 'classnames/bind';
-const cx = classNames.bind(styles);
 
 function AdminProductAdd() {
   const navigate = useNavigate();

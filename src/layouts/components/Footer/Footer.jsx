@@ -42,11 +42,9 @@ function Footer() {
   return (
     <div className={cx('grid', 'wide')}>
       <div className={cx('footer', 'row')}>
-        <div className={cx('footer-logo', 'col', 'c-12', 'l-3', 'm-6')}>
-          <div className={cx('logo-img')}>
-            <img src={images.logo} alt="logo" />
-          </div>
-          <div className={cx('logo-description')}>
+        <div className={cx('footer__name', 'col', 'c-12', 'l-3', 'm-6')}>
+          <div className={cx('name__page')}>MONA OFFICE</div>
+          <div className={cx('name__description')}>
             Chuyên bán lẻ các dụng cụ, thiết bị văn phòng. Nhận cung cấp cho các
             công ty, trường học với số lượng lớn, đảm bảo hàng uy tín, chất
             lượng

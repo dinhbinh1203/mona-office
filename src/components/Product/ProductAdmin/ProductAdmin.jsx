@@ -1,6 +1,5 @@
 import styles from './ProductAdmin.module.scss';
 import classNames from 'classnames/bind';
-import Button from '../../components/Button/Button';
 
 const cx = classNames.bind(styles);
 
@@ -17,10 +16,10 @@ function ProductAdmin({ product }) {
   return (
     <>
       <div className={cx('product__admin', 'row')}>
-        <div className={cx('product__image', 'col', 'c-4', 'l-4', 'm-4')}>
+        <div className={cx('product__image', 'col', 'c-12', 'l-4', 'm-4')}>
           <img alt="product" src={product.imageUrl}></img>
         </div>
-        <div className={cx('product__content', 'col', 'c-8', 'l-8', 'm-8')}>
+        <div className={cx('product__content', 'col', 'c-12', 'l-8', 'm-8')}>
           <div className={cx('product__content--item')}>
             <div className={cx('item__title')}>Tên sản phẩm:</div>
             <div className={cx('item__text')}>{product.name}</div>

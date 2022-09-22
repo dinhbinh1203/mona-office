@@ -16,7 +16,27 @@
   }
 }
 
-@media (max-width: 820px) {
+/* Mobile and tablet */
+@media (max-width: 1480px) {
+}
+/* IPAD PRO */
+@media (min-width: 1048px) and (max-width: 1480px) {
+}
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1047px) {
+  .sign__btn {
+    flex-direction: column;
+
+    .sign__redirect {
+      align-items: flex-start;
+      margin-top: 10px;
+
+      font-size: 1.4rem;
+    }
+  }
+}
+/* Mobile */
+@media (max-width: 739px) {
   .sign__btn {
     flex-direction: column;
 

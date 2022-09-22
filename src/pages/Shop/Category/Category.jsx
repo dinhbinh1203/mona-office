@@ -10,16 +10,18 @@ const cx = classNames.bind(styles);
 
 function Category() {
   const { id } = useParams();
-
-  const [category, setCategory] = useState();
   const isLoading = Boolean(id);
+  const [category, setCategory] = useState();
+  const [title, setTitle] = useState('');
 
   useEffect(() => {
     if (!id) return;
     (async () => {
       try {
         const data = await categoriesApi.getProductCategory(id);
+        const titleFromApi = await categoriesApi.getCategory(id);
         setCategory(data);
+        setTitle(titleFromApi.title);
       } catch (error) {
         console.log(error);
       }
@@ -30,15 +32,25 @@ function Category() {
     <div>
       {!isLoading || Boolean(category) ? (
         <div className="grid wide">
-          <div className={cx('products', 'row')}>
-            {category !== undefined && (
-              <ListProducts products={category} user />
-            )}
+          <div className={cx('row', 'title')}>
+            <div className={cx('col', 'c-12', 'l-12', 'm-12')}>
+              <a href="/" className={cx('title__main')}>
+                Trang chủ
+              </a>
+              <span className={cx('title__divider')}>/</span>
+              <a href="/" className={cx('title__extra')}>
+                {title}
+              </a>
+            </div>
           </div>
+
+          {category !== undefined && <ListProducts products={category} user />}
         </div>
       ) : (
-        <div>
-          <Loading />
+        <div className="grid wide">
+          <div className={cx('is__loading')}>
+            <Loading />
+          </div>
         </div>
       )}
     </div>

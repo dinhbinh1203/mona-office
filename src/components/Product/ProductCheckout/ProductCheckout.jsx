@@ -1,15 +1,10 @@
-import { selectCurrentUser } from '../../store/user/user.selector';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
-import {
-  addItemToCart,
-  clearItemFromCart,
-  removeItemFromCart,
-  setCartItemStart,
-} from '../../store/cart/cart.action';
+import { useEffect } from 'react';
 
-import { selectCartItems } from '../../store/cart/cart.selector';
-import ordersApi from '../../api/ordersApi';
+import { selectCurrentUser } from '../../../store/user/user.selector';
+import { setCartItemStart } from '../../../store/cart/cart.action';
+import ordersApi from '../../../api/ordersApi';
+
 import styles from './ProductCheckout.module.scss';
 import classNames from 'classnames/bind';
 

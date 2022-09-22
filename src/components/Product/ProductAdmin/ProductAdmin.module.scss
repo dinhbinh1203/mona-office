@@ -41,3 +41,28 @@
     }
   }
 }
+
+/* Mobile and tablet */
+@media (max-width: 1480px) {
+}
+/* IPAD PRO */
+@media (min-width: 1048px) and (max-width: 1480px) {
+}
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1047px) {
+}
+/* Mobile */
+@media (max-width: 739px) {
+  .product__admin {
+    display: flex;
+    padding-top: 10px;
+
+    .product__image {
+      padding-right: 0px;
+    }
+
+    .product__content {
+      padding-left: 0px;
+    }
+  }
+}

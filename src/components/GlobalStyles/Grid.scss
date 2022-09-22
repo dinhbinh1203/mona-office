@@ -9,16 +9,11 @@
   margin: 0 auto;
 }
 
-.grid.wides {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: -4px;
+  margin-right: -4px;
 }
 
 .row.no-gutters {
@@ -27,8 +22,8 @@
 }
 
 .col {
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .row.no-gutters .col {
@@ -98,11 +93,6 @@
 .c-12 {
   flex: 0 0 100%;
   max-width: 100%;
-}
-
-.c-2-4 {
-  flex: 0 0 20%;
-  max-width: 20%;
 }
 
 .c-o-1 {
@@ -240,11 +230,6 @@
     max-width: 100%;
   }
 
-  .m-2-4 {
-    flex: 0 0 20%;
-    max-width: 20%;
-  }
-
   .m-o-1 {
     margin-left: 8.33333%;
   }
@@ -293,8 +278,8 @@
 /* PC medium resolution > */
 @media (min-width: 1113px) {
   .row {
-    margin-left: -9px;
-    margin-right: -9px;
+    margin-left: -12px;
+    margin-right: -12px;
   }
 
   .row.sm-gutter {
@@ -303,8 +288,8 @@
   }
 
   .col {
-    padding-left: 9px;
-    padding-right: 9px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .row.sm-gutter .col {
@@ -450,7 +435,7 @@
 /* Tablet - PC low resolution */
 @media (min-width: 740px) and (max-width: 1023px) {
   .wide {
-    width: 100%;
+    width: 644px;
   }
 }
 
@@ -458,11 +443,6 @@
 @media (min-width: 1024px) and (max-width: 1239px) {
   .wide {
     width: 984px;
-  }
-
-  .grid.wide {
-    max-width: 984px;
-    margin: 0 auto;
   }
 
   .wide .row {

@@ -3,12 +3,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import productsApi from '../../../api/productsApi';
-
-import styles from './AdminProductEdit.module.scss';
 import ProductForm from '../../../features/ProductForm/ProductForm';
-
-import classNames from 'classnames/bind';
-const cx = classNames.bind(styles);
 
 function AdminProductEdit() {
   const navigate = useNavigate();

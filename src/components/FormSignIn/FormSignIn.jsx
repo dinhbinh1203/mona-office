@@ -7,9 +7,9 @@ import { emailSignInStart } from '../../store/user/user.action';
 import FormInput from '../FormInput/FormInput';
 import SignInGoogle from '../SignInGoogle/SignInGoogle';
 
+import AccessSign from '../AccessSign/AccessSign';
 import styles from './FormSignIn.module.scss';
 import classNames from 'classnames/bind';
-import AccessSign from '../AccessSign/AccessSign';
 
 const cx = classNames.bind(styles);
 
@@ -19,10 +19,9 @@ const initialValue = {
 };
 
 function FormSignIn() {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(initialValue);
   const { email, password } = formFields;
-
-  const dispatch = useDispatch();
 
   const resetFormFields = () => {
     setFormFields(initialValue);
@@ -37,7 +36,6 @@ function FormSignIn() {
     event.preventDefault();
     try {
       dispatch(emailSignInStart(email, password));
-
       resetFormFields();
     } catch (error) {
       if (error.code === 'auth/wrong-password') {

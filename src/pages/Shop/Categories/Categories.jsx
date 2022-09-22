@@ -68,20 +68,23 @@ function Categories() {
         </div>
       ) : (
         <>
-          <div className={cx('row')}>
-            <div
-              className={cx('categories__title', 'col', 'c-12', 'l-12', 'm-12')}
-            >
-              <a href="/">Trang chủ</a>/
-              <a href="/shop">Tất cả sản phẩm của MONA</a>
+          <div className={cx('row', 'title')}>
+            <div className={cx('col', 'c-12', 'l-12', 'm-12')}>
+              <a href="/" className={cx('title__main')}>
+                Trang chủ
+              </a>
+              <span className={cx('title__divider')}>/</span>
+              <a href="/shop" className={cx('title__extra')}>
+                Tất cả sản phẩm của MONA
+              </a>
             </div>
           </div>
           <div className={cx('row', 'filter')}>
-            <div className={cx('filter__title', 'col', 'c-2', 'l-2', 'm-2')}>
-              <span class="material-symbols-outlined">filter_alt</span>
+            <div className={cx('filter__title', 'col', 'c-12', 'l-2', 'm-2')}>
+              <span className="material-symbols-outlined">filter_alt</span>
               <p>Bộ lọc</p>
             </div>
-            <div className={cx('col', 'c-10', 'l-10', 'm-10')}>
+            <div className={cx('col', 'c-12', 'l-10', 'm-10')}>
               <CategoriesFilters
                 filter={filter}
                 categories={categories}
@@ -91,9 +94,8 @@ function Categories() {
             </div>
           </div>
 
-          <div className={cx('products', 'row')}>
-            {products !== undefined && <ListProducts products={products} />}
-          </div>
+          {products !== undefined && <ListProducts products={products} />}
+
           <Pagination
             count={Math.ceil(total / pagination._limit)}
             page={pagination._page}

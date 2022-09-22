@@ -1,0 +1,41 @@
+.title {
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+
+  .title__main {
+    color: rgba(102, 102, 102, 0.7);
+  }
+  .title__divider {
+    margin: 0 6px;
+    color: rgba(102, 102, 102, 0.7);
+  }
+  .title__extra {
+    color: #222;
+    font-weight: bold;
+  }
+}
+
+.is__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+}
+
+/* Mobile and tablet */
+@media (max-width: 1480px) {
+}
+/* IPAD PRO */
+@media (min-width: 1048px) and (max-width: 1480px) {
+}
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1047px) {
+}
+/* Mobile */
+@media (max-width: 739px) {
+  .title {
+    padding-left: 14px;
+    font-size: 1.6rem;
+  }
+}

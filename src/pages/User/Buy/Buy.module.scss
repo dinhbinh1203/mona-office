@@ -19,4 +19,18 @@
       color: var(--primary);
     }
   }
+
+  .not__product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 150px 0;
+
+    .not__product--title {
+      padding-bottom: 10px;
+      font-size: 1.8rem;
+    }
+  }
 }
