@@ -9,7 +9,10 @@ import Rate from '../../../components/Rate/Rate';
 import Button from '../../../components/Button/Button';
 import Rules from '../../../components/Rules/Rules';
 
-import { addItemToCart } from '../../../store/cart/cart.action';
+import {
+  addItemToCart,
+  addMultipleItemToCart,
+} from '../../../store/cart/cart.action';
 import { selectCurrentUser } from '../../../store/user/user.selector';
 
 import productsApi from '../../../api/productsApi';
@@ -17,6 +20,7 @@ import ordersApi from '../../../api/ordersApi';
 
 import styles from './ProductDetail.module.scss';
 import classNames from 'classnames/bind';
+import { toast } from 'react-toastify';
 
 const cx = classNames.bind(styles);
 
@@ -28,6 +32,20 @@ function ProductDetail() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [cartItems, setCartItems] = useState([]);
+
+  const [quantity, setQuantity] = useState(1);
+
+  const handleAdd = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleMinus = () => {
+    if (quantity === 1) {
+      setQuantity(1);
+    } else {
+      setQuantity(quantity - 1);
+    }
+  };
 
   useEffect(() => {
     if (!id) return;
@@ -60,13 +78,17 @@ function ProductDetail() {
     return myArray;
   };
 
-  const addItemHandler = async () => {
+  const handleBuyCartItem = async () => {
     if (!currentUser) {
       navigate('/login');
     } else {
       const orderUser = await ordersApi.getOrderById(currentUser.id);
       const listCartItem = await orderUser.cartItems;
-      await dispatch(addItemToCart(currentUser.id, listCartItem, product));
+      console.log('quantity', typeof quantity);
+      await dispatch(
+        addMultipleItemToCart(currentUser.id, listCartItem, product, quantity),
+      );
+      toast.success('Thêm sản phẩm thành công');
     }
   };
 
@@ -77,7 +99,7 @@ function ProductDetail() {
       const orderUser = await ordersApi.getOrderById(currentUser.id);
       const listCartItem = await orderUser.cartItems;
       await dispatch(addItemToCart(currentUser.id, listCartItem, product));
-      await navigate('/account/cart');
+      setTimeout(() => navigate('/account/cart'), 1000);
     }
   };
 
@@ -117,21 +139,25 @@ function ProductDetail() {
               </div>
               <div className={cx('content__selector')}>
                 <div className={cx('selector__quantity')}>
-                  <span className={cx('quantity__btn')}>-</span>
+                  <span className={cx('quantity__btn')} onClick={handleMinus}>
+                    -
+                  </span>
                   <input
                     type="button"
-                    value="1"
+                    value={quantity}
                     min="1"
                     className={cx('quantity__number')}
                   />
-                  <span className={cx('quantity__btn')}>+</span>
+                  <span className={cx('quantity__btn')} onClick={handleAdd}>
+                    +
+                  </span>
                 </div>
                 <div></div>
 
                 <Button
                   primary
                   className={cx('selector__add')}
-                  onClick={addItemHandler}
+                  onClick={handleBuyCartItem}
                 >
                   THÊM VÀO GIỎ
                 </Button>

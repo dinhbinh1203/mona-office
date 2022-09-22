@@ -19,18 +19,31 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
+const addCartItemMultiple = (cartItems, productToAdd, number) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === productToAdd.id,
+  );
+
+  if (existingCartItem) {
+    return cartItems.map((cartItem) =>
+      cartItem.id === productToAdd.id
+        ? { ...cartItem, quantity: cartItem.quantity + number }
+        : cartItem,
+    );
+  }
+
+  return [...cartItems, { ...productToAdd, quantity: number }];
+};
+
 const removeCartItem = (cartItems, cartItemToRemove) => {
-  // find the cart item to remove
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToRemove.id,
   );
 
-  // check if quantity is equal to 1, if it is remove that item from the cart
   if (existingCartItem.quantity === 1) {
     return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
   }
 
-  // return back cartitems with matching cart item with reduced quantity
   return cartItems.map((cartItem) =>
     cartItem.id === cartItemToRemove.id
       ? { ...cartItem, quantity: cartItem.quantity - 1 }
@@ -47,6 +60,18 @@ export const setCartItemStart = (cartItems) => {
 
 export const addItemToCart = (idUser, cartItems, productToAdd) => {
   const newCartItems = addCartItem(cartItems, productToAdd);
+  ordersApi.update({ id: idUser, cartItems: newCartItems });
+
+  return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
+};
+
+export const addMultipleItemToCart = (
+  idUser,
+  cartItems,
+  productToAdd,
+  number,
+) => {
+  const newCartItems = addCartItemMultiple(cartItems, productToAdd, number);
   ordersApi.update({ id: idUser, cartItems: newCartItems });
 
   return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, newCartItems);
