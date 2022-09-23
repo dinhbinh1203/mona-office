@@ -1,12 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { InputField } from '../../components/FormFields/InputField';
-import Loading from '../../components/Loading/Loading';
-import { useState } from 'react';
 import { default as ButtonDefault } from '../../components/Button/Button';
 
 function UserForm({ initialValues, onSubmit, nameSubmit }) {
-  const [error, setError] = useState('');
   const {
     control,
     handleSubmit,
@@ -18,10 +15,9 @@ function UserForm({ initialValues, onSubmit, nameSubmit }) {
   const handleFormSubmit = async (formValues) => {
     console.log('Submit:', formValues);
     try {
-      setError('');
       await onSubmit?.(formValues);
     } catch (error) {
-      setError(error.message);
+      console.log(error);
     }
   };
 

@@ -4,7 +4,6 @@ import { InputLabel } from '@mui/material';
 import * as React from 'react';
 import { useController } from 'react-hook-form';
 import { FormControl } from '@mui/material';
-import { selectCategoriesOptions } from '../../store/categories/categories.selector';
 
 export function SelectField({ name, control, label, disabled, options }) {
   const {

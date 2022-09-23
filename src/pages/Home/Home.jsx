@@ -7,7 +7,6 @@ import productsApi from '../../api/productsApi';
 import ListProductHome from '../../components/ListProductHome/ListProductHome';
 import ProductNew from '../../components/Product/ProductNew/ProductNew';
 import newsApi from '../../api/newsApi';
-import images from '../../assets/images';
 
 const cx = classNames.bind(styles);
 const INTRODUCE = [

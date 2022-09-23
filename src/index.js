@@ -8,7 +8,7 @@ import { store, persistor } from './store/store';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import { history } from './utils/history/history';
 import { unstable_HistoryRouter as HistoryRouter } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

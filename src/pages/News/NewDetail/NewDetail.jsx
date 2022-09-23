@@ -1,8 +1,6 @@
 import { useParams } from 'react-router';
 import styles from './NewDetail.module.scss';
 import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Socials from '../../../components/Socials/Socials';
 

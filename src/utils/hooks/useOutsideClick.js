@@ -1,9 +1,7 @@
 import { useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const useOutsideClick = (callback) => {
   const ref = useRef();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClick = (event) => {

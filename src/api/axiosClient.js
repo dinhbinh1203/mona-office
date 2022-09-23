@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: 'https://mona-app-binh57kt.herokuapp.com/',
+  baseURL: 'https://json-mona-office.herokuapp.com/',
   headers: {
     'Content-Type': 'application/json',
   },
