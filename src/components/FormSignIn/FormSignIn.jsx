@@ -64,7 +64,7 @@ function FormSignIn() {
           <FormInput
             name="password"
             placeholder="Mật khẩu"
-            type="password"
+            type="current-password"
             required
             onChange={handleChange}
             value={password}

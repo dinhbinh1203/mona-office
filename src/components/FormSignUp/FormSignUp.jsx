@@ -68,7 +68,7 @@ function FormSigUp() {
           <FormInput
             name="password"
             placeholder="Mật khẩu"
-            type="password"
+            type="new-password"
             required
             onChange={handleChange}
             value={password}
@@ -78,7 +78,7 @@ function FormSigUp() {
           <FormInput
             name="confirmPassword"
             placeholder="Xác nhận mật khẩu"
-            type="password"
+            type="new-password"
             required
             onChange={handleChange}
             value={confirmPassword}
