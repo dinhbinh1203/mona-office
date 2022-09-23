@@ -61,13 +61,11 @@ function Categories() {
   };
 
   return (
-    <div className={cx('categories', 'grid', 'wide')}>
+    <>
       {isLoadingProducts || isLoadingCategories ? (
-        <div className={cx('is__loading')}>
-          <Loading />
-        </div>
+        <Loading />
       ) : (
-        <>
+        <div className={cx('categories', 'grid', 'wide')}>
           <div className={cx('row', 'title')}>
             <div className={cx('col', 'c-12', 'l-12', 'm-12')}>
               <a href="/" className={cx('title__main')}>
@@ -102,9 +100,9 @@ function Categories() {
             onChange={handlePageChange}
             className={cx('page__pagination')}
           />
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

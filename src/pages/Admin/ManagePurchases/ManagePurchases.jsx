@@ -29,10 +29,7 @@ function ManagePurchases() {
       <div className={cx('container')}>
         <Title>Danh sách đơn mua hàng</Title>
         <div className={cx('row', 'title')}>
-          <div className={cx('col', 'c-1', 'm-1', 'l-1', 'title__content')}>
-            STT
-          </div>
-          <div className={cx('col', 'c-1', 'm-1', 'l-1', 'title__content')}>
+          <div className={cx('col', 'c-2', 'm-2', 'l-2', 'title__content')}>
             Tên
           </div>
           <div className={cx('col', 'c-2', 'm-2', 'l-2', 'title__content')}>
@@ -56,9 +53,11 @@ function ManagePurchases() {
           </div>
         </div>
         {listPurchases.length ? (
-          listPurchases.map((user, index) => (
+          listPurchases.map((user) => (
             <>
-              <UserPurchases userId={user.id} key={user.id} index={index} />
+              {user.cartItems.length !== 0 && (
+                <UserPurchases userId={user.id} key={user.id} />
+              )}
             </>
           ))
         ) : (

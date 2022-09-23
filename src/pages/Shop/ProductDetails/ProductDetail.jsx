@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import Loading from '../../../components/Loading/Loading';
 import DescriptionProduct from '../../../components/DescriptionProduct/DescriptionProduct';
 import Rate from '../../../components/Rate/Rate';
 import Button from '../../../components/Button/Button';
@@ -31,8 +30,6 @@ function ProductDetail() {
   const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [cartItems, setCartItems] = useState([]);
-
   const [quantity, setQuantity] = useState(1);
 
   const handleAdd = () => {

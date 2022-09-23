@@ -1,3 +1,37 @@
-.home-introduce {
+.home__introduce {
   box-shadow: 1px 1px 15px rgb(0 0 0 / 15%);
+  margin: 50px 0;
+}
+
+.title__news {
+  font-size: 3.2rem;
+  font-weight: 400;
+  font-family: 'Noto Serif';
+  color: var(--black);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+/* Mobile and tablet */
+@media (max-width: 1480px) {
+}
+/* IPAD PRO */
+@media (min-width: 1048px) and (max-width: 1480px) {
+}
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1047px) {
+}
+/* Mobile */
+@media (max-width: 739px) {
+  .home__introduce {
+    margin: 10px 0;
+  }
+
+  .title__news {
+    padding-bottom: 4px;
+    font-size: 2.2rem;
+  }
 }

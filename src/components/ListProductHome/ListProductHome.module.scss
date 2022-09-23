@@ -8,7 +8,7 @@
     margin-top: 20px;
 
     .title__content {
-      font-size: 3.6rem;
+      font-size: 3.2rem;
       font-weight: 400;
       font-family: 'Noto Serif';
 
@@ -48,12 +48,6 @@
   }
 }
 
-/* Mobile and tablet */
-@media (max-width: 1480px) {
-}
-/* IPAD PRO */
-@media (min-width: 1048px) and (max-width: 1480px) {
-}
 /* Tablet */
 @media (min-width: 740px) and (max-width: 1047px) {
   .list__product--home {

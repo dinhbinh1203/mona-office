@@ -20,6 +20,7 @@ function Category() {
       try {
         const data = await categoriesApi.getProductCategory(id);
         const titleFromApi = await categoriesApi.getCategory(id);
+
         setCategory(data);
         setTitle(titleFromApi.title);
       } catch (error) {
@@ -47,11 +48,7 @@ function Category() {
           {category !== undefined && <ListProducts products={category} user />}
         </div>
       ) : (
-        <div className="grid wide">
-          <div className={cx('is__loading')}>
-            <Loading />
-          </div>
-        </div>
+        <Loading />
       )}
     </div>
   );

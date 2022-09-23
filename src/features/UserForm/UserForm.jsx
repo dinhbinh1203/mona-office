@@ -42,7 +42,6 @@ function UserForm({ initialValues, onSubmit, nameSubmit }) {
           type="text"
         />
         <ButtonDefault type="submit" disabled={isSubmitting} primary>
-          {isSubmitting && <Loading />}
           {nameSubmit}
         </ButtonDefault>
       </form>

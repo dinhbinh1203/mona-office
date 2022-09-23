@@ -15,6 +15,7 @@ import PrivateRoute from './utils/PrivateRoute/PrivateRoute';
 import AdminRoute from './utils/AdminRoute/AdminRoute';
 import UserRoute from './utils/UserRoute/AdminRoute';
 
+import { fetchCategoriesStart } from './store/categories/categories.action';
 import { checkUserSession } from './store/user/user.action';
 import User from './pages/User/User';
 
@@ -23,6 +24,7 @@ function App() {
 
   useEffect(() => {
     dispatch(checkUserSession());
+    dispatch(fetchCategoriesStart());
   }, []);
 
   return (

@@ -1,9 +1,8 @@
-import images from '../../../assets/images';
-import styles from './Footer.module.scss';
-import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
+import styles from './Footer.module.scss';
+import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 const CONTACTS = [
@@ -40,7 +39,7 @@ const POLICIES = [
 
 function Footer() {
   return (
-    <div className={cx('grid', 'wide')}>
+    <div className="grid wide">
       <div className={cx('footer', 'row')}>
         <div className={cx('footer__name', 'col', 'c-12', 'l-3', 'm-6')}>
           <div className={cx('name__page')}>MONA OFFICE</div>
@@ -50,34 +49,34 @@ function Footer() {
             lượng
           </div>
         </div>
-        <div className={cx('footer-item', 'col', 'c-12', 'l-3', 'm-6')}>
-          <div className={cx('item-title')}>Văn phòng</div>
+        <div className={cx('footer__item', 'col', 'c-12', 'l-3', 'm-6')}>
+          <div className={cx('item__title')}>Văn phòng</div>
           {CONTACTS.map((contact, index) => (
-            <div key={index} className={cx('item-container')}>
-              <div className={cx('item-icon')}>{contact.icon}</div>
-              <div className={cx('item-content')}>{contact.content}</div>
+            <div key={index} className={cx('item__container')}>
+              <div className={cx('item__icon')}>{contact.icon}</div>
+              <div className={cx('item__content')}>{contact.content}</div>
             </div>
           ))}
         </div>
-        <div className={cx('footer-item', 'col', 'c-12', 'l-3', 'm-6')}>
-          <div className={cx('item-title')}>Dịch vụ</div>
+        <div className={cx('footer__item', 'col', 'c-12', 'l-3', 'm-6')}>
+          <div className={cx('item__title')}>Dịch vụ</div>
           {POLICIES.map((policy, index) => (
-            <div key={index} className={cx('item-container')}>
-              <div className={cx('item-content', 'item-policy')}>
+            <div key={index} className={cx('item__container')}>
+              <div className={cx('item__content', 'item__policy')}>
                 {policy.content}
               </div>
             </div>
           ))}
         </div>
-        <div className={cx('footer-item', 'col', 'c-12', 'l-3', 'm-6')}>
-          <div className={cx('item-title')}>Đăng ký</div>
-          <div className={cx('item-container', 'item-send')}>
-            <div className={cx('item-content')}>
+        <div className={cx('footer__item', 'col', 'c-12', 'l-3', 'm-6')}>
+          <div className={cx('item__title')}>Đăng ký</div>
+          <div className={cx('item__container', 'item__send')}>
+            <div className={cx('item__content')}>
               Đăng ký để nhận được được thông tin mới nhất từ chúng tôi.
             </div>
-            <div className={cx('item-input')}>
+            <div className={cx('item__input')}>
               <input placeholder="Email" />
-              <div className={cx('input-icon')}>
+              <div className={cx('input__icon')}>
                 <FontAwesomeIcon icon={faPaperPlane} />
               </div>
             </div>

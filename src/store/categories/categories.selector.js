@@ -15,8 +15,8 @@ export const selectCategoriesIsLoading = createSelector(
 export const selectCategoriesOptions = createSelector(
   selectCategoriesReducer,
   (categoriesSlice) =>
-    categoriesSlice.categories.map((city) => ({
-      label: city.title,
-      value: city.id,
+    categoriesSlice.categories.map((category) => ({
+      label: category.title,
+      value: category.id,
     })),
 );

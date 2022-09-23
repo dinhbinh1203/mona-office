@@ -1,24 +1,18 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import {
-  selectCurrentUser,
-  selectCurrentUserId,
-} from '../../../store/user/user.selector';
-import images from '../../../assets/images';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-
-import Tippy from '@tippyjs/react';
-import 'tippy.js/dist/tippy.css';
-import Search from '../Search/Search';
-
-import styles from './Header.module.scss';
-import classNames from 'classnames/bind';
-
+import { selectCurrentUser } from '../../../store/user/user.selector';
+import images from '../../../assets/images';
 import Nav from '../../../components/Nav/Nav';
 import Account from '../../../components/Account/Account';
+import Tippy from '@tippyjs/react';
+import Search from '../Search/Search';
+
+import 'tippy.js/dist/tippy.css';
+import styles from './Header.module.scss';
+import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
@@ -31,37 +25,37 @@ const categories = [
   {
     id: 1,
     title: 'Bìa hồ sơ',
-    href: '/shop/1',
+    href: '/shop/bia-ho-so',
   },
   {
     title: 'Bút viết',
     id: 2,
-    href: '/shop/2',
+    href: '/shop/but-viet',
   },
   {
     title: 'Giấy',
     id: 3,
-    href: '/shop/3',
+    href: '/shop/giay',
   },
   {
     title: 'Thước',
     id: 4,
-    href: '/shop/4',
+    href: '/shop/thuoc',
   },
   {
     title: 'Cặp sách',
     id: 5,
-    href: '/shop/5',
+    href: '/shop/cap-sach',
   },
   {
     title: 'Sản phẩm khác',
     id: 6,
-    href: '/shop/6',
+    href: '/shop/san-pham-khac',
   },
   {
     title: 'Tin mới nhất',
     id: 7,
-    href: '/shop/6',
+    href: '/news',
   },
 ];
 

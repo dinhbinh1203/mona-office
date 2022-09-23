@@ -43,15 +43,6 @@ function NewDetail() {
       {loading ? (
         <div className={cx('new-detail', 'row')}>
           <div className={cx('detail-sidebar', 'col', 'c-12', 'l-3', 'm-4')}>
-            <div className={cx('detail-sidebar--input')}>
-              <input
-                className={cx('sidebar-input')}
-                placeholder="Tìm kiếm..."
-              ></input>
-              <div className={cx('sidebar-input-icon')}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
-              </div>
-            </div>
             <div className={cx('detail-sidebar--content')}>
               <div className={cx('sidebar-content--title')}>BÀI VIẾT MỚI</div>
               <div className={cx('sidebar-content--list')}>

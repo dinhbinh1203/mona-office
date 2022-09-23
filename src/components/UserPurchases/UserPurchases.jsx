@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 
 const cx = classNames.bind(styles);
 
-function UserPurchases({ userId, index }) {
+function UserPurchases({ userId }) {
   const [user, setUser] = useState([]);
   const [listPurchases, setListPurchases] = useState([]);
 
@@ -26,10 +26,7 @@ function UserPurchases({ userId, index }) {
   return (
     <>
       <div className={cx('row', 'information__purchases', 'pc')}>
-        <div className={cx('col', 'c-1', 'm-1', 'l-1', 'content')}>
-          {index + 1}
-        </div>
-        <div className={cx('col', 'c-1', 'm-1', 'l-1', 'content')}>
+        <div className={cx('col', 'c-2', 'm-2', 'l-2', 'content')}>
           {user.name}
         </div>
         <div className={cx('col', 'c-2', 'm-2', 'l-2', 'content')}>
