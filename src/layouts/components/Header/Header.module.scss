@@ -4,6 +4,7 @@
   background-color: var(--white);
   z-index: 10;
   height: 122px;
+  padding-top: 10px;
 
   .header__inner {
     display: flex;
@@ -156,7 +157,7 @@
 /* Mobile */
 @media (max-width: 739px) {
   .header {
-    height: 70px;
+    height: 90px;
 
     .header__inner {
       position: relative;

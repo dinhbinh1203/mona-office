@@ -16,6 +16,7 @@ import { selectCurrentUser } from '../../../store/user/user.selector';
 
 import productsApi from '../../../api/productsApi';
 import ordersApi from '../../../api/ordersApi';
+import categoriesApi from '../../../api/categoriesApi';
 
 import styles from './ProductDetail.module.scss';
 import classNames from 'classnames/bind';
@@ -26,6 +27,7 @@ const cx = classNames.bind(styles);
 function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState();
+  const [title, setTitle] = useState();
   const isLoading = Boolean(id);
   const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
@@ -48,8 +50,13 @@ function ProductDetail() {
     if (!id) return;
     (async () => {
       try {
-        const data = await productsApi.getProductById(id);
-        setProduct(data);
+        const dataProduct = await productsApi.getProductById(id);
+        const dataTitle = await categoriesApi.getCategory(
+          dataProduct.categoryId,
+        );
+        setTitle(dataTitle);
+
+        setProduct(dataProduct);
       } catch (error) {
         console.log(error);
       }
@@ -102,6 +109,24 @@ function ProductDetail() {
     <div>
       {(!isLoading || Boolean(product)) && (
         <div className="grid wide">
+          <div className={cx('row', 'title')}>
+            <div className={cx('col', 'c-12', 'l-12', 'm-12')}>
+              <a href="/" className={cx('title__main')}>
+                Trang chủ
+              </a>
+              <span className={cx('title__divider')}>/</span>
+              <a href={`/shop/${title.id}`} className={cx('title__main')}>
+                {title.title}
+              </a>
+              <span className={cx('title__divider')}>/</span>
+              <a
+                href={`/shop/product/${product.id}`}
+                className={cx('title__extra')}
+              >
+                {product.name}
+              </a>
+            </div>
+          </div>
           <div className={cx('container', 'row')}>
             <div className={cx('product__image', 'col', 'l-6', 'm-12', 'c-12')}>
               <img src={product.imageUrl} alt="product"></img>

@@ -49,23 +49,19 @@
 }
 
 /* Tablet */
-@media (min-width: 740px) and (max-width: 1047px) {
-  .list__product--home {
-    .list__title {
-      margin: 20px 40px;
 
-      .title__content {
-        font-size: 3.2rem;
-      }
-    }
-  }
-}
+/* Mobile */
 /* Mobile */
 @media (max-width: 739px) {
   .list__product--home {
+    padding: 0 10px;
     .list__title {
       .title__content {
-        font-size: 2.2rem;
+        font-size: 2rem;
+      }
+
+      .title__watch--all {
+        font-size: 1.4rem;
       }
     }
   }

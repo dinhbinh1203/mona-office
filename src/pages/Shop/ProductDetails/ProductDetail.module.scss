@@ -1,3 +1,21 @@
+.title {
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+
+  .title__main {
+    color: rgba(102, 102, 102, 0.7);
+  }
+  .title__divider {
+    margin: 0 6px;
+    color: rgba(102, 102, 102, 0.7);
+  }
+  .title__extra {
+    color: #222;
+    font-weight: bold;
+  }
+}
+
 .container {
   .product__image {
     img {
@@ -6,6 +24,8 @@
   }
 
   .product__content {
+    padding: 0 20px;
+
     .content__title {
       font-family: 'Noto Serif';
       font-style: normal;
@@ -135,6 +155,37 @@
       border: 1px solid #ddd;
       background-color: #fff;
       padding: 30px;
+    }
+  }
+}
+
+@media (max-width: 739px) {
+  .title {
+    padding-left: 14px;
+    font-size: 1.6rem;
+  }
+
+  .container {
+    padding: 0 12px;
+
+    .product__image {
+      img {
+        width: 100%;
+      }
+    }
+
+    .product__content {
+      padding: 0;
+    }
+  }
+
+  .table {
+    padding-top: 20px;
+
+    .table__choose {
+      .choose__container {
+        padding: 20px;
+      }
     }
   }
 }

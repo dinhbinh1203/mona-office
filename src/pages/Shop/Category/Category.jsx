@@ -45,7 +45,11 @@ function Category() {
             </div>
           </div>
 
-          {category !== undefined && <ListProducts products={category} user />}
+          <div className={cx('category')}>
+            {category !== undefined && (
+              <ListProducts products={category} user />
+            )}
+          </div>
         </div>
       ) : (
         <Loading />

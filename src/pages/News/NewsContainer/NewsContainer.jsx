@@ -37,7 +37,7 @@ function NewsContainer() {
               </a>
             </div>
           </div>
-          <div className="row">
+          <div className={cx('row', 'container')}>
             {news.map((item) => (
               <div className="col c-12 m-4 l-4">
                 <a href={`/news/${item.id}`} key={item.id}>
