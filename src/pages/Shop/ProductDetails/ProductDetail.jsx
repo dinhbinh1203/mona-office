@@ -52,8 +52,6 @@ function ProductDetail() {
     (async () => {
       try {
         const data = await productsApi.getProductById(id);
-        const listItem = await ordersApi.getOrderById(currentUser.id);
-        setCartItems(listItem);
         setProduct(data);
       } catch (error) {
         console.log(error);

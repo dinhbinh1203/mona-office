@@ -1,13 +1,17 @@
 import { Routes, Route, useParams } from 'react-router-dom';
-
-import NewsContainer from '../../components/NewsContainer/NewsContainer';
 import { NEWS } from '../../News';
 import NewDetail from './NewDetail/NewDetail';
+import { useEffect, useState } from 'react';
+import newsApi from '../../api/newsApi';
+import Loading from '../../components/Loading/Loading';
+
+import NewsContainer from './NewsContainer/NewsContainer';
+
 function News() {
   return (
     <Routes>
       <Route index element={<NewsContainer />} />
-      <Route path=":name" element={<NewDetail data={NEWS} />} />
+      <Route path=":id" element={<NewDetail />} />
     </Routes>
   );
 }
