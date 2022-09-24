@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 ProductBuy.propTypes = {
-  cartItem: PropTypes.node.isRequired,
+  cartItem: PropTypes.object.isRequired,
 };
 
 function ProductBuy({ cartItem }) {

@@ -17,7 +17,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 ProductCart.propTypes = {
-  cartItem: PropTypes.node.isRequired,
+  cartItem: PropTypes.object.isRequired,
 };
 
 function ProductCart({ cartItem }) {
@@ -42,6 +42,7 @@ function ProductCart({ cartItem }) {
         console.log(error);
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addItemHandler = async () => {

@@ -107,6 +107,10 @@ export function* signInWithEmail({ payload: { email, password } }) {
     yield call(getSnapshotFromUserAuth, user);
   } catch (error) {
     yield put(signInFailed(error));
+    if (error.message === 'Firebase: Error (auth/wrong-password.') {
+      yield call(alert, error.message);
+    }
+    yield call(alert, error.message);
   }
 }
 

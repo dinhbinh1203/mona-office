@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 ListProductHome.propTypes = {
   title: PropTypes.string,
-  products: PropTypes.node.isRequired,
+  products: PropTypes.array.isRequired,
 };
 
 const cx = classNames.bind(styles);

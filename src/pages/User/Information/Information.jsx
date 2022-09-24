@@ -57,8 +57,8 @@ function Information() {
             <div className="col c-10 m-6 l-6">
               <p className={cx('title__detail')}>Thông tin tài khoản</p>
               <div className={cx('container')}>
-                {data.map((item) => (
-                  <div className={cx('item', 'row')}>
+                {data.map((item, index) => (
+                  <div className={cx('item', 'row')} key={index}>
                     <p
                       className={cx('item__title', 'col', 'c-3', 'm-3', 'l-3')}
                     >

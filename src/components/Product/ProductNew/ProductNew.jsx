@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const cx = classNames.bind(styles);
 
 ProductNew.propTypes = {
-  newItem: PropTypes.node.isRequired,
+  newItem: PropTypes.object.isRequired,
 };
 
 function ProductNew({ newItem }) {

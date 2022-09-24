@@ -41,7 +41,8 @@ function Cart() {
         console.log(error);
       }
     })();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idUser]);
 
   return (
     <div className="grid wide">

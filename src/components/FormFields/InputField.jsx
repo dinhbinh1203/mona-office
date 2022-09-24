@@ -9,14 +9,7 @@ InputField.propTypes = {
   comment: PropTypes.bool,
 };
 
-export function InputField({
-  name,
-  control,
-  label,
-  type,
-  comment,
-  ...inputProps
-}) {
+export function InputField({ name, control, label, type, comment }) {
   const {
     field: { value, onChange, onBlur, ref },
     fieldState: { invalid },
@@ -35,8 +28,8 @@ export function InputField({
       inputRef={ref}
       error={invalid}
       type={type}
-      inputProps={inputProps}
       comment={comment}
+      attribute={value.toString()}
     />
   );
 }

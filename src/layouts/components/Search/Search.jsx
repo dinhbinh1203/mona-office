@@ -20,7 +20,6 @@ function Search() {
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [showResult, setShowResult] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   const inputRef = useRef();
 
@@ -69,19 +68,14 @@ function Search() {
             className={cx('input')}
             placeholder="Tìm kiếm "
             onChange={changeValueInput}
-            ref={inputRef}
+            inputef={inputRef}
           ></input>
-          {!!searchValue && !loading && (
+          {!!searchValue && (
             <div
               className={cx('input__icon', 'input__icon--clear')}
               onClick={handleClearInput}
             >
               <FontAwesomeIcon icon={faXmark} />
-            </div>
-          )}
-          {loading && (
-            <div className={cx('input__icon', 'input__icon--loading')}>
-              <FontAwesomeIcon icon={faSpinner} />
             </div>
           )}
         </div>

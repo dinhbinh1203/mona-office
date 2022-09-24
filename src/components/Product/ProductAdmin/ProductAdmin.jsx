@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 ProductAdmin.propTypes = {
-  product: PropTypes.node.isRequired,
+  product: PropTypes.object.isRequired,
 };
 
 function ProductAdmin({ product }) {

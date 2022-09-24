@@ -93,7 +93,11 @@ function Home() {
         <div className={cx('row', 'title__news')}>Tin mới nhất</div>
         <div className="row">
           {listNews.map((newItem) => (
-            <a href={`/news/${newItem.id}`} className="col c-12 l-4 m-4">
+            <a
+              href={`/news/${newItem.id}`}
+              className="col c-12 l-4 m-4"
+              key={newItem.id}
+            >
               <ProductNew newItem={newItem} />
             </a>
           ))}

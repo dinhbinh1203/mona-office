@@ -9,7 +9,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 FormRate.propTypes = {
-  name: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 function FormRate({ name }) {

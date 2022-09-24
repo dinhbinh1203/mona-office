@@ -10,7 +10,7 @@ FormInput.propTypes = {
   comment: PropTypes.bool,
 };
 
-function FormInput({ label, comment, type, ...otherProps }) {
+function FormInput({ label, comment, type, error = 'false', ...otherProps }) {
   return (
     <>
       {label && <div className={cx('label__input')}>{`${label}`}</div>}

@@ -6,7 +6,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 ListProducts.propTypes = {
-  products: PropTypes.node.isRequired,
+  products: PropTypes.array.isRequired,
 };
 
 function ListProducts({ products }) {

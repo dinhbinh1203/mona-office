@@ -5,7 +5,7 @@ import styles from './Button.module.scss';
 const cx = classNames.bind(styles);
 
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.string.isRequired,
   primary: PropTypes.bool,
   white: PropTypes.bool,
   black: PropTypes.bool,

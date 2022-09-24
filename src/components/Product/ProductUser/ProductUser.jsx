@@ -15,8 +15,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 ProductUser.propTypes = {
-  product: PropTypes.node.isRequired,
-  id: PropTypes.node.isRequired,
+  product: PropTypes.object.isRequired,
 };
 
 function ProductUser({ product, id }) {

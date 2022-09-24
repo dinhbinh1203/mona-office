@@ -30,7 +30,7 @@ function FormSigUp() {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert('passwords do not match');
+      alert('Vui lòng nhập lại mật khẩu');
       return;
     }
 
@@ -68,7 +68,7 @@ function FormSigUp() {
           <FormInput
             name="password"
             placeholder="Mật khẩu"
-            type="new-password"
+            type="password"
             required
             onChange={handleChange}
             value={password}
@@ -78,7 +78,7 @@ function FormSigUp() {
           <FormInput
             name="confirmPassword"
             placeholder="Xác nhận mật khẩu"
-            type="new-password"
+            type="password"
             required
             onChange={handleChange}
             value={confirmPassword}

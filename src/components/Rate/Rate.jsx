@@ -6,7 +6,7 @@ import FormRate from '../FormRate/FormRate';
 const cx = classNames.bind(styles);
 
 Rate.propTypes = {
-  name: PropTypes.node.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 function Rate({ name }) {

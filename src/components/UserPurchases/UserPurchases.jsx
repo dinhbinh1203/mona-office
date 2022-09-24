@@ -8,7 +8,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 UserPurchases.propTypes = {
-  userId: PropTypes.node.isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 function UserPurchases({ userId }) {
@@ -26,7 +26,7 @@ function UserPurchases({ userId }) {
         console.log(error);
       }
     })();
-  }, []);
+  }, [userId]);
 
   return (
     <>

@@ -36,7 +36,8 @@ import { default as ButtonDefault } from '../../../components/Button/Button';
 import ProductAdmin from '../../../components/Product/ProductAdmin/ProductAdmin';
 
 import Loading from '../../../components/Loading/Loading';
-import CategoriesFilters from '../../../features/categories/CategoriesFilters';
+
+import CategoriesFilters from '../../../features/Categories/CategoriesFilters';
 
 import styles from './AdminCategories.module.scss';
 import classNames from 'classnames/bind';

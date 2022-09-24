@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { selectCurrentUser } from '../../../store/user/user.selector';
 import { setCartItemStart } from '../../../store/cart/cart.action';
 import ordersApi from '../../../api/ordersApi';
-import Price from '../../Price/Price';
 
 import styles from './ProductCheckout.module.scss';
 import classNames from 'classnames/bind';
@@ -13,7 +12,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 ProductCheckout.propTypes = {
-  cartItem: PropTypes.node.isRequired,
+  cartItem: PropTypes.object.isRequired,
 };
 
 function ProductCheckout({ cartItem }) {
@@ -35,6 +34,7 @@ function ProductCheckout({ cartItem }) {
         console.log(error);
       }
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

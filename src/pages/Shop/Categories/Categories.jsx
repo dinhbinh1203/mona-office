@@ -19,7 +19,7 @@ import {
 } from '../../../store/categories/categories.selector';
 
 import Loading from '../../../components/Loading/Loading';
-import CategoriesFilters from '../../../features/categories/CategoriesFilters';
+import CategoriesFilters from '../../../features/Categories/CategoriesFilters';
 import ListProducts from '../../../components/ListProducts/ListProducts';
 
 import styles from './Categories.module.scss';

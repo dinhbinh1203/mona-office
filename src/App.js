@@ -25,6 +25,7 @@ function App() {
   useEffect(() => {
     dispatch(checkUserSession());
     dispatch(fetchCategoriesStart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

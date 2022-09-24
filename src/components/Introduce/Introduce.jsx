@@ -1,12 +1,7 @@
-import PropTypes from 'prop-types';
 import styles from './Introduce.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
-
-Introduce.propTypes = {
-  item: PropTypes.node.isRequired,
-};
 
 function Introduce({ item }) {
   return (
