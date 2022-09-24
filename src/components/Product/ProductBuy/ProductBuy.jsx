@@ -1,7 +1,12 @@
+import PropTypes from 'prop-types';
 import styles from './ProductBuy.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
+
+ProductBuy.propTypes = {
+  cartItem: PropTypes.node.isRequired,
+};
 
 function ProductBuy({ cartItem }) {
   const formatMoney = (n) => {

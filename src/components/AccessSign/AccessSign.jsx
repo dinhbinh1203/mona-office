@@ -1,9 +1,17 @@
+import PropTypes from 'prop-types';
 import styles from './AccessSign.module.scss';
 import classNames from 'classnames/bind';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
+
+AccessSign.propTypes = {
+  btn: PropTypes.string,
+  description: PropTypes.string,
+  to: PropTypes.string,
+  title: PropTypes.string,
+};
 
 function AccessSign({ btn, description, to, title }) {
   return (

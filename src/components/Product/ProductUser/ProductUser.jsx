@@ -1,17 +1,23 @@
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import Button from '../../../components/Button/Button';
+import Price from '../../../components/Price/Price';
 import { selectCurrentUser } from '../../../store/user/user.selector';
 import { addItemToCart } from '../../../store/cart/cart.action';
 import ordersApi from '../../../api/ordersApi';
 
 import styles from './ProductUser.module.scss';
 import classNames from 'classnames/bind';
-import Price from '../../../components/Price/Price';
 
 const cx = classNames.bind(styles);
+
+ProductUser.propTypes = {
+  product: PropTypes.node.isRequired,
+  id: PropTypes.node.isRequired,
+};
 
 function ProductUser({ product, id }) {
   const dispatch = useDispatch();

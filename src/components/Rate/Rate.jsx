@@ -1,8 +1,13 @@
+import PropTypes from 'prop-types';
 import styles from './Rate.module.scss';
 import classNames from 'classnames/bind';
 import FormRate from '../FormRate/FormRate';
 
 const cx = classNames.bind(styles);
+
+Rate.propTypes = {
+  name: PropTypes.node.isRequired,
+};
 
 function Rate({ name }) {
   return (

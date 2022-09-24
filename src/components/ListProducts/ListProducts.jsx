@@ -1,8 +1,13 @@
+import PropTypes from 'prop-types';
 import ProductUser from '../Product/ProductUser/ProductUser';
 import styles from './ListProducts.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
+
+ListProducts.propTypes = {
+  products: PropTypes.node.isRequired,
+};
 
 function ListProducts({ products }) {
   return (

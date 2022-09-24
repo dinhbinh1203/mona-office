@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { selectCurrentUser } from '../../../store/user/user.selector';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
@@ -14,6 +15,10 @@ import styles from './ProductCart.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
+
+ProductCart.propTypes = {
+  cartItem: PropTypes.node.isRequired,
+};
 
 function ProductCart({ cartItem }) {
   const dispatch = useDispatch();

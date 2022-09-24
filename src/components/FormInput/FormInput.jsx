@@ -1,9 +1,16 @@
+import PropTypes from 'prop-types';
 import styles from './FormInput.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const FormInput = ({ label, comment = false, type, ...otherProps }) => {
+FormInput.propTypes = {
+  label: PropTypes.string,
+  type: PropTypes.string,
+  comment: PropTypes.bool,
+};
+
+function FormInput({ label, comment, type, ...otherProps }) {
   return (
     <>
       {label && <div className={cx('label__input')}>{`${label}`}</div>}
@@ -17,6 +24,6 @@ const FormInput = ({ label, comment = false, type, ...otherProps }) => {
       )}
     </>
   );
-};
+}
 
 export default FormInput;

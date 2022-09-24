@@ -1,14 +1,20 @@
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import { selectCurrentUser } from '../../../store/user/user.selector';
 import { setCartItemStart } from '../../../store/cart/cart.action';
 import ordersApi from '../../../api/ordersApi';
+import Price from '../../Price/Price';
 
 import styles from './ProductCheckout.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
+
+ProductCheckout.propTypes = {
+  cartItem: PropTypes.node.isRequired,
+};
 
 function ProductCheckout({ cartItem }) {
   const dispatch = useDispatch();
@@ -40,6 +46,7 @@ function ProductCheckout({ cartItem }) {
         <div className={cx('wrapper__name')}>
           <h3 className={cx('product__name')}>{cartItem.name}</h3>
         </div>
+
         <div className={cx('product__price')}>
           {cartItem.prevPrice && (
             <p className={cx('price__prev')}>

@@ -1,6 +1,12 @@
+import PropTypes from 'prop-types';
 import styles from './Price.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
+
+Price.propTypes = {
+  prevPrice: PropTypes.number,
+  price: PropTypes.number,
+};
 
 function Price({ prevPrice, price }) {
   const formatMoney = (n) => {
@@ -14,9 +20,8 @@ function Price({ prevPrice, price }) {
           {`${formatMoney(prevPrice)}`}đ
         </p>
       )}
-      {price && (
-        <p className={cx('product__price--now')}>{`${formatMoney(price)}`}đ</p>
-      )}
+
+      <p className={cx('product__price--now')}>{`${formatMoney(price)}`}đ</p>
     </div>
   );
 }

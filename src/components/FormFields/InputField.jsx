@@ -1,8 +1,13 @@
+import PropTypes from 'prop-types';
 import { useController } from 'react-hook-form';
 import FormInput from '../FormInput/FormInput';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { type } from '@testing-library/user-event/dist/type';
+
+InputField.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+  type: PropTypes.string,
+  comment: PropTypes.bool,
+};
 
 export function InputField({
   name,

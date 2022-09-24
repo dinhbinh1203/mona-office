@@ -1,9 +1,16 @@
+import PropTypes from 'prop-types';
 import { FormHelperText, MenuItem, Select } from '@mui/material';
-
 import { InputLabel } from '@mui/material';
 import * as React from 'react';
 import { useController } from 'react-hook-form';
 import { FormControl } from '@mui/material';
+
+SelectField.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+  options: PropTypes.array,
+  disabled: PropTypes.bool,
+};
 
 export function SelectField({ name, control, label, disabled, options }) {
   const {

@@ -1,10 +1,15 @@
-import styles from './UserPurchases.module.scss';
-import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import usersApi from '../../api/usersApi';
 import purchasesApi from '../../api/purchasesApi';
-import { useState, useEffect } from 'react';
+import styles from './UserPurchases.module.scss';
+import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
+
+UserPurchases.propTypes = {
+  userId: PropTypes.node.isRequired,
+};
 
 function UserPurchases({ userId }) {
   const [user, setUser] = useState([]);

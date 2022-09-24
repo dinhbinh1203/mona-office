@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import images from '../../assets/images';
 import styles from './SignInGoogle.module.scss';
 import classNames from 'classnames/bind';
@@ -5,6 +6,10 @@ import { useDispatch } from 'react-redux';
 import { googleSignInStart } from '../../store/user/user.action';
 
 const cx = classNames.bind(styles);
+
+SignInGoogle.propTypes = {
+  title: PropTypes.string,
+};
 
 function SignInGoogle({ title }) {
   const dispatch = useDispatch();

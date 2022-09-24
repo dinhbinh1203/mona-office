@@ -1,7 +1,12 @@
+import PropTypes from 'prop-types';
 import styles from './Nav.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
+
+Nav.propTypes = {
+  categories: PropTypes.node.isRequired,
+};
 
 function Nav({ categories }) {
   return (

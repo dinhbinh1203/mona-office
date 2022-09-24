@@ -1,9 +1,9 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOutStart } from '../../store/user/user.action';
+import { selectCurrentUser } from '../../store/user/user.selector';
 import styles from './Account.module.scss';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
-import { signOutStart } from '../../store/user/user.action';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../store/user/user.selector';
 
 const cx = classNames.bind(styles);
 

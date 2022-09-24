@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useController } from 'react-hook-form';
 import * as React from 'react';
 import Radio from '@mui/material/Radio';
@@ -6,6 +7,13 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import FormHelperText from '@mui/material/FormHelperText';
+
+RadioGroupField.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string,
+  options: PropTypes.array,
+  disabled: PropTypes.bool,
+};
 
 export function RadioGroupField({ name, control, label, disabled, options }) {
   const {

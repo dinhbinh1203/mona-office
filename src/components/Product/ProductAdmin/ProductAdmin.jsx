@@ -1,7 +1,12 @@
+import PropTypes from 'prop-types';
 import styles from './ProductAdmin.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
+
+ProductAdmin.propTypes = {
+  product: PropTypes.node.isRequired,
+};
 
 function ProductAdmin({ product }) {
   const formatMoney = (n) => {

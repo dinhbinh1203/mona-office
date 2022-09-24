@@ -1,6 +1,12 @@
+import PropTypes from 'prop-types';
+import ProductUser from '../Product/ProductUser/ProductUser';
 import styles from './ListProductHome.module.scss';
 import classNames from 'classnames/bind';
-import ProductUser from '../Product/ProductUser/ProductUser';
+
+ListProductHome.propTypes = {
+  title: PropTypes.string,
+  products: PropTypes.node.isRequired,
+};
 
 const cx = classNames.bind(styles);
 
