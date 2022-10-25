@@ -18,6 +18,7 @@ import UserRoute from './utils/UserRoute/AdminRoute';
 import { fetchCategoriesStart } from './store/categories/categories.action';
 import { checkUserSession } from './store/user/user.action';
 import User from './pages/User/User';
+import Page404 from './pages/Page404/Page404';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,20 +31,21 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<DefaultLayout />}>
-        <Route path="shop/*" element={<Shop />} />
-        <Route index element={<Home />} />
-        <Route path="news/*" element={<News />} />
+      <Route element={<DefaultLayout />}>
+        <Route path="/shop/*" element={<Shop />} />
+        <Route path="" index element={<Home />} />
+        <Route path="/news/*" element={<News />} />
         <Route element={<PrivateRoute />}>
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Route>
         <Route element={<UserRoute />}>
-          <Route path="account/*" element={<User />} />
+          <Route path="/account/*" element={<User />} />
         </Route>
         <Route element={<AdminRoute />}>
-          <Route path="admin/*" element={<Admin />} />
+          <Route path="/admin/*" element={<Admin />} />
         </Route>
+        <Route path="*" element={<Page404 />} />
       </Route>
     </Routes>
   );
