@@ -15,7 +15,7 @@ function SlickSlider() {
       <div className={cx('slider__slider')}>
         <div className={cx('slider__slider--image')}>
           <img
-            src={images.backGroundHeaderFirst}
+            src={images.backGroundHeaderSecond}
             alt="backGround"
             className={cx('image__header')}
           ></img>
@@ -37,7 +37,7 @@ function SlickSlider() {
       <div className={cx('slider__slider')}>
         <div className={cx('slider__slider--image')}>
           <img
-            src={images.backGroundHeaderSecond}
+            src={images.backGroundHeaderFirst}
             alt="backGround"
             className={cx('image__header')}
           ></img>

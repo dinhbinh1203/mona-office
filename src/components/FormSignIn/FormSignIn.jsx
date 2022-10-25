@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { emailSignInStart } from '../../store/user/user.action';
 
 import FormInput from '../FormInput/FormInput';
-import SignInGoogle from '../SignInGoogle/SignInGoogle';
 
 import AccessSign from '../AccessSign/AccessSign';
 import styles from './FormSignIn.module.scss';
@@ -79,8 +78,6 @@ function FormSignIn() {
           />
         </form>
       </div>
-
-      <SignInGoogle title="Hoặc đăng nhập bằng phương thức khác" />
     </div>
   );
 }

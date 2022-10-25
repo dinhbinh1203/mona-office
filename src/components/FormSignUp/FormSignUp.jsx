@@ -3,7 +3,7 @@ import { signUpStart } from '../../store/user/user.action';
 import { useDispatch } from 'react-redux';
 
 import FormInput from '../FormInput/FormInput';
-import SignInGoogle from '../SignInGoogle/SignInGoogle';
+
 import AccessSign from '../AccessSign/AccessSign';
 
 import styles from './FormSignUp.module.scss';
@@ -91,7 +91,6 @@ function FormSigUp() {
             to="/login"
             title="Đăng nhập"
           />
-          <SignInGoogle title="Hoặc đăng ký bằng" />
         </form>
       </div>
     </div>
