@@ -7,6 +7,7 @@ import productsApi from '../../api/productsApi';
 import ListProductHome from '../../components/ListProductHome/ListProductHome';
 import ProductNew from '../../components/Product/ProductNew/ProductNew';
 import newsApi from '../../api/newsApi';
+import Loading from '../../components/Loading/Loading';
 
 const cx = classNames.bind(styles);
 const INTRODUCE = [
@@ -37,9 +38,9 @@ const INTRODUCE = [
 ];
 
 function Home() {
-  const [discount, setDiscount] = useState([]);
-  const [trendy, setTrendy] = useState([]);
-  const [listNews, setListNews] = useState([]);
+  const [discount, setDiscount] = useState();
+  const [trendy, setTrendy] = useState();
+  const [listNews, setListNews] = useState();
 
   useEffect(() => {
     (async () => {
@@ -63,46 +64,52 @@ function Home() {
 
   return (
     <>
-      <div className="grid ">
-        <div>
-          <SlickSlider />
-        </div>
-      </div>
-
-      <div className="grid wide">
-        <ListProductHome title="Sản phẩm giảm giá" products={discount} />
-      </div>
-      <div className="grid wide">
-        <ListProductHome title="Sản phẩm bán chạy" products={trendy} />
-      </div>
-      <div className={cx('grid', 'home__introduce')}>
-        <div className={cx('grid', 'wide')}>
-          <div className={cx('row')}>
-            {INTRODUCE.map((item) => (
-              <div
-                className={cx('col', 'c-6', 'm-3', 'l-3', 'introduce-item')}
-                key={item.id}
-              >
-                <Introduce item={item} />
-              </div>
-            ))}
+      {Boolean(listNews) ? (
+        <>
+          <div className="grid ">
+            <div>
+              <SlickSlider />
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="grid wide">
-        <div className={cx('row', 'title__news')}>Tin mới nhất</div>
-        <div className="row">
-          {listNews.map((newItem) => (
-            <a
-              href={`/news/${newItem.id}`}
-              className="col c-12 l-4 m-4"
-              key={newItem.id}
-            >
-              <ProductNew newItem={newItem} />
-            </a>
-          ))}
-        </div>
-      </div>
+
+          <div className="grid wide">
+            <ListProductHome title="Sản phẩm giảm giá" products={discount} />
+          </div>
+          <div className="grid wide">
+            <ListProductHome title="Sản phẩm bán chạy" products={trendy} />
+          </div>
+          <div className={cx('grid', 'home__introduce')}>
+            <div className={cx('grid', 'wide')}>
+              <div className={cx('row')}>
+                {INTRODUCE.map((item) => (
+                  <div
+                    className={cx('col', 'c-6', 'm-3', 'l-3', 'introduce-item')}
+                    key={item.id}
+                  >
+                    <Introduce item={item} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="grid wide">
+            <div className={cx('row', 'title__news')}>Tin mới nhất</div>
+            <div className="row">
+              {listNews.map((newItem) => (
+                <a
+                  href={`/news/${newItem.id}`}
+                  className="col c-12 l-4 m-4"
+                  key={newItem.id}
+                >
+                  <ProductNew newItem={newItem} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 }

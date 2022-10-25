@@ -17,6 +17,7 @@ import { selectCurrentUser } from '../../../store/user/user.selector';
 import productsApi from '../../../api/productsApi';
 import ordersApi from '../../../api/ordersApi';
 import categoriesApi from '../../../api/categoriesApi';
+import Loading from '../../../components/Loading/Loading';
 
 import styles from './ProductDetail.module.scss';
 import classNames from 'classnames/bind';
@@ -28,7 +29,6 @@ function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState();
   const [title, setTitle] = useState();
-  const isLoading = Boolean(id);
   const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -55,7 +55,6 @@ function ProductDetail() {
           dataProduct.categoryId,
         );
         setTitle(dataTitle);
-
         setProduct(dataProduct);
       } catch (error) {
         console.log(error);
@@ -107,7 +106,7 @@ function ProductDetail() {
 
   return (
     <div>
-      {(!isLoading || Boolean(product)) && (
+      {Boolean(product) ? (
         <div className="grid wide">
           <div className={cx('row', 'title')}>
             <div className={cx('col', 'c-12', 'l-12', 'm-12')}>
@@ -223,6 +222,8 @@ function ProductDetail() {
             </div>
           </div>
         </div>
+      ) : (
+        <Loading />
       )}
     </div>
   );
